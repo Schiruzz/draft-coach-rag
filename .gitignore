@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 # Transcripts are third-party content: kept locally, not published
 data/transcripts/
+data/fandom/
