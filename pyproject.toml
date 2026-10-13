@@ -10,6 +10,9 @@ dependencies = [
     "pymongo>=4.10",
     "qdrant-client~=1.19",   # same minor version as the Qdrant server
     "python-dotenv>=1.0",
+    "pyyaml>=6.0",           # sources.yaml
+    "requests>=2.32",        # wiki API
+    "mwparserfromhell>=0.6", # wikitext -> plain text
 ]
 
 [project.optional-dependencies]

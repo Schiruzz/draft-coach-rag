@@ -1,0 +1,24 @@
+# One entry per corpus source. Raw content is not committed:
+#   transcript -> data/transcripts/<id>.txt (pasted by hand)
+#   wiki       -> data/fandom/<id>.wiki    (downloaded by scripts/fetch_fandom.py)
+# Dates are quoted so YAML keeps them as ISO strings.
+
+- id: bobbybs-draft-guide
+  type: transcript
+  title: "<exact video title>"
+  creator: BobbyBS
+  url: https://www.youtube.com/watch?v=Vn13u4Uggqc
+  published: "2026-04-06"
+  season: 49
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  links:
+    - url: https://imgur.com/a/hPXojE4
+      note: "<what the resource is>"
+
+- {id: fandom-gem-grab,   type: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
+- {id: fandom-brawl-ball, type: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
+- {id: fandom-hot-zone,   type: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
+- {id: fandom-heist,      type: wiki, title: Heist,      creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Heist,      language: en, license: CC BY-SA}
+- {id: fandom-bounty,     type: wiki, title: Bounty,     creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Bounty,     language: en, license: CC BY-SA}
+- {id: fandom-knockout,   type: wiki, title: Knockout,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Knockout,   language: en, license: CC BY-SA}
