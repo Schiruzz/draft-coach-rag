@@ -13,6 +13,8 @@ dependencies = [
     "pyyaml>=6.0",           # sources.yaml
     "requests>=2.32",        # wiki API
     "mwparserfromhell>=0.6", # wikitext -> plain text
+    "google-genai>=2.31",    # Gemini API (structured output)
+    "tqdm>=4.66",            # progress bars
 ]
 
 [project.optional-dependencies]
