@@ -4,9 +4,9 @@
 # Dates are quoted so YAML keeps them as ISO strings.
 # "chapters" are the author's chapters (start in seconds); "season: N  # estimated" means
 # the season was inferred from the publication date, not stated by the source.
-
+ 
 # --- Draft theory ---
-
+ 
 - id: bobbybs-draft-guide
   type: transcript
   title: "Best Draft Guide Ever"
@@ -19,7 +19,27 @@
   links:
     - url: https://imgur.com/a/hPXojE4
       note: "Draft Guide Cheat Sheet: 101 brawlers sorted into 7 draft classes (thrower, tank, space maker, anti-tank, support, sniper, control), colour-coded by draft trait (good hyper, knockback/stun, wall break, pierce damage, special)"
-
+ 
+- id: bobbybs-draft-guide-part2
+  type: transcript
+  title: "The Best Draft Guide EVER Part 2"
+  creator: BobbyBS
+  url: https://www.youtube.com/watch?v=XHp3r_D9rAA
+  published: "2026-05-06"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
+- id: bobbybs-draft-quiz
+  type: transcript
+  title: "Can You Draft Like a Pro?"
+  creator: BobbyBS
+  url: https://www.youtube.com/watch?v=7uNiDWgwDIM
+  published: "2026-05-10"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
 - id: spenlc-draft-positions
   type: transcript
   title: "The BEST Picks for Every Draft Position"
@@ -35,9 +55,84 @@
     - {start_s: 317,  title: "2/3 Picks"}
     - {start_s: 1416, title: "4/5 Picks"}
     - {start_s: 2370, title: "6th Picks"}
-
+ 
+# --- Meta and ranked walkthroughs ---
+ 
+- id: ash-tier-list-s55
+  type: transcript
+  title: "RANKING ALL 108 BRAWLERS Meta Tier List"
+  creator: Ash Brawl Stars
+  url: https://www.youtube.com/watch?v=9trexC9BF80
+  published: "2026-10-04"
+  season: 55
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:
+    - {start_s: 0,   title: "Introduction"}
+    - {start_s: 31,  title: "One-star brawlers"}
+    - {start_s: 124, title: "Two-star brawlers"}
+    - {start_s: 247, title: "Three-star brawlers"}
+    - {start_s: 456, title: "Four-star brawlers"}
+    - {start_s: 676, title: "Five-star brawlers"}
+    - {start_s: 837, title: "Six-star brawlers and wrap-up"}
+ 
+- id: spenlc-tier-list-s54
+  type: transcript
+  title: "New Meta Tier List! Ranking All Brawlers From Worst To Best"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=PGAR-j4AyHw
+  published: "2026-09-19"
+  season: 54  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:
+    - {start_s: 0,    title: "Introduction"}
+    - {start_s: 37,   title: "F tier analysis"}
+    - {start_s: 120,  title: "D tier breakdown"}
+    - {start_s: 522,  title: "C tier evaluations"}
+    - {start_s: 1366, title: "B tier rankings"}
+    - {start_s: 1958, title: "A tier selection"}
+    - {start_s: 2476, title: "S tier and top brawlers"}
+ 
+- id: ash-ranked-guide-s54
+  type: transcript
+  title: "The Ultimate Ranked Guide To Reach Masters in NEW META!"
+  creator: Ash Brawl Stars
+  url: https://www.youtube.com/watch?v=6X_AhNr9J5c
+  published: "2026-09-10"
+  season: 54
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:
+    - {start_s: 0,    title: "Introduction to masters"}
+    - {start_s: 52,   title: "Heist safe zone strategy"}
+    - {start_s: 311,  title: "Hot zone tactics"}
+    - {start_s: 685,  title: "Aggro and counter-drafting"}
+    - {start_s: 1205, title: "Bridge too far analysis"}
+    - {start_s: 1718, title: "Brawl ball mechanics"}
+    - {start_s: 2213, title: "Double swish mastery"}
+    - {start_s: 2737, title: "Out in the open tactics"}
+    - {start_s: 3497, title: "Hard rock mine gameplay"}
+    - {start_s: 4312, title: "Gem grab and map control"}
+    - {start_s: 4882, title: "Triple dribble drills"}
+    - {start_s: 5557, title: "Dry season expert play"}
+    - {start_s: 6620, title: "Undermine and meta shifts"}
+    - {start_s: 7386, title: "New horizons high rank play"}
+    - {start_s: 7867, title: "Ring of fire and final grind"}
+    - {start_s: 8882, title: "Reaching masters league"}
+ 
+- id: ash-legendary-to-masters
+  type: transcript
+  title: "Stuck in Legendary? How to Reach Masters Solo (Easy Guide)"
+  creator: Ash Brawl Stars
+  url: https://www.youtube.com/watch?v=AVBd_QZGc0A
+  published: "2026-10-08"
+  season: 55
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
 # --- Map cheat sheets (picks are shown on screen; the transcript holds the reasoning) ---
-
+ 
 - id: spenlc-ranked-cheat-sheet-s52
   type: transcript
   title: "ULTIMATE CHEAT SHEET FOR RANKED - BEST PICKS & BANS"
@@ -75,7 +170,7 @@
     - {start_s: 1571, title: "Knockout - Flaring Phoenix"}
     - {start_s: 1621, title: "Knockout - New Horizons"}
     - {start_s: 1677, title: "Knockout - Out in the open"}
-
+ 
 - id: spenlc-ranked-cheat-sheet-s53
   type: transcript
   title: "ULTIMATE CHEAT SHEET FOR RANKED - SEASON 53"
@@ -114,9 +209,47 @@
     - {start_s: 1393, title: "Knockout - Flaring Phoenix"}
     - {start_s: 1439, title: "Knockout - New Horizons"}
     - {start_s: 1475, title: "Knockout - Out in the open"}
-
+ 
+- id: spenlc-ranked-cheat-sheet-s54
+  type: transcript
+  title: "The ULTIMATE Ranked Guide - Cheat Sheet Season 54"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=5iHVKzN0c5M
+  published: "2026-09-11"
+  season: 54
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # titles exactly as the transcript lines
+    - {start_s: 0   , title: "Intro"}
+    - {start_s: 54  , title: "Bounty - Dry Season"}
+    - {start_s: 125 , title: "Bounty - Hideout"}
+    - {start_s: 184 , title: "Bounty - Layer Cake"}
+    - {start_s: 243 , title: "Bounty - Shooting Star"}
+    - {start_s: 322 , title: "Brawl ball - Beach Ball"}
+    - {start_s: 412 , title: "Brawl Ball - Center Stage"}
+    - {start_s: 482 , title: "Brawl ball - Pinball Dreams"}
+    - {start_s: 562 , title: "Brawl ball - Sneaky Fields"}
+    - {start_s: 625 , title: "Brawl Ball - Spiralling Out"}
+    - {start_s: 667 , title: "Brawl ball - Triple Dribble"}
+    - {start_s: 743 , title: "Gem Grab - Double Swoosh"}
+    - {start_s: 824 , title: "Gem Grab - Gem Fort"}
+    - {start_s: 890 , title: "Gem Grab - Hard Rock Mine"}
+    - {start_s: 950 , title: "Gem Grab - Undermine"}
+    - {start_s: 1004, title: "Heist - Bridge Too Far"}
+    - {start_s: 1089, title: "Heist - Hot Potato"}
+    - {start_s: 1182, title: "Heist - Kaboom Canyon"}
+    - {start_s: 1258, title: "Heist - Safe Zone"}
+    - {start_s: 1352, title: "Hot Zone - Dueling Beetles"}
+    - {start_s: 1431, title: "Hot Zone - Open Business"}
+    - {start_s: 1506, title: "Hot Zone - Parallel Plays"}
+    - {start_s: 1602, title: "Hot Zone - Ring Of Fire"}
+    - {start_s: 1675, title: "Knockout - Belles Rock"}
+    - {start_s: 1740, title: "Knockout - Flaring Phoenix"}
+    - {start_s: 1799, title: "Knockout - New Horizons"}
+    - {start_s: 1853, title: "Knockout - Out in the open"}
+ 
 # --- Counters ---
-
+ 
 - id: bief-counters-every-brawler
   type: transcript
   title: "The BEST COUNTERS to EVERY Brawler"
@@ -126,7 +259,7 @@
   season: 51  # estimated from the date
   language: en
   license: "YouTube video: cite with link and timestamp only"
-
+ 
 - id: ash-arthur-counter-meta
   type: transcript
   title: "How to Counter the Meta (Full Guide)"
@@ -150,7 +283,7 @@
     - {start_s: 515, title: "Challenging Shade players"}
     - {start_s: 638, title: "New brawler Cosmo analysis"}
     - {start_s: 717, title: "Final tips and wrap up"}
-
+ 
 - id: gbab-counters-every-brawler
   type: transcript
   title: "The 5 Best Counters For Every Brawler!"
@@ -167,9 +300,121 @@
     - {start_s: 274, title: "Brawler counters G-M"}
     - {start_s: 485, title: "Brawler counters M-Z"}
     - {start_s: 724, title: "Final tier list review"}
-
+ 
+- id: spenlc-hardest-counters
+  type: transcript
+  title: "The HARDEST COUNTER to EVERY BRAWLER"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=_aYrn_D-IQU
+  published: "2025-01-28"
+  season: 34  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # one chapter per brawler, titles use the official names
+    - {start_s: 0   , title: "Intro"}
+    - {start_s: 41  , title: "8-Bit"}
+    - {start_s: 60  , title: "Amber"}
+    - {start_s: 98  , title: "Angelo"}
+    - {start_s: 135 , title: "Ash"}
+    - {start_s: 170 , title: "Barley"}
+    - {start_s: 183 , title: "Bea"}
+    - {start_s: 222 , title: "Belle"}
+    - {start_s: 256 , title: "Berry"}
+    - {start_s: 301 , title: "Bibi"}
+    - {start_s: 337 , title: "Bo"}
+    - {start_s: 385 , title: "Bonnie"}
+    - {start_s: 440 , title: "Brock"}
+    - {start_s: 468 , title: "Bull"}
+    - {start_s: 494 , title: "Buster"}
+    - {start_s: 532 , title: "Buzz"}
+    - {start_s: 566 , title: "Buzz Lightyear"}
+    - {start_s: 601 , title: "Byron"}
+    - {start_s: 642 , title: "Carl"}
+    - {start_s: 679 , title: "Charlie"}
+    - {start_s: 724 , title: "Chester"}
+    - {start_s: 765 , title: "Chuck"}
+    - {start_s: 829 , title: "Clancy"}
+    - {start_s: 862 , title: "Colette"}
+    - {start_s: 924 , title: "Colt"}
+    - {start_s: 956 , title: "Cordelius"}
+    - {start_s: 982 , title: "Crow"}
+    - {start_s: 1017, title: "Darryl"}
+    - {start_s: 1053, title: "Doug"}
+    - {start_s: 1079, title: "Draco"}
+    - {start_s: 1121, title: "Dynamike"}
+    - {start_s: 1160, title: "Edgar"}
+    - {start_s: 1197, title: "El Primo"}
+    - {start_s: 1235, title: "Emz"}
+    - {start_s: 1277, title: "Eve"}
+    - {start_s: 1326, title: "Fang"}
+    - {start_s: 1358, title: "Frank"}
+    - {start_s: 1407, title: "Gale"}
+    - {start_s: 1450, title: "Gene"}
+    - {start_s: 1510, title: "Gray"}
+    - {start_s: 1552, title: "Griff"}
+    - {start_s: 1587, title: "Grom"}
+    - {start_s: 1613, title: "Gus"}
+    - {start_s: 1670, title: "Hank"}
+    - {start_s: 1706, title: "Jacky"}
+    - {start_s: 1749, title: "Janet"}
+    - {start_s: 1795, title: "Jessie"}
+    - {start_s: 1826, title: "Juju"}
+    - {start_s: 1870, title: "Kenji"}
+    - {start_s: 1923, title: "Kit"}
+    - {start_s: 1948, title: "Larry and Lawrie"}
+    - {start_s: 1999, title: "Leon"}
+    - {start_s: 2055, title: "Lily"}
+    - {start_s: 2090, title: "Lola"}
+    - {start_s: 2125, title: "Lou"}
+    - {start_s: 2184, title: "Maisie"}
+    - {start_s: 2224, title: "Mandy"}
+    - {start_s: 2267, title: "Max"}
+    - {start_s: 2320, title: "Meeple"}
+    - {start_s: 2350, title: "Meg"}
+    - {start_s: 2385, title: "Melodie"}
+    - {start_s: 2420, title: "Mico"}
+    - {start_s: 2452, title: "Moe"}
+    - {start_s: 2499, title: "Mortis"}
+    - {start_s: 2535, title: "Mr. P"}
+    - {start_s: 2565, title: "Nani"}
+    - {start_s: 2628, title: "Nita"}
+    - {start_s: 2663, title: "Otis"}
+    - {start_s: 2694, title: "Pam"}
+    - {start_s: 2751, title: "Pearl"}
+    - {start_s: 2780, title: "Penny"}
+    - {start_s: 2848, title: "Piper"}
+    - {start_s: 2893, title: "Poco"}
+    - {start_s: 2937, title: "R-T"}
+    - {start_s: 2994, title: "Rico"}
+    - {start_s: 3049, title: "Rosa"}
+    - {start_s: 3067, title: "Ruffs"}
+    - {start_s: 3098, title: "Sam"}
+    - {start_s: 3127, title: "Sandy"}
+    - {start_s: 3161, title: "Shade"}
+    - {start_s: 3190, title: "Shelly"}
+    - {start_s: 3211, title: "Spike"}
+    - {start_s: 3249, title: "Sprout"}
+    - {start_s: 3274, title: "Squeak"}
+    - {start_s: 3305, title: "Stu"}
+    - {start_s: 3356, title: "Surge"}
+    - {start_s: 3399, title: "Tara"}
+    - {start_s: 3437, title: "Tick"}
+    - {start_s: 3481, title: "Willow"}
+ 
+# --- Builds (Italian) ---
+ 
+- id: ferre-best-build-2027
+  type: transcript
+  title: "BEST BUILD 2027 DI UN PRO PLAYER"
+  creator: Ferre
+  url: https://www.youtube.com/watch?v=gdpBZcPN6Zs
+  published: "2026-10-12"
+  season: 55
+  language: it
+  license: "YouTube video: cite with link and timestamp only"
+ 
 # --- Mode pages (Fandom wiki) ---
-
+ 
 - {id: fandom-gem-grab,   type: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
 - {id: fandom-brawl-ball, type: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
 - {id: fandom-hot-zone,   type: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
