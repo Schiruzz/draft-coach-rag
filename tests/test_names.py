@@ -28,3 +28,6 @@ def test_context_aliases_are_only_reported():
     text = "give me the cult"
     assert NORMALIZER.normalize(text)[0] == text
     assert NORMALIZER.context_candidates(text) == ["me", "cult"]
+
+def test_shared_context_alias_keeps_every_brawler():
+    assert NORMALIZER.context_to_ids["Ali"] == ["ollie", "alli"]

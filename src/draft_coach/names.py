@@ -20,11 +20,14 @@ class NameNormalizer:
     def __init__(self, brawlers: list[dict]):
         self.official = {name: b["id"] for b in brawlers for name in (b["en"], b["it"])}
         self.alias_to_en = {alias: b["en"] for b in brawlers for alias in b["aliases"]}
-        self.context_to_id = {alias: b["id"] for b in brawlers for alias in b["context_aliases"]}
+        self.context_to_ids = {}  # a context alias can belong to several brawlers ("Ali": Alli or Ollie)
+        for b in brawlers:
+            for alias in b["context_aliases"]:
+                self.context_to_ids.setdefault(alias, []).append(b["id"])
         # Official names are in the same pattern so "Larry & Lawrie" is matched whole, not as alias "Larry"
         self.alias_pattern = word_pattern(self.alias_to_en.keys() | self.official.keys())
         self.official_pattern = word_pattern(self.official)
-        self.context_pattern = word_pattern(self.context_to_id)
+        self.context_pattern = word_pattern(self.context_to_ids)
 
     def normalize(self, text: str) -> tuple[str, list[str]]:
         """Replace safe aliases with the English name; return the new text and the aliases replaced."""

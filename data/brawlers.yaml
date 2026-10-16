@@ -1,9 +1,9 @@
 # All released brawlers (Vince excluded until release).
 # Names: https://brawlify.com/brawlers (EN) and https://brawlify.com/it/brawlers (IT).
 # class/traits: BobbyBS draft cheat sheet (class_source: bobby-cheat-sheet) or derived from the corpus
-#   by Claude and validated by Federico (class_source: derived). Traits empty = no trait or unknown.
-# aliases: safe variants, matched case-sensitively. context_aliases: also common words or ambiguous,
-#   resolved only with the surrounding sentence (step 2c).
+# aliases: safe variants, matched case-sensitively; each belongs to one brawler.
+# context_aliases: common words or ambiguous names, resolved only with the surrounding sentence (step 2c);
+#   the same context alias can belong to several brawlers (e.g. "Ali": Alli or Ollie).
 - {id: shelly, en: "Shelly", it: "Shelly", class: anti_tank, traits: ["knockback_stun"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: colt, en: "Colt", it: "Colt", class: anti_tank, traits: ["wall_break"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Cole", "cult", "Gold"]}
 - {id: bull, en: "Bull", it: "Bull", class: space_maker, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Bu"]}
@@ -81,7 +81,7 @@
 - {id: clancy, en: "Clancy", it: "Clancy", class: anti_tank, traits: [], class_source: bobby-cheat-sheet, aliases: ["Clansancy"], context_aliases: []}
 - {id: moe, en: "Moe", it: "Moe", class: anti_tank, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: juju, en: "Juju", it: "Juju", class: thrower, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: ["Guju"], context_aliases: []}
-- {id: ollie, en: "Ollie", it: "Ollie", class: space_maker, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
+- {id: ollie, en: "Ollie", it: "Ollie", class: space_maker, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Ali"]}
 - {id: lumi, en: "Lumi", it: "Lumi", class: anti_tank, traits: ["knockback_stun"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: finx, en: "Finx", it: "Finx", class: anti_tank, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: ["Fhinx", "Binks"], context_aliases: ["Fin", "Sphinx", "thinks"]}
 - {id: jae-yong, en: "Jae-Yong", it: "Jae-Yong", class: support, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: ["Jay Young", "Jay Yong", "Jayong", "Jong", "Zeong"], context_aliases: ["Jay"]}

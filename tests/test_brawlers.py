@@ -1,4 +1,4 @@
-"""Brawler table: unique ids, no name shared by two brawlers, known classes and traits."""
+"""Brawler table: unique ids, unambiguous names point to one brawler, known classes and traits."""
 from pathlib import Path
 
 import yaml
@@ -14,12 +14,15 @@ def test_ids_are_unique():
     assert len(ids) == len(set(ids))
 
 
-def test_no_name_points_to_two_brawlers():
-    owner = {}  # lowercased name -> brawler id
+def test_unambiguous_names_point_to_one_brawler():
+    owner = {}  # lowercased official name or safe alias -> brawler id
     for brawler in BRAWLERS:
-        names = {brawler["en"], brawler["it"], *brawler["aliases"], *brawler["context_aliases"]}
-        for name in names:
+        for name in {brawler["en"], brawler["it"], *brawler["aliases"]}:
             assert owner.setdefault(name.lower(), brawler["id"]) == brawler["id"], name
+    # A context alias may be shared by several brawlers, but must never be an unambiguous name
+    for brawler in BRAWLERS:
+        for alias in brawler["context_aliases"]:
+            assert alias.lower() not in owner, alias
 
 
 def test_classes_and_traits_are_known():
