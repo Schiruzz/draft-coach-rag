@@ -20,6 +20,10 @@ for source in sources:
     raw = (DATA / folder / f"{source['id']}{extension}").read_text(encoding="utf-8")
     document = {key: value for key, value in source.items() if key != "id"}
     if source["type"] == "transcript":
+        # The transcript panel repeats chapter titles as text lines: drop them,
+        # chapters are already in sources.yaml with their timestamps
+        chapter_titles = {chapter["title"] for chapter in source.get("chapters", [])}
+        raw = "\n".join(line for line in raw.splitlines() if line.strip() not in chapter_titles)
         document["segments"] = parse_transcript(raw)
         size = f"{len(document['segments'])} segments"
     else:
@@ -28,12 +32,12 @@ for source in sources:
     if not document.get("segments") and not document.get("text"):
         raise ValueError(f"{source['id']}: raw file has no content ({folder}/{source['id']}{extension})")
     collection.replace_one({"_id": source["id"]}, document, upsert=True)  # idempotent: rerun = same database
-    print(f"{source['id']:<22} {source['type']:<11} {size}")
+    print(f"{source['id']:<30} {source['type']:<11} {size}")
 
 # End-of-step check: listed sources = raw files = documents in MongoDB
 n_files = sum(len(list((DATA / folder).glob(f"*{extension}"))) for folder, extension in RAW_FILES.values())
 n_documents = collection.count_documents({})
-print(f"\n{'sources listed':<22} {len(sources)}")
-print(f"{'raw files':<22} {n_files}")
-print(f"{'documents in MongoDB':<22} {n_documents}")
+print(f"\n{'sources listed':<30} {len(sources)}")
+print(f"{'raw files':<30} {n_files}")
+print(f"{'documents in MongoDB':<30} {n_documents}")
 assert len(sources) == n_files == n_documents, "sources.yaml, raw files and MongoDB disagree"
