@@ -7,5 +7,11 @@
   },
   "forwardPorts": [27017, 6333],
   "postCreateCommand": "pip install -e '.[dev]'",
-  "postStartCommand": "docker compose up -d"
+  "postStartCommand": "docker compose up -d",
+  "customizations": {
+    "vscode": {
+      "settings": { "python.defaultInterpreterPath": "/usr/local/bin/python" },
+      "extensions": ["ms-python.python"]
+    }
+  }
 }

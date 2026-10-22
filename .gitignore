@@ -5,3 +5,5 @@ __pycache__/
 # Transcripts are third-party content: kept locally, not published
 data/transcripts/
 data/fandom/
+.secrets/
+.vscode/

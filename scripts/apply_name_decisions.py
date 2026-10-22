@@ -8,7 +8,7 @@ from pymongo import MongoClient
 from draft_coach.config import MONGO_URI
 from draft_coach.names import load_brawlers, word_pattern
 
-PROMPT_VERSION = "v2"  # the Gemini proposals that were reviewed
+PROMPT_VERSION = "v3"  # the Gemini proposals that were reviewed
 REVIEW_DIR = Path("data/name_review")
 
 db = MongoClient(MONGO_URI)["draft_coach"]
@@ -18,14 +18,16 @@ decisions = {e["id"]: e["decision"] for e in yaml.safe_load((REVIEW_DIR / "decis
 labels = {e["id"]: e["label"] for e in yaml.safe_load((REVIEW_DIR / "sample.yaml").read_text(encoding="utf-8"))}
 assert None not in decisions.values() and None not in labels.values(), "review files still have empty entries"
 
-# 1. Gemini against Federico's labels on the blind sample ("none" = not a brawler)
-gemini = {i: proposals[i]["brawler_id"] or "none" for i in labels}
-correct = sum(gemini[i] == labels[i] for i in labels)
-true_positives = sum(gemini[i] == labels[i] != "none" for i in labels)
-said_brawler = sum(gemini[i] != "none" for i in labels)
-is_brawler = sum(labels[i] != "none" for i in labels)
-print(f"{'sample size':<30} {len(labels)}")
-print(f"{'accuracy':<30} {correct / len(labels):.1%}")
+# 1. Gemini against Federico's labels on the blind sample ("none" = not a brawler).
+# Only high-confidence answers are measured: they are the ones accepted without review.
+high = [i for i in labels if i in proposals and proposals[i]["confidence"] == "high"]  # sample items no longer candidates (now safe aliases) are skipped
+gemini = {i: proposals[i]["brawler_id"] or "none" for i in high}
+correct = sum(gemini[i] == labels[i] for i in high)
+true_positives = sum(gemini[i] == labels[i] != "none" for i in high)
+said_brawler = sum(gemini[i] != "none" for i in high)
+is_brawler = sum(labels[i] != "none" for i in high)
+print(f"{'sample size':<30} {len(high)} high confidence ({len(labels) - len(high)} low or no longer candidates, excluded)")
+print(f"{'accuracy':<30} {correct / len(high):.1%}")
 print(f"{'precision':<30} {true_positives / said_brawler:.1%}  (Gemini says brawler X: how often right)")
 print(f"{'recall':<30} {true_positives / is_brawler:.1%}  (real brawler mentions Gemini finds)")
 
