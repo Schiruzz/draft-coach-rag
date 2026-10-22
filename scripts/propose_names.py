@@ -8,17 +8,17 @@ from typing import Literal
 
 import yaml
 from google import genai
-from google.genai import types
+from google.genai import types, errors
 from pydantic import BaseModel
 from pymongo import MongoClient
 from tqdm import tqdm
 
-from draft_coach.config import GEMINI_MODEL, MONGO_URI  # importing config also loads GEMINI_API_KEY from .env
+from draft_coach.config import GEMINI_MODEL, MONGO_URI  
 from draft_coach.names import load_brawlers
 
-PROMPT_VERSION = "v2"  # bump when the prompt changes: proposals of older versions are asked again
-BATCH_SIZE = 25
-PARALLEL_CALLS = 8
+PROMPT_VERSION = "v3"  # bump when the prompt changes: proposals of older versions are asked again
+BATCH_SIZE = 10
+PARALLEL_CALLS = 2
 REVIEW_FILE = Path("data/name_review/decisions.yaml")  # low-confidence answers: Federico decides each one
 SAMPLE_FILE = Path("data/name_review/sample.yaml")     # blind sample of high-confidence answers: measures Gemini
 SAMPLE_SIZE = 60
@@ -57,23 +57,28 @@ done = {p["_id"] for p in db["name_proposals"].find({"prompt_version": PROMPT_VE
 todo = [c for c in db["name_candidates"].find() if c["_id"] not in done]
 batches = [todo[start:start + BATCH_SIZE] for start in range(0, len(todo), BATCH_SIZE)]
 client = genai.Client(http_options=types.HttpOptions(
-    timeout=30_000,  # ms: a stuck call fails instead of hanging
-    retry_options=types.HttpRetryOptions(attempts=3),  # retries 429/5xx with growing waits
+    timeout=20_000,  # ms: Vertex enforces it as a server deadline; on "eu" calls take 3-30 s
+    retry_options=types.HttpRetryOptions(
+        attempts=5, http_status_codes=[408, 429, 499, 500, 502, 503, 504]),  # a queued call is cut and retried
 ))
 print(f"{'candidates to ask':<30} {len(todo)} ({len(done)} already answered)")
 
 
 def ask(batch: list[dict]) -> tuple[list[dict], list[Proposal]]:
-    """One Gemini call for one batch; runs in a worker thread."""
+    """One Gemini call for one batch; runs in a worker thread. A failed batch is skipped, not fatal."""
     items = [{"id": c["_id"], "alias": c["alias"], "options": {b: en_name[b] for b in c["brawler_ids"]},
               "context": context(c)} for c in batch]
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=PROMPT.format(items=yaml.safe_dump(items, allow_unicode=True, sort_keys=False)),
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json", response_schema=list[Proposal], temperature=0,
-            thinking_config=types.ThinkingConfig(thinking_level="low")),  # a short choice with context needs little reasoning
-    )
+    try:
+        response = client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=PROMPT.format(items=yaml.safe_dump(items, allow_unicode=True, sort_keys=False)),
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json", response_schema=list[Proposal], temperature=0,
+                thinking_config=types.ThinkingConfig(thinking_level="low")),  # a short choice needs little reasoning
+        )
+    except errors.APIError as error:  # its candidates stay unanswered and are asked again on the next run
+        tqdm.write(f"batch skipped: {error.code} {error.status}")
+        return batch, []
     return batch, response.parsed
 
 

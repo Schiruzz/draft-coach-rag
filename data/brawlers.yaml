@@ -19,7 +19,7 @@
 - {id: darryl, en: "Darryl", it: "Barryl", class: space_maker, traits: [], class_source: bobby-cheat-sheet, aliases: ["Daryl", "Darl"], context_aliases: []}
 - {id: penny, en: "Penny", it: "Penny", class: control, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Benny"]}
 - {id: tick, en: "Tick", it: "Tick", class: thrower, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
-- {id: carl, en: "Carl", it: "Carl", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
+- {id: carl, en: "Carl", it: "Carl", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Cole"]}
 - {id: 8-bit, en: "8-Bit", it: "8-Bit", class: anti_tank, traits: [], class_source: bobby-cheat-sheet, aliases: ["8bit", "8 bit", "Eight bit"], context_aliases: []}
 - {id: jacky, en: "Jacky", it: "Jacky", class: tank, traits: [], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: gus, en: "Gus", it: "Gus", class: sniper, traits: ["knockback_stun"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
@@ -28,7 +28,7 @@
 - {id: pam, en: "Pam", it: "Pam", class: control, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: frank, en: "Frank", it: "Frank", class: tank, traits: ["wall_break"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: bibi, en: "Bibi", it: "Bibi", class: space_maker, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: ["BB"], context_aliases: []}
-- {id: bea, en: "Bea", it: "Bea", class: sniper, traits: [], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Bee", "B"]}
+- {id: bea, en: "Bea", it: "Bea", class: sniper, traits: [], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Bee"]}
 - {id: emz, en: "Emz", it: "Emz", class: anti_tank, traits: ["good_hyper"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["M", "M's", "Ms"]}
 - {id: gale, en: "Gale", it: "Gelindo", class: anti_tank, traits: ["knockback_stun"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Gail", "Gil"]}
 - {id: nani, en: "Nani", it: "Iris", class: sniper, traits: [], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Nanny"]}
@@ -75,7 +75,7 @@
 - {id: doug, en: "Doug", it: "Doug", class: support, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: chuck, en: "Chuck", it: "Chuck", class: space_maker, traits: ["special"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: charlie, en: "Charlie", it: "Charlie", class: anti_tank, traits: ["knockback_stun"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
-- {id: mico, en: "Mico", it: "Mico", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: ["Miko"], context_aliases: ["the monkey", "Mice"]}
+- {id: mico, en: "Mico", it: "Mico", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: ["Miko"], context_aliases: ["the monkey", "Mice", "moo"]}
 - {id: melodie, en: "Melodie", it: "Melodie", class: space_maker, traits: ["special"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: ["Melody"]}
 - {id: lily, en: "Lily", it: "Lily", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: clancy, en: "Clancy", it: "Clancy", class: anti_tank, traits: [], class_source: bobby-cheat-sheet, aliases: ["Clansancy"], context_aliases: []}
@@ -90,7 +90,7 @@
 - {id: ziggy, en: "Ziggy", it: "Ziggy", class: thrower, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: gigi, en: "Gigi", it: "Gigi", class: space_maker, traits: ["special"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
 - {id: glowy, en: "Glowy", it: "Glowy", class: support, traits: ["special"], class_source: bobby-cheat-sheet, aliases: ["Globber", "Glober"], context_aliases: []}
-- {id: najia, en: "Najia", it: "Najia", class: control, traits: [], class_source: bobby-cheat-sheet, aliases: ["Naija", "Naja"], context_aliases: ["Niga", "Niger", "Nigel"]}
+- {id: najia, en: "Najia", it: "Najia", class: control, traits: [], class_source: bobby-cheat-sheet, aliases: ["Naija", "Naja", "Niga", "Niger", "Nigel"], context_aliases: []}
 - {id: damian, en: "Damian", it: "Damian", class: tank, traits: ["knockback_stun"], class_source: derived, aliases: ["Damien"], context_aliases: []}
 - {id: starr-nova, en: "Starr Nova", it: "Starr Nova", class: space_maker, traits: ["pierce_damage"], class_source: derived, aliases: ["Star Nova", "Starnova", "Starova", "Storov"], context_aliases: []}
 - {id: wendy, en: "Wendy", it: "Wendy", class: support, traits: [], class_source: derived, aliases: [], context_aliases: []}
