@@ -1,0 +1,41 @@
+# Step 3s: test questions for the RAG skeleton. "expected" = where the answer should be (not the only valid place).
+# Free questions (some in Italian: cross-language search) and draft scenarios written the way the quiz will build them.
+- id: q01
+  question: What should I first pick in Brawl Ball?
+  expected: bobbybs-draft-guide 30:47-31:20 (best available anti-tank)
+- id: q02
+  question: Perché i thrower si prendono quasi solo all'ultimo pick?
+  expected: bobbybs-draft-guide 4:28-5:20
+- id: q03
+  question: Cosa fa uno space maker nel draft e quando conviene sceglierlo?
+  expected: bobbybs-draft-guide 11:51-12:44, 15:44
+- id: q04
+  question: How do I deal with an enemy Chuck in Heist?
+  expected: bobbybs-draft-guide 35:17-36:26 (ignore it, out-damage on the safe)
+- id: q05
+  question: Quando conviene prendere un tank?
+  expected: bobbybs-draft-guide 25:49-26:20 (against space makers)
+- id: q06
+  question: "Brawl Ball, Sneaky Fields. Enemy first pick: Crow. I pick second: Otis. Is it a good pick?"
+  expected: "yes, next best anti-tank - bobbybs-draft-guide 31:26-31:51"
+- id: q07
+  question: "Hot Zone, Open Business. My team: Chester, Nita. Enemy: Bibi, Melodie. Fifth pick: Bull. Is it a good pick?"
+  expected: "yes, space maker - bobbybs-draft-guide 32:08-32:31, quiz draft 8"
+- id: q08
+  question: "Gem Grab, Hard Rock Mine. My team: Crow. Enemy: Kenji, Stu. I pick Frank. Is it a good pick?"
+  expected: "yes, tank against space makers - bobbybs-draft-guide 25:56-26:14"
+- id: q09
+  question: "Heist, Hot Potato. Enemy has Chuck. My team: Crow, Colt. I pick Angelo to defend the safe. Is it a good pick?"
+  expected: "no, out-damage the Chuck - bobbybs-draft-guide 35:17-36:02"
+- id: q10
+  question: "Brawl Ball, Center Stage. My team: Crow, Otis. Enemy: Bibi, Kenji, Stu. Last pick: Willow. Is it a good pick?"
+  expected: "no, they have space makers - bobbybs-draft-guide 32:49-32:55"
+- id: q11
+  question: Come countero Mico in Rapina?
+  expected: counter videos (bief, gbab, spenlc-hardest-counters) - not checked by Claude
+- id: q12
+  question: Perché Penny non va bene e mi dicono che sarebbe meglio un anti-tank?
+  expected: counter and tier list videos - not checked by Claude
+- id: q13
+  question: Chi posso scegliere come counter di Gus o Wendy?
+  expected: counter videos (bief, gbab, spenlc-hardest-counters) - not checked by Claude
