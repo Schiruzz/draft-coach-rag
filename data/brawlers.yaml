@@ -1,4 +1,4 @@
-# All released brawlers (Vince excluded until release).
+# All released brawlers.
 # Names: https://brawlify.com/brawlers (EN) and https://brawlify.com/it/brawlers (IT).
 # class/traits: BobbyBS draft cheat sheet (class_source: bobby-cheat-sheet) or derived from the corpus
 # aliases: safe variants, matched case-sensitively; each belongs to one brawler.
@@ -111,3 +111,4 @@
 - {id: nori, en: "Nori", it: "Nori", class: space_maker, traits: ["good_hyper"], class_source: derived, aliases: [], context_aliases: []}
 - {id: kaze, en: "Kaze", it: "Kaze", class: space_maker, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: ["Kaz", "Kazz", "Kazzy"], context_aliases: []}
 - {id: sirius, en: "Sirius", it: "Sirius", class: thrower, traits: ["pierce_damage"], class_source: bobby-cheat-sheet, aliases: [], context_aliases: []}
+- {id: vince, en: "Vince", it: "Vince", class: control, traits: ["special"], class_source: derived, aliases: [], context_aliases: []}
