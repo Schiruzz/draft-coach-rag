@@ -1,0 +1,166 @@
+# Every known ranked map. in_pool: true = in the current ranked pool (used by the quiz).
+# New season: add the new maps, flip in_pool; never delete a row (picks and chunks point to the ids).
+# name: Fandom page title. aliases: other spellings (SpenLC screens, transcription errors), case-sensitive.
+# types (1-2 of open/bushy/tight/lane) and features (closed list in draft_coach/maps.py): from the Fandom
+#   Layout and Federico's observations, validated by Federico (Oct 2026).
+# notes: Federico's observations; a brawler named in a note is a dated example, not the concept.
+
+- id: beach-ball
+  name: "Beach Ball"
+  mode: brawl_ball
+  in_pool: true
+  aliases: []
+  types: [tight, bushy]
+  features: [breakable_key_walls]
+  notes: "More tight than bushy."
+
+- id: center-stage
+  name: "Center Stage"
+  mode: brawl_ball
+  in_pool: true
+  aliases: []
+  types: [lane, bushy]
+  features: [fences]
+
+- id: pinball-dreams
+  name: "Pinball Dreams"
+  mode: brawl_ball
+  in_pool: true
+  aliases: ["pimple dreams"]
+  types: [open]
+  features: [fences]
+
+- id: sneaky-fields
+  name: "Sneaky Fields"
+  mode: brawl_ball
+  in_pool: true
+  aliases: ["Sneaker fields"]
+  types: [bushy, tight]
+  features: []
+
+- id: spiraling-out
+  name: "Spiraling Out"
+  mode: brawl_ball
+  in_pool: true
+  aliases: ["Spiralling Out"]
+  types: [tight]
+  features: [exposed_objective]
+
+- id: triple-dribble
+  name: "Triple Dribble"
+  mode: brawl_ball
+  in_pool: true
+  aliases: []
+  types: [tight]
+  features: [indestructible_walls]
+
+- id: double-swoosh
+  name: "Double Swoosh"
+  mode: gem_grab
+  in_pool: true
+  aliases: []
+  types: [bushy]
+  features: [flank_bushes]
+
+- id: gem-fort
+  name: "Gem Fort"
+  mode: gem_grab
+  in_pool: true
+  aliases: []
+  types: [tight, bushy]
+  features: [indestructible_walls, flank_bushes]
+  notes: "Tight, bushy center; bushy lanes."
+
+- id: hard-rock-mine
+  name: "Hard Rock Mine"
+  mode: gem_grab
+  in_pool: true
+  aliases: ["Hard Rock"]
+  types: [open, bushy]
+  features: [indestructible_walls]
+
+- id: undermine
+  name: "Undermine"
+  mode: gem_grab
+  in_pool: true
+  aliases: []
+  types: [open, bushy]
+  features: []
+  notes: "Open in the middle, with bushy lanes."
+
+- id: bridge-too-far
+  name: "Bridge Too Far"
+  mode: heist
+  in_pool: true
+  aliases: []
+  types: [lane]
+  features: [water_split, fences]
+
+- id: hot-potato
+  name: "Hot Potato"
+  mode: heist
+  in_pool: true
+  aliases: []
+  types: [bushy, lane]
+  features: [indestructible_walls]
+  notes: "Bushy center; each side works like a lane split into a double corridor."
+
+- id: kaboom-canyon
+  name: "Kaboom Canyon"
+  mode: heist
+  in_pool: true
+  aliases: []
+  types: [open, bushy]
+  features: [water_split, breakable_key_walls]
+  notes: >-
+    Lakes separate the center from the rest of the map: long-range brawlers that can cross or shoot over water
+    are ideal (e.g. Angelo, Oct 2026). The center is bushy, with a central wall that can be broken, and more
+    bushes near the safe.
+
+- id: safe-zone
+  name: "Safe Zone"
+  mode: heist
+  in_pool: true
+  aliases: []
+  types: [open, lane]
+  features: [water_split, center_only_path, indestructible_walls, exposed_objective]
+  notes: >-
+    Lakes split the map horizontally: without jumps or mobility abilities the only way through is the center.
+    Bushes at safe height. Indestructible walls let a lobbed attack hit from safe cover (e.g. Penny's mortar,
+    Oct 2026).
+
+- id: dueling-beetles
+  name: "Dueling Beetles"
+  mode: hot_zone
+  in_pool: true
+  aliases: ["Julian Beatles"]
+  types: [tight]
+  features: [indestructible_walls, flank_bushes]
+
+- id: open-business
+  name: "Open Business"
+  mode: hot_zone
+  in_pool: true
+  aliases: []
+  types: [open]
+  features: []
+
+- id: parallel-plays
+  name: "Parallel Plays"
+  mode: hot_zone
+  in_pool: true
+  aliases: []
+  types: [tight, open]
+  features: [multiple_zones, indestructible_walls]
+  notes: >-
+    Two zones; the indestructible walls inside them make lane play hard. Usually one player defends the left
+    zone and the other two push. Tight.
+
+- id: ring-of-fire
+  name: "Ring of Fire"
+  mode: hot_zone
+  in_pool: true
+  aliases: ["Ring Of Fire"]
+  types: [open, bushy]
+  features: [flank_bushes]
+  notes: "The zone in the center is open, but two large bush areas can be entered from the side to get two angles of attack."
