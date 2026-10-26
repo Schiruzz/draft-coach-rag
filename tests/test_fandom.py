@@ -31,4 +31,18 @@ def test_missing_page_raises(monkeypatch):
     monkeypatch.setattr(fandom.requests, "get", lambda *a, **k: FakeResponse({"error": {"code": "missingtitle"}}))
     with pytest.raises(LookupError):
         fandom.fetch_wikitext("Nobody")
+
+
+
+def test_page_image_url(monkeypatch):
+    data = {"query": {"pages": [{"title": "Hot Potato", "original": {"source": "https://static/x/Hot_Potato-Map.png"}}]}}
+    monkeypatch.setattr(fandom.requests, "get", lambda *a, **k: FakeResponse(data))
+    assert fandom.fetch_page_image("Hot Potato") == "https://static/x/Hot_Potato-Map.png"
+
+
+def test_page_without_image_raises(monkeypatch):
+    data = {"query": {"pages": [{"title": "Nobody", "missing": True}]}}
+    monkeypatch.setattr(fandom.requests, "get", lambda *a, **k: FakeResponse(data))
+    with pytest.raises(LookupError):
+        fandom.fetch_page_image("Nobody")
         
