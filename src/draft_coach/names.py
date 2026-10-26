@@ -27,7 +27,8 @@ class NameNormalizer:
         # Official names are in the same pattern so "Larry & Lawrie" is matched whole, not as alias "Larry"
         self.alias_pattern = word_pattern(self.alias_to_en.keys() | self.official.keys())
         self.official_pattern = word_pattern(self.official)
-        self.context_pattern = word_pattern(self.context_to_ids)
+        # Official names in the pattern too, so "Primo" inside "El Primo" is matched as the official name, not as an alias
+        self.context_pattern = word_pattern(self.context_to_ids.keys() | self.official.keys())
 
     def normalize(self, text: str) -> tuple[str, list[str]]:
         """Replace safe aliases with the English name; return the new text and the aliases replaced."""
@@ -40,5 +41,10 @@ class NameNormalizer:
         return list(dict.fromkeys(self.official[name] for name in self.official_pattern.findall(text)))
 
     def context_candidates(self, text: str) -> list[str]:
-        """Ambiguous names left for step 2c."""
-        return self.context_pattern.findall(text)
+        """Ambiguous names left for step 2c (never part of an official name)."""
+        return [name for name in self.context_pattern.findall(text) if name in self.context_to_ids]
+
+    def resolve(self, text: str, alias: str, en: str) -> str:
+        """Replace a resolved context alias with the English name, leaving official names untouched."""
+        pattern = word_pattern({alias} | self.official.keys())
+        return pattern.sub(lambda m: en if m.group(1) == alias else m.group(1), text)
