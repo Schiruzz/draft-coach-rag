@@ -6,13 +6,15 @@ import yaml
 from pymongo import MongoClient
 
 from draft_coach.config import MONGO_URI
-from draft_coach.names import load_brawlers, word_pattern
+from draft_coach.names import NameNormalizer, load_brawlers
 
 PROMPT_VERSION = "v3"  # the Gemini proposals that were reviewed
 REVIEW_DIR = Path("data/name_review")
 
 db = MongoClient(MONGO_URI)["draft_coach"]
-en_name = {b["id"]: b["en"] for b in load_brawlers(Path("data/brawlers.yaml"))}
+brawlers = load_brawlers(Path("data/brawlers.yaml"))
+en_name = {b["id"]: b["en"] for b in brawlers}
+normalizer = NameNormalizer(brawlers)
 proposals = {p["_id"]: p for p in db["name_proposals"].find({"prompt_version": PROMPT_VERSION})}
 decisions = {e["id"]: e["decision"] for e in yaml.safe_load((REVIEW_DIR / "decisions.yaml").read_text(encoding="utf-8"))}
 labels = {e["id"]: e["label"] for e in yaml.safe_load((REVIEW_DIR / "sample.yaml").read_text(encoding="utf-8"))}
@@ -33,7 +35,10 @@ print(f"{'recall':<30} {true_positives / is_brawler:.1%}  (real brawler mentions
 
 # 2. Final answer per candidate: Federico's decision or label first, otherwise Gemini (high confidence only)
 resolved, source_count = {}, {"decision": 0, "label": 0, "gemini": 0}
+current = set(db["name_candidates"].distinct("_id"))  # proposals of ids that are no longer candidates are not applied
 for candidate_id, proposal in proposals.items():
+    if candidate_id not in current:
+        continue
     if candidate_id in decisions:
         answer, source = decisions[candidate_id], "decision"
     elif candidate_id in labels:
@@ -56,7 +61,7 @@ for doc in db["normalized"].find():
             continue
         seg = segments[int(segment)]
         # every occurrence of the alias in this segment: candidates are one per (segment, alias)
-        seg["text"] = word_pattern([alias]).sub(en_name[brawler_id], seg["text"])
+        seg["text"] = normalizer.resolve(seg["text"], alias, en_name[brawler_id])
         if brawler_id not in seg["mentions"]:
             seg["mentions"].append(brawler_id)
             added += 1

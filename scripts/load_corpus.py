@@ -3,9 +3,13 @@ Run: python scripts/load_corpus.py"""
 from pathlib import Path
 
 import mwparserfromhell
+import yaml
 from pymongo import MongoClient
 
 from draft_coach.config import MONGO_URI
+from draft_coach.maps import load_maps
+from draft_coach.names import load_brawlers
+from draft_coach.screens import screen_segments
 from draft_coach.sources import load_sources
 from draft_coach.transcript import parse_transcript
 
@@ -25,6 +29,13 @@ for source in sources:
         chapter_titles = {chapter["title"] for chapter in source.get("chapters", [])}
         raw = "\n".join(line for line in raw.splitlines() if line.strip() not in chapter_titles)
         document["segments"] = parse_transcript(raw)
+        # Lists shown on screen but not read aloud (data/screens/<id>.yaml): added as segments at their chapter
+        screens = DATA / "screens" / f"{source['id']}.yaml"
+        if screens.exists():
+            extra = screen_segments(yaml.safe_load(screens.read_text(encoding="utf-8")), source["chapters"],
+                                    load_maps(DATA / "maps.yaml"), load_brawlers(DATA / "brawlers.yaml"))
+            # appended, not sorted in: segment indices are part of the name-candidate ids, so they must not shift
+            document["segments"] = document["segments"] + extra
         size = f"{len(document['segments'])} segments"
     else:
         document["text"] = mwparserfromhell.parse(raw).strip_code().strip()

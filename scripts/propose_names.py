@@ -1,11 +1,13 @@
 """Ask Gemini which brawler (if any) each ambiguous name in name_candidates means, then write the review files.
 Run: python scripts/propose_names.py"""
 import random
-from concurrent.futures import ThreadPoolExecutor
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
 
+import httpx
 import yaml
 from google import genai
 from google.genai import types, errors
@@ -19,6 +21,8 @@ from draft_coach.names import load_brawlers
 PROMPT_VERSION = "v3"  # bump when the prompt changes: proposals of older versions are asked again
 BATCH_SIZE = 10
 PARALLEL_CALLS = 2
+ATTEMPTS = 5
+RETRY_CODES = {408, 429, 499, 500, 502, 503, 504}  # temporary: queue on Vertex, quota, server errors
 REVIEW_FILE = Path("data/name_review/decisions.yaml")  # low-confidence answers: Federico decides each one
 SAMPLE_FILE = Path("data/name_review/sample.yaml")     # blind sample of high-confidence answers: measures Gemini
 SAMPLE_SIZE = 60
@@ -56,47 +60,67 @@ def context(candidate: dict) -> str:
 done = {p["_id"] for p in db["name_proposals"].find({"prompt_version": PROMPT_VERSION}, {"_id": 1})}
 todo = [c for c in db["name_candidates"].find() if c["_id"] not in done]
 batches = [todo[start:start + BATCH_SIZE] for start in range(0, len(todo), BATCH_SIZE)]
-client = genai.Client(http_options=types.HttpOptions(
-    timeout=20_000,  # ms: Vertex enforces it as a server deadline; on "eu" calls take 3-30 s
-    retry_options=types.HttpRetryOptions(
-        attempts=5, http_status_codes=[408, 429, 499, 500, 502, 503, 504]),  # a queued call is cut and retried
-))
+# ms: Vertex enforces it as a server deadline; on "eu" calls take 3-30 s.
+# No retry_options: the client does not retry on its own, ask() retries and prints each attempt
+client = genai.Client(http_options=types.HttpOptions(timeout=20_000))
 print(f"{'candidates to ask':<30} {len(todo)} ({len(done)} already answered)")
 
 
-def ask(batch: list[dict]) -> tuple[list[dict], list[Proposal]]:
-    """One Gemini call for one batch; runs in a worker thread. A failed batch is skipped, not fatal."""
+def ask(number: int, batch: list[dict]) -> tuple[list[dict], list[Proposal]]:
+    """One batch, up to ATTEMPTS calls; runs in a worker thread. A batch that keeps failing is skipped, not fatal."""
     items = [{"id": c["_id"], "alias": c["alias"], "options": {b: en_name[b] for b in c["brawler_ids"]},
               "context": context(c)} for c in batch]
-    try:
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=PROMPT.format(items=yaml.safe_dump(items, allow_unicode=True, sort_keys=False)),
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json", response_schema=list[Proposal], temperature=0,
-                thinking_config=types.ThinkingConfig(thinking_level="low")),  # a short choice needs little reasoning
-        )
-    except errors.APIError as error:  # its candidates stay unanswered and are asked again on the next run
-        tqdm.write(f"batch skipped: {error.code} {error.status}")
-        return batch, []
-    return batch, response.parsed
+    for attempt in range(1, ATTEMPTS + 1):
+        start = time.monotonic()
+        try:
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=PROMPT.format(items=yaml.safe_dump(items, allow_unicode=True, sort_keys=False)),
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json", response_schema=list[Proposal], temperature=0,
+                    thinking_config=types.ThinkingConfig(thinking_level="low")),  # a short choice needs little reasoning
+            )
+            return batch, response.parsed or []
+        except (errors.APIError, httpx.TransportError) as error:  # TransportError: network timeout, dropped connection
+            if isinstance(error, errors.APIError) and error.code not in RETRY_CODES:
+                raise
+            reason = f"{error.code} {error.status}" if isinstance(error, errors.APIError) else type(error).__name__
+            wait = 2 ** attempt  # 2, 4, 8, 16 s
+            last = attempt == ATTEMPTS
+            tqdm.write(f"batch {number}: {reason} after {time.monotonic() - start:.0f} s, "
+                       + ("skipped (asked again on the next run)" if last else f"retry {attempt + 1}/{ATTEMPTS} in {wait} s"))
+            if not last:
+                time.sleep(wait)
+    return batch, []
 
 
-with ThreadPoolExecutor(max_workers=PARALLEL_CALLS) as pool:
-    # MongoDB writes stay in the main thread; results arrive in batch order
-    for batch, parsed in tqdm(pool.map(ask, batches), total=len(batches), desc="Gemini batches", unit="batch"):
-        by_id = {c["_id"]: c for c in batch}
-        for proposal in parsed:
-            candidate = by_id.get(proposal.id)
-            # Guards: Gemini may alter an id or answer outside the options; skipped answers are asked again
-            if candidate is None or proposal.brawler not in [*candidate["brawler_ids"], None]:
-                continue
-            db["name_proposals"].replace_one({"_id": proposal.id}, {
-                "source_id": candidate["source_id"], "segment": candidate["segment"],
-                "start_s": candidate["start_s"], "alias": candidate["alias"], "options": candidate["brawler_ids"],
-                "brawler_id": proposal.brawler, "confidence": proposal.confidence,
-                "model": GEMINI_MODEL, "prompt_version": PROMPT_VERSION, "created": datetime.now(timezone.utc)},
-                upsert=True)
+def save(batch: list[dict], parsed: list[Proposal]) -> int:
+    """Write the valid answers of one batch; return how many were saved."""
+    by_id = {c["_id"]: c for c in batch}
+    saved = 0
+    for proposal in parsed:
+        candidate = by_id.get(proposal.id)
+        # Guards: Gemini may alter an id or answer outside the options; skipped answers are asked again
+        if candidate is None or proposal.brawler not in [*candidate["brawler_ids"], None]:
+            continue
+        db["name_proposals"].replace_one({"_id": proposal.id}, {
+            "source_id": candidate["source_id"], "segment": candidate["segment"],
+            "start_s": candidate["start_s"], "alias": candidate["alias"], "options": candidate["brawler_ids"],
+            "brawler_id": proposal.brawler, "confidence": proposal.confidence,
+            "model": GEMINI_MODEL, "prompt_version": PROMPT_VERSION, "created": datetime.now(timezone.utc)},
+            upsert=True)
+        saved += 1
+    return saved
+
+
+answered = 0
+with ThreadPoolExecutor(max_workers=PARALLEL_CALLS) as pool, tqdm(total=len(todo), desc="names", unit="name") as bar:
+    futures = [pool.submit(ask, n, batch) for n, batch in enumerate(batches, 1)]
+    for future in as_completed(futures):  # a batch is shown as soon as it finishes, in any order
+        batch, parsed = future.result()
+        answered += save(batch, parsed)  # MongoDB writes stay in the main thread
+        bar.update(len(batch))
+        bar.set_postfix(answered=answered, missing=bar.n - answered)
 
 
 def review_entry(proposal: dict) -> dict:

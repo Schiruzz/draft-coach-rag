@@ -1,0 +1,250 @@
+# Lists shown on screen in SpenLC, "The ULTIMATE Ranked Guide - Cheat Sheet Season 54" (source spenlc-ranked-cheat-sheet-s54).
+# The video reads only part of them aloud, so they are transcribed here and added to that source as text segments
+# (timestamp = the map's chapter). Dated knowledge of one creator, not a pick table: other sources may disagree.
+# Labels, composition and tips are written exactly as on screen; brawlers are ids of data/brawlers.yaml, in screen order.
+# Transcribed from screenshots, names validated by Federico (Oct 2026).
+
+- map: beach-ball
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, pierce, kenji, 'ziggy']
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, otis, lumi, cordelius, colette, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [sirius, meeple, willow, larry-and-lawrie, max, ruffs, charlie, berry, poco]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Thrower/Pressure]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: center-stage
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, pierce, kenji, mortis]
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, colette, lumi, cordelius, otis, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [meeple, max, ruffs, poco, sirius, charlie, crow, byron]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Pressure/Damage]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: pinball-dreams
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, colette, kenji, 'ziggy']
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, otis, lumi, cordelius, pierce, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [sirius, meeple, willow, larry-and-lawrie, max, ruffs, charlie, berry, poco]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Thrower/Pressure]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: sneaky-fields
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, pierce, kenji, mortis]
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, colette, lumi, cordelius, otis, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [meeple, max, ruffs, poco, sirius, charlie, crow, byron]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Pressure/Damage]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: spiraling-out
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, pierce, kenji, sprout]
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, colette, lumi, cordelius, otis, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [sirius, meeple, willow, larry-and-lawrie, max, ruffs, charlie, berry, poco, crow, byron]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Thrower/Pressure]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: triple-dribble
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, el-primo]
+  - label: 6th Pick
+    brawlers: [buzz, barley, edgar, colette, kenji, 'ziggy']
+  - label: Damage Dealer
+    brawlers: [rico, maisie, moe, meg, griff, otis, lumi, cordelius, pierce, lou, surge, emz]
+  - label: Flex/Control
+    brawlers: [sirius, meeple, willow, larry-and-lawrie, max, ruffs, charlie, berry, poco]
+  - label: Pressure
+    brawlers: [stu, kenji, ash, mina, starr-nova, hank, bibi, trunk, carl]
+  composition: [Damage Dealer, Control/Flex, Thrower/Pressure]
+  tips: [Make sure you have good damage but also not too much incase of a controller last pick]
+- map: double-swoosh
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, colette]
+  - label: 6th Pick
+    brawlers: [mortis, edgar, buzz, lily, ash, alli]
+  - label: Control/Damage
+    brawlers: [moe, emz, otis, griff, pearl, sirius, cordelius, rico, surge, nita, sandy, lumi, chester, ruffs]
+  - label: Gem Carrier
+    brawlers: [stu, janet, max, meeple, gigi, gene, maisie, 8-bit, crow, meg]
+  - label: Pressure
+    brawlers: [el-primo, ash, buzz, kit, stu, edgar, damian, mortis, mina, lily, alli, kenji, starr-nova]
+  composition: [Damage/Control, Pressure, Gem Carrier]
+  tips: [Pick Brawlers With Strong Turn Around Hypers/Supers, Prepare For Strong Last Pick Assasins/Control]
+- map: gem-fort
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, rico]
+  - label: 6th Pick
+    brawlers: [mortis, edgar, buzz, lily, ash, alli]
+  - label: Control/Damage
+    brawlers: [moe, emz, sirius, otis, griff, ruffs, cordelius, surge, nita, sandy, lumi]
+  - label: Gem Carrier
+    brawlers: [maisie, meg, max, stu, janet, gigi, colette, pearl, 8-bit, crow]
+  - label: Pressure
+    brawlers: [el-primo, ash, buzz, kit, stu, edgar, mortis, mina, lily, alli, kenji, starr-nova]
+  composition: [Damage/Control, Pressure, Gem Carrier]
+  tips: [Pick Brawlers With Strong Turn Around Hypers/Supers, Prepare For Strong Last Pick Assasins/Control]
+- map: hard-rock-mine
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, rico]
+  - label: 6th Pick
+    brawlers: [mortis, edgar, buzz, lily, ash, alli]
+  - label: Control/Damage
+    brawlers: [ruffs, moe, sirius, lumi, griff, emz, otis, nita, sandy, penny, surge]
+  - label: Gem Carrier
+    brawlers: [maisie, pearl, max, colette, janet, gigi, 8-bit, meg, stu, crow]
+  - label: Pressure
+    brawlers: [el-primo, ash, buzz, kit, stu, edgar, mortis, mina, lily, alli, kenji, starr-nova]
+  composition: [Damage/Control, Pressure, Gem Carrier]
+  tips: [Pick Brawlers With Strong Turn Around Hypers/Supers, Prepare For Strong Last Pick Assasins/Control]
+- map: undermine
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, gus, nori, rico]
+  - label: 6th Pick
+    brawlers: [mortis, edgar, buzz, lily, ash, alli]
+  - label: Control/Damage
+    brawlers: [moe, emz, ruffs, otis, griff, sirius, cordelius, surge, nita, sandy, lumi, chester]
+  - label: Gem Carrier
+    brawlers: [maisie, meg, max, stu, janet, gigi, colette, pearl, 8-bit, crow]
+  - label: Pressure
+    brawlers: [el-primo, ash, buzz, kit, stu, edgar, mortis, mina, lily, alli, kenji, starr-nova]
+  composition: [Damage/Control, Pressure, Gem Carrier]
+  tips: [Pick Brawlers With Strong Turn Around Hypers/Supers, Prepare For Strong Last Pick Assasins/Control]
+- map: bridge-too-far
+  groups:
+  - label: 1st Pick
+    brawlers: [amber, shade, nori, colette, brock, wendy]
+  - label: 6th Pick
+    brawlers: [darryl, edgar, cordelius, chuck, bonnie, najia]
+  - label: Flex
+    brawlers: [finx, gus, griff, glowy, max, pierce, meg, lola, eve, otis, piper, belle, angelo, charlie, rico, alli, byron]
+  - label: Safe Damage
+    brawlers: [kaze, penny, colt, melodie, carl, el-primo, 8-bit, chuck, edgar, crow, lily, mico, jessie]
+  composition: [Safe Damage, Flex/Safe, Flex]
+  tips: [Always Need 1 Brawler To Go For The Safe, Try To Only Keep 1 Person Defending]
+- map: hot-potato
+  groups:
+  - label: 1st Pick
+    brawlers: [amber, shade, nori, colette, rico, el-primo]
+  - label: 6th Pick
+    brawlers: [darryl, edgar, chuck, bonnie, mico, 8-bit]
+  - label: Flex
+    brawlers: [wendy, gus, griff, emz, maisie, meg, ruffs, cordelius, otis, nita, meeple, pierce, charlie, glowy, finx, kit, surge]
+  - label: Safe Damage
+    brawlers: [kaze, penny, colt, melodie, carl, bibi, berry, chuck, edgar, bull, lily, brock, jessie, crow]
+  composition: [Safe Damage, Flex/Safe, Flex]
+  tips: [Always Need 1 Brawler To Go For The Safe, Try To Only Keep 1 Person Defending]
+- map: kaboom-canyon
+  groups:
+  - label: 1st Pick
+    brawlers: [amber, shade, nori, colette, brock, wendy]
+  - label: 6th Pick
+    brawlers: [darryl, edgar, cordelius, chuck, bonnie, najia]
+  - label: Flex
+    brawlers: [finx, gus, griff, glowy, max, pierce, meg, lola, eve, otis, clancy, piper, angelo, charlie, belle, alli, byron, rico]
+  - label: Safe Damage
+    brawlers: [kaze, penny, colt, melodie, carl, el-primo, 8-bit, chuck, edgar, crow, lily, mico, jessie]
+  composition: [Safe Damage, Flex/Safe, Flex]
+  tips: [Always Need 1 Brawler To Go For The Safe, Try To Only Keep 1 Person Defending]
+- map: safe-zone
+  groups:
+  - label: 1st Pick
+    brawlers: [amber, shade, nori, colette, brock, wendy]
+  - label: 6th Pick
+    brawlers: [darryl, edgar, cordelius, chuck, bonnie, najia]
+  - label: Flex
+    brawlers: [pierce, max, griff, rico, gus, finx, belle, ruffs, otis, angelo, piper, meg, charlie, berry, glowy, alli]
+  - label: Safe Damage
+    brawlers: [kaze, penny, colt, melodie, carl, el-primo, 8-bit, edgar, chuck, lily, crow, jessie, mico]
+  composition: [Safe Damage, Flex/Safe, Flex]
+  tips: [Always Need 1 Brawler To Go For The Safe, Try To Only Keep 1 Person Defending]
+- map: dueling-beetles
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, nori, gus, lou]
+  - label: 6th Pick
+    brawlers: [el-primo, barley, mortis, ash, jessie, edgar]
+  - label: Damage/Control
+    brawlers: [griff, colette, lumi, maisie, meeple, ruffs, sirius, pierce, penny, brock, 8-bit, rico]
+  - label: Zone Time
+    brawlers: [gigi, poco, meg, emz, chuck, stu, max, finx, glowy, bo, lola, berry]
+  - label: Other Picks
+    brawlers: [mina, kenji, ash, starr-nova, pam, crow]
+  composition: [Damage/Control, Zone Time, Damage/Zone]
+  tips: [Above 7k Health Zone Time, Supers With Guaranteed Zone Time, Gray + Emz is unbeatable]
+- map: open-business
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, nori, gus, maisie]
+  - label: 6th Pick
+    brawlers: [el-primo, barley, mortis, ash, jessie, edgar]
+  - label: Damage/Control
+    brawlers: [colette, lou, griff, lumi, meeple, ruffs, sirius, pierce, penny, 8-bit, cordelius, surge]
+  - label: Zone Time
+    brawlers: [gigi, poco, meg, emz, chuck, stu, max, finx, glowy, bo, lola, berry]
+  - label: Other Picks
+    brawlers: [mina, kenji, ash, starr-nova, pam, crow]
+  composition: [Damage/Control, Zone Time, Damage/Zone]
+  tips: [Above 7k Health Zone Time, Supers With Guaranteed Zone Time, Gray + Emz is unbeatable]
+- map: parallel-plays
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, shade, amber, nori, meg, el-primo]
+  - label: 6th Pick
+    brawlers: [mortis, edgar, bibi, shade, cordelius, bolt]
+  - label: Defensive Zone
+    brawlers: [colette, charlie, surge, cordelius, emz, r-t, juju, willow, hank, griff, otis]
+  - label: Both Zones
+    brawlers: [lumi, stu, meeple, maisie, sirius, starr-nova, moe, glowy, berry, barley, pierce, max, najia]
+  - label: Offensive Zone
+    brawlers: [mina, edgar, mortis, kenji, bibi, carl, buzz, chuck]
+  composition: [Offensive Zone/Both, Defensive Zone, Both]
+  tips: [2 Offensive 1 Defensive, Your Defensive Needs Wall Peak Ability]
+- map: ring-of-fire
+  groups:
+  - label: 1st Pick
+    brawlers: [wendy, amber, shade, nori, gus, lou]
+  - label: 6th Pick
+    brawlers: [el-primo, edgar, mortis, ash, jessie, alli]
+  - label: Damage/Control
+    brawlers: [griff, colette, lumi, maisie, 8-bit, ruffs, rico, meeple, penny, brock, pierce, sirius]
+  - label: Zone Time
+    brawlers: [gigi, poco, meg, emz, finx, stu, max, chuck, glowy, bo, lola, berry]
+  - label: Other Picks
+    brawlers: [mina, kenji, ash, starr-nova, pam, crow]
+  composition: [Damage/Control, Zone Time, Damage/Zone]
+  tips: [Above 7k Health Zone Time, Supers With Guaranteed Zone Time, Gray + Emz is unbeatable]

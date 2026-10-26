@@ -31,3 +31,12 @@ def test_context_aliases_are_only_reported():
 
 def test_shared_context_alias_keeps_every_brawler():
     assert sorted(NORMALIZER.context_to_ids["Ali"]) == ["alli", "ollie"]  # order follows the table, not meaningful
+
+    
+
+def test_context_alias_inside_an_official_name_is_ignored():
+    assert NORMALIZER.context_candidates("El Primo or Primo") == ["Primo"]   # only the standalone one
+
+
+def test_resolve_leaves_official_names_alone():
+    assert NORMALIZER.resolve("El Primo or Primo", "Primo", "El Primo") == "El Primo or El Primo"

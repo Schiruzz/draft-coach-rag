@@ -28,7 +28,7 @@ for normalized in db["normalized"].find():
         "input_hash": input_hash,
         **window,
         "url": f"{url}&t={window['start_s']}s",  # link to the exact minute of the video
-    } for window in make_windows(normalized["segments"])]
+    } for window in make_windows(sorted(normalized["segments"], key=lambda s: s["start_s"]))]  # screen lists are appended
     db["chunks"].insert_many(chunks)
     words = mean(len(chunk["text"].split()) for chunk in chunks)
     print(f"{source_id:<35} {len(chunks):>4} chunks {words:>6.0f} words on average")
