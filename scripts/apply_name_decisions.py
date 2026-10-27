@@ -15,7 +15,9 @@ db = MongoClient(MONGO_URI)["draft_coach"]
 brawlers = load_brawlers(Path("data/brawlers.yaml"))
 en_name = {b["id"]: b["en"] for b in brawlers}
 normalizer = NameNormalizer(brawlers)
-proposals = {p["_id"]: p for p in db["name_proposals"].find({"prompt_version": PROMPT_VERSION})}
+current = set(db["name_candidates"].distinct("_id"))
+# Proposals of ids that are no longer candidates (now safe aliases, or removed sources) are ignored everywhere
+proposals = {p["_id"]: p for p in db["name_proposals"].find({"prompt_version": PROMPT_VERSION}) if p["_id"] in current}
 decisions = {e["id"]: e["decision"] for e in yaml.safe_load((REVIEW_DIR / "decisions.yaml").read_text(encoding="utf-8"))}
 labels = {e["id"]: e["label"] for e in yaml.safe_load((REVIEW_DIR / "sample.yaml").read_text(encoding="utf-8"))}
 assert None not in decisions.values() and None not in labels.values(), "review files still have empty entries"
@@ -35,10 +37,7 @@ print(f"{'recall':<30} {true_positives / is_brawler:.1%}  (real brawler mentions
 
 # 2. Final answer per candidate: Federico's decision or label first, otherwise Gemini (high confidence only)
 resolved, source_count = {}, {"decision": 0, "label": 0, "gemini": 0}
-current = set(db["name_candidates"].distinct("_id"))  # proposals of ids that are no longer candidates are not applied
 for candidate_id, proposal in proposals.items():
-    if candidate_id not in current:
-        continue
     if candidate_id in decisions:
         answer, source = decisions[candidate_id], "decision"
     elif candidate_id in labels:

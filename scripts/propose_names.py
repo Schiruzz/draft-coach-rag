@@ -129,7 +129,10 @@ def review_entry(proposal: dict) -> dict:
             "link": f"{urls[proposal['source_id']]}&t={proposal['start_s']}s", "context": context(proposal)}
 
 
-proposals = sorted(db["name_proposals"].find({"prompt_version": PROMPT_VERSION}), key=lambda p: p["_id"])
+current = set(db["name_candidates"].distinct("_id"))
+# Proposals of ids that are no longer candidates (now safe aliases, or removed sources) stay out of review files and counts
+proposals = sorted((p for p in db["name_proposals"].find({"prompt_version": PROMPT_VERSION}) if p["_id"] in current),
+                   key=lambda p: p["_id"])
 high = [p for p in proposals if p["confidence"] == "high"]
 n_candidates = db["name_candidates"].count_documents({})
 if len(proposals) < n_candidates:
