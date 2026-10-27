@@ -1,0 +1,83 @@
+# Evaluation set v1 (step 4): the exam of the engine, fixed so versions can be compared.
+# Types: pick, check (structured draft scenarios: the question text is built by code) and
+#        habit, plan, concept, abstain (written questions, as a player would type them).
+# gold: where the answer is (source + time span); found if a retrieved chunk overlaps it.
+# reference: short paraphrase of the source, never copied text. Brawler and map ids: data/brawlers.yaml, data/maps.yaml.
+# origin (pick/check): source_example = a draft solved in a video; new = same concept, new draft.
+# covered (optional): only on questions written from a player need; false = no source answers it yet.
+# Schema check: tests/test_eval_set.py.
+
+- id: pick001
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: sneaky-fields
+    position: 2
+    bans: []
+    ours: []
+    theirs: [crow]
+  accepted_classes: [anti_tank]
+  reference: "With the second pick, take the next best anti-tank."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1886, end_s: 1911}
+
+- id: pick002
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: hard-rock-mine
+    bans: [shade]
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: "Diamond picks are blind and Diamond is full of tanks and assassins: master and pick a safe anti-tank."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 245, end_s: 340}
+
+- id: check001
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 6
+    bans: []
+    ours: [crow, otis]
+    theirs: [bibi, kenji, stu]
+  candidate: willow
+  verdict: bad
+  reference: "A last-pick thrower only works if the enemy has nobody who closes the gap; here they have space makers."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
+
+- id: habit001
+  type: habit
+  lang: it
+  question: "Prendo spesso un thrower come primo pick: è per questo che perdo?"
+  reference: "Throwers are strong or useless: picked early they get countered by gap closers, so they are almost only last picks."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 268, end_s: 320}
+
+- id: plan001
+  type: plan
+  lang: it
+  question: "In Heist contro un Chuck conviene difendere la cassaforte o andare all'attacco?"
+  reference: "Do not defend the Chuck: ignore him and out-damage him on the enemy safe."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2117, end_s: 2186}
+
+- id: concept001
+  type: concept
+  lang: en
+  question: "What is a space maker?"
+  reference: "A brawler that closes the distance (dash, jump, speed), so the enemy cannot safely pick snipers or throwers."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 711, end_s: 764}
+
+- id: abstain001
+  type: abstain
+  lang: it
+  question: "Che win rate ha Shade su Hard Rock Mine?"
+  reference: "No project data has win rates."
