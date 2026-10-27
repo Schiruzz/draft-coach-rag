@@ -615,7 +615,7 @@
     have] probably just gone simply with like a Chester. I couldn't go alum because I got Rico like Ali would just destroy
     us or any assassin. So I probably should
   proposed: ollie
-  decision: alli
+  decision: ollie
 - id: spenlc-drafts-fail:167:Ali
   alias: Ali
   options:
@@ -627,7 +627,25 @@
     us or any assassin. So I probably should] have just gone something safe like an Edgar, maybe even like a Mina or something
     aggressive myself to try [music] and cancel out the Rico pick. Um
   proposed: ollie
-  decision: alli 
+  decision: alli
+- id: spenlc-drafts-fail:65:Ali
+  alias: Ali
+  options:
+  - alli
+  - ollie
+  link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=495s
+  context: I would go Ali, easiest brawler to play, jump over her attacks, free tap Ruffs
+  proposed: none
+  decision: ollie
+- id: spenlc-drafts-fail:67:Ali
+  alias: Ali
+  options:
+  - alli
+  - ollie
+  link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=511s
+  context: continuation of the Ali pick at 8:15
+  proposed: none
+  decision: ollie 
 - id: spenlc-hardest-counters:223:Cole
   alias: Cole
   options:

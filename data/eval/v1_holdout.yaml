@@ -13,7 +13,7 @@
     theirs: []
   accepted_classes: [anti_tank]
   reference: 'Rule (Bobby 13:54): in aggressive modes the first pick is the best available anti-tank. Here it is pick 1 in Gem Grab.'
-  gold: &id005
+  gold: &id004
   - {source: bobbybs-draft-guide, start_s: 834, end_s: 846}
   - {source: bobbybs-draft-guide, start_s: 1847, end_s: 1866}
 
@@ -87,7 +87,7 @@
     theirs: [piper, griff, maisie]
   accepted_classes: [thrower]
   reference: 'Rule (Bobby 32:49): last pick, if the enemy has no space maker, take a thrower. Here Piper, Griff and Maisie cannot close the gap.'
-  gold: &id008
+  gold: &id007
   - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
   - {source: bobbybs-draft-guide, start_s: 268, end_s: 298}
 
@@ -101,10 +101,9 @@
     ours: []
     theirs: []
   accepted_classes: [anti_tank]
-  reference: 'Rule: a blind Diamond pick is a first pick, so a safe anti-tank (Bobby, s4lamence); Diamond is full of tanks and assassins (Gbab). Here it is a blind pick in Gem Grab.'
-  gold: &id009
+  reference: 'Rule (Gbab 5:17): in Diamond master a good anti-tank, because Diamond is full of tanks and assassins. Here it is a Diamond pick in Gem Grab.'
+  gold:
   - &id003 {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
-  - &id004 {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 290}
 
 - id: pick108
   type: pick
@@ -116,10 +115,9 @@
     ours: []
     theirs: []
   accepted_classes: [anti_tank]
-  reference: 'Rule: a blind Diamond pick is a first pick; in Heist the best anti-tank that also damages the safe (Bobby 34:52, Gbab 5:17). Here it is a blind pick in Heist.'
+  reference: 'Rule (Gbab 5:17, Bobby 34:52): in Diamond master a good anti-tank, Diamond is full of tanks and assassins; in Heist take one that also damages the safe. Here it is a Diamond pick in Heist.'
   gold:
   - *id003
-  - *id004
   - {source: bobbybs-draft-guide, start_s: 2092, end_s: 2111}
 
 - id: pick109
@@ -134,7 +132,7 @@
     theirs: [stu, angelo]
   accepted_classes: [support]
   reference: 'Rule (SpenLC positions 38:46): if the enemy leaves Stu plus a long-range brawler, a support like Poco or Glowy is hard to deal with. Here the enemy has Stu and Angelo.'
-  gold: &id010
+  gold: &id008
   - {source: spenlc-draft-positions, start_s: 2326, end_s: 2352}
 
 - id: pick110
@@ -147,7 +145,7 @@
     bans: []
     ours: [melodie]
     theirs: [colt, belle]
-  accepted_classes: [anti_tank, sniper, control]
+  accepted_classes: [anti_tank, sniper, control, thrower, support]
   reference: 'Rule (SpenLC positions 35:23): in Heist one aggro brawler is enough. Here the team already has Melodie.'
   gold:
   - {source: spenlc-draft-positions, start_s: 2095, end_s: 2135}
@@ -210,7 +208,7 @@
     theirs: [crow]
   accepted_classes: [anti_tank]
   reference: 'Rule (SpenLC positions 14:19): never pair Stu with another low-damage brawler; pair him with damage. Here the teammate has Stu.'
-  gold: &id007
+  gold: &id006
   - {source: spenlc-draft-positions, start_s: 859, end_s: 889}
 
 - id: pick115
@@ -271,7 +269,7 @@
   candidate: colette
   verdict: good
   reference: 'Rule (Bobby 13:54): the first pick in aggressive modes is the best anti-tank. Here Colette, an anti-tank, would be pick 1.'
-  gold: *id005
+  gold: *id004
 
 - id: check103
   type: check
@@ -302,7 +300,7 @@
   candidate: r-t
   verdict: bad
   reference: 'Rule (Bobby 35:17): against a Chuck, a defender like R-T is the rookie mistake. Here R-T would be picked to defend.'
-  gold: &id006
+  gold: &id005
   - {source: bobbybs-draft-guide, start_s: 2117, end_s: 2186}
 
 - id: check105
@@ -318,7 +316,7 @@
   candidate: 8-bit
   verdict: good
   reference: 'Rule (Bobby 35:56): against a Chuck, out-damage him or pick a brawler like 8-Bit whose hypercharge charges off him. Here 8-Bit answers the Chuck.'
-  gold: *id006
+  gold: *id005
 
 - id: check106
   type: check
@@ -334,7 +332,7 @@
   verdict: bad
   reference: 'Rule (SpenLC Matchups 32:03): two tanks early are a mistake, one anti-tank counters both. Here the team already has Frank.'
   gold:
-  - {source: spenlc-knowing-matchups, start_s: 1923, end_s: 1936}
+  - {source: spenlc-knowing-matchups, start_s: 1915, end_s: 1936}
 
 - id: check107
   type: check
@@ -349,7 +347,7 @@
   candidate: meeple
   verdict: bad
   reference: 'Rule (SpenLC positions 14:19): two low-damage brawlers is the most common mistake. Here Meeple would join Stu.'
-  gold: *id007
+  gold: *id006
 
 - id: check108
   type: check
@@ -364,7 +362,7 @@
   candidate: surge
   verdict: good
   reference: 'Rule (SpenLC positions 14:19): pair Stu with high damage. Here Surge is a damage dealer.'
-  gold: *id007
+  gold: *id006
 
 - id: check109
   type: check
@@ -379,7 +377,7 @@
   candidate: barley
   verdict: bad
   reference: 'Rule (Bobby 32:49): a last-pick thrower only works if the enemy has no space maker. Here Mortis, Edgar and Bull all close the gap.'
-  gold: *id008
+  gold: *id007
 
 - id: check110
   type: check
@@ -394,7 +392,7 @@
   candidate: larry-and-lawrie
   verdict: good
   reference: 'Rule (Bobby 32:49): last pick, take a thrower if the enemy has no space maker. Here Piper, Griff and Maisie cannot close the gap.'
-  gold: *id008
+  gold: *id007
 
 - id: check111
   type: check
@@ -407,8 +405,10 @@
     theirs: []
   candidate: otis
   verdict: good
-  reference: 'Rule: a blind Diamond pick is a first pick, so a safe anti-tank like Otis (s4lamence 4:25, Gbab 5:17). Here Otis is a blind pick.'
-  gold: *id009
+  reference: 'Rule (Gbab 5:17, s4lamence 4:07): in Diamond a good anti-tank answers the tanks and assassins; Otis barely has counters. Here Otis is a Diamond pick.'
+  gold:
+  - *id003
+  - {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 290}
 
 - id: check112
   type: check
@@ -421,8 +421,10 @@
     theirs: []
   candidate: mortis
   verdict: bad
-  reference: 'Rule: a blind Diamond pick is a first pick, and assassins are never first picks (s4lamence 4:31); Diamond is full of tanks and anti-tanks answer them (Gbab). Here Mortis is a blind pick.'
-  gold: *id009
+  reference: 'Rule (Gbab 5:17, 14:34): Diamond is full of tanks and anti-tanks are recommended there, and assassins get destroyed by tanks and anti-tanks. Here Mortis, an assassin, is a Diamond pick.'
+  gold:
+  - *id003
+  - {source: gbab-rank-by-rank-guide, start_s: 874, end_s: 897}
 
 - id: check113
   type: check
@@ -437,7 +439,7 @@
   candidate: poco
   verdict: good
   reference: 'Rule (SpenLC positions 38:46): against Stu plus a long-range brawler, a support like Poco clumps the team and they cannot deal with it. Here the enemy has Stu and Angelo.'
-  gold: *id010
+  gold: *id008
 
 - id: check114
   type: check
