@@ -81,3 +81,1626 @@
   lang: it
   question: "Che win rate ha Shade su Hard Rock Mine?"
   reference: "No project data has win rates."
+
+# --- Batch 1: BobbyBS, "Best Draft Guide Ever" ---
+
+- id: pick003
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: "First pick in an aggressive mode: the best available anti-tank (Crow, Lou, Finx)."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2673, end_s: 2690}
+    - {source: bobbybs-draft-guide, start_s: 834, end_s: 846}
+
+- id: pick004
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 2
+    bans: []
+    ours: []
+    theirs: [ruffs]
+  accepted_classes: [space_maker, anti_tank]
+  reference: "Against a first pick that is not an anti-tank, take a space maker (Lily, Bull, Bibi) or the best anti-tank."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2743, end_s: 2764}
+    - {source: bobbybs-draft-guide, start_s: 1911, end_s: 1928}
+
+- id: pick005
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 5
+    bans: []
+    ours: [chester, nita]
+    theirs: [bibi, meeple]
+  accepted_classes: [space_maker]
+  reference: "Two anti-tanks already picked and the enemy has low damage: a space maker (Bull, Kaze, Kenji)."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2801, end_s: 2824}
+
+- id: pick006
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 4
+    bans: []
+    ours: [lou]
+    theirs: [pierce, amber]
+  accepted_classes: [space_maker]
+  reference: "They answered the Lou with range (Pierce, Amber): too much range and too little damage, so a space maker jumps on them."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1003, end_s: 1047}
+
+- id: pick007
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 4
+    bans: []
+    ours: [crow]
+    theirs: [stu, kenji]
+  accepted_classes: [tank]
+  reference: "Rule (Bobby 32:19): if the enemy has a space maker, take a tank. Here Stu and Kenji are space makers."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1556, end_s: 1574}
+    - {source: bobbybs-draft-guide, start_s: 1933, end_s: 1951}
+
+- id: pick008
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: "Rule (Bobby 30:47): in Brawl Ball the first pick is always the best available anti-tank. Here it is pick 1 in Brawl Ball."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1847, end_s: 1866}
+
+- id: pick009
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 2
+    bans: []
+    ours: []
+    theirs: [otis]
+  accepted_classes: [anti_tank, space_maker]
+  reference: "Rule (Bobby 34:36): in Gem Grab the 2-3 picks take the best anti-tank, then something good at stealing gems (Lily, Shade). Here it is pick 2 in Gem Grab."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2069, end_s: 2092}
+
+- id: pick010
+  type: pick
+  origin: new
+  covered: true
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 6
+    bans: [edgar, mico, otis, brock, 8-bit, surge]
+    ours: [colt, melodie]
+    theirs: [chuck, crow, penny]
+  accepted_classes: [space_maker, anti_tank]
+  reference: "Rule (Bobby 35:37): against a Chuck do not defend; out-damage him, or take a brawler whose hypercharge charges off him (Crow, Colette, 8-Bit, Nita). Here the enemy has Chuck on Safe Zone."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2117, end_s: 2186}
+
+- id: check002
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: pinball-dreams
+    position: 6
+    bans: []
+    ours: [otis, chester]
+    theirs: [colette, crow, pierce]
+  candidate: larry-and-lawrie
+  verdict: good
+  reference: "Rule (Bobby 32:49): last pick, if they have no space makers, take a thrower. Here Colette, Crow and Pierce are not space makers."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
+    - {source: bobbybs-draft-guide, start_s: 280, end_s: 298}
+
+- id: check003
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  candidate: meeple
+  verdict: bad
+  reference: "Rule (Bobby 19:31): never first pick a control brawler. Here Meeple, a control, would be pick 1."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1171, end_s: 1202}
+
+- id: check004
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: hot-potato
+    position: 2
+    bans: []
+    ours: []
+    theirs: [chuck]
+  candidate: angelo
+  verdict: bad
+  reference: "Rule (Bobby 35:17): against a Chuck, a defender like Angelo or R-T is the rookie mistake. Here Angelo would be picked to defend."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2117, end_s: 2186}
+
+- id: habit002
+  type: habit
+  lang: it
+  question: "Quando scelgo guardo solo chi countera i loro brawler: sbaglio qualcosa?"
+  reference: "Look at the bigger picture: count what your teammates already counter, or you leave the enemy a free last-pick thrower."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 652, end_s: 718}
+
+- id: habit003
+  type: habit
+  lang: it
+  question: "Prendo sempre Byron in Hot Zone: è per questo che perdo?"
+  reference: "Snipers rarely work in aggressive modes: low damage and too much skill needed; the exceptions are Belle, Angelo and Pierce."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1418, end_s: 1436}
+
+- id: habit004
+  type: habit
+  lang: it
+  question: "Gioco sempre il mio brawler preferito senza guardare il meta: è un problema?"
+  reference: "Yes: a brawler's strength changes with balance changes; follow pro tier lists and balance videos."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2467, end_s: 2515}
+
+- id: plan002
+  type: plan
+  lang: it
+  question: "Il mio compagno ha preso Mortis come primo pick: come rimedio nel draft?"
+  reference: "Counter their counter: they will answer the Mortis with anti-tanks, so pick what beats those anti-tanks instead of another tank."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2533, end_s: 2580}
+
+- id: concept002
+  type: concept
+  lang: it
+  question: "Cos'è un anti-tank e perché si prende come primo pick?"
+  reference: "The most well-rounded class with almost no weakness; in aggressive modes the best first pick is the best available anti-tank."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 810, end_s: 846}
+
+- id: concept003
+  type: concept
+  lang: en
+  question: "What is the difference between a tank and a space maker?"
+  reference: "Both have HP and close-range damage, but a tank cannot close the distance; Bull counts as a space maker because he can."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1436, end_s: 1478}
+
+- id: concept004
+  type: concept
+  lang: it
+  question: "Perché un support da solo non basta a vincere?"
+  reference: "Supports cover the team's weaknesses but do little damage: pair them with a damage dealer or a damaging tank."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1692, end_s: 1734}
+
+- id: concept005
+  type: concept
+  lang: en
+  question: "When is it safe to pick a control brawler?"
+  reference: "In the 2-3 or 4-5 picks, once the team already has an anti-tank; never first pick."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 1176, end_s: 1216}
+
+- id: concept006
+  type: concept
+  lang: en
+  question: "Why is an anti-tank plus a space maker such a strong combination?"
+  reference: "The anti-tank sets up the space maker, and the space maker in the 4-5 picks denies the enemy a last-pick thrower or sniper."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 944, end_s: 957}
+    - {source: bobbybs-draft-guide, start_s: 2016, end_s: 2028}
+
+- id: concept007
+  type: concept
+  lang: it
+  question: "Nel draft della Heist cosa conta più che nelle altre modalità?"
+  reference: "Safe damage: still take the best anti-tank, but one that also deals damage to the safe (Crow, Colt)."
+  gold:
+    - {source: bobbybs-draft-guide, start_s: 2092, end_s: 2111}
+
+- id: abstain002
+  type: abstain
+  lang: it
+  question: "Che percentuale di vittoria ha la coppia Crow e Otis in Brawl Ball?"
+  reference: "No project data has win rates."
+
+
+# --- Batch 2: s4lamence "The MOST ESSENTIAL Drafting Guide" and GbabGaming "How to Rank Up SO Fast" ---
+
+- id: pick011
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: sneaky-fields
+    position: 6
+    bans: []
+    ours: [otis, clancy]
+    theirs: [larry-and-lawrie, colt, bull]
+  accepted_classes: [space_maker]
+  reference: "Last pick: counter all or most of them. Edgar beats Larry & Lawrie and Colt; the two anti-tanks handle the Bull."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 516, end_s: 561}
+
+- id: pick012
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 6
+    bans: []
+    ours: [mortis, chester]
+    theirs: [otis, crow, colette]
+  accepted_classes: [thrower]
+  reference: "The enemy has no thrower and no wall break: a last-pick thrower (Barley, Sirius, Larry & Lawrie) punishes it."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 561, end_s: 602}
+
+- id: pick013
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 6
+    bans: []
+    ours: [leon, pierce]
+    theirs: [mortis, meeple, clancy]
+  accepted_classes: [anti_tank]
+  reference: "Counter the aggro with an anti-tank (Chester, Otis, Charlie, Griff), not a tank: Meeple and Clancy would farm a tank."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 726, end_s: 773}
+
+- id: check005
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 6
+    bans: []
+    ours: [leon, pierce]
+    theirs: [mortis, meeple, clancy]
+  candidate: frank
+  verdict: bad
+  reference: "A tank is wrong here: Meeple and Clancy feed off it, and Meeple's stun gadget stops the aggro."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 726, end_s: 773}
+
+- id: check006
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 6
+    bans: [colt]
+    ours: [crow, najia]
+    theirs: [colette, carl, melodie]
+  candidate: eve
+  verdict: bad
+  reference: "They went double aggro (Carl, Melodie): Eve counters neither and gets run down; if they go aggro you must counter the aggro."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 924, end_s: 968}
+    - {source: s4lamence-essential-draft-guide, start_s: 1060, end_s: 1100}
+
+- id: check007
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  candidate: bo
+  verdict: bad
+  reference: "Rule (s4lamence 5:12): Bo is a terrible first pick, an assassin like Mortis triggers his mines and kills him. Here Bo would be pick 1."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 312, end_s: 337}
+
+- id: check008
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: triple-dribble
+    bans: []
+    ours: []
+    theirs: []
+  candidate: tick
+  verdict: bad
+  reference: "Rule: Diamond picks are blind, so each pick is a first pick; never first pick a thrower (s4lamence 4:31), and Diamond is full of tanks and assassins (Gbab 5:17). Here Tick, a thrower, is a blind pick."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 271, end_s: 290}
+    - {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+
+- id: habit005
+  type: habit
+  lang: it
+  covered: true
+  question: "Banno sempre il brawler che mi dà più fastidio: va bene?"
+  reference: "Depends on rank: in Diamond Gbab says ban what you hate facing; from Mythic s4lamence says ban by pick order (first pick: the assassins and tanks you cannot first pick; last pick: the safe first picks)."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 245, end_s: 280}
+    - {source: s4lamence-essential-draft-guide, start_s: 61, end_s: 166}
+
+- id: habit006
+  type: habit
+  lang: it
+  covered: true
+  question: "In Diamante scelgo il brawler più forte del meta anche se non lo so giocare bene: sbaglio?"
+  reference: "In Diamond pick the brawler you master, not the counter or the meta pick; also master at least one good anti-tank."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 273, end_s: 335}
+
+- id: habit007
+  type: habit
+  lang: it
+  question: "Dopo il draft non penso più a chi devo affrontare in partita: è un errore?"
+  reference: "Play your draft: lane the brawler you counter and fulfil the role you were picked for (break walls, damage the safe)."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 785, end_s: 845}
+
+- id: plan003
+  type: plan
+  lang: en
+  question: "The enemy team always groups up together. What should we pick?"
+  reference: "Against grouping, pick piercing attacks (Penny, Gigi), piercing supers (Rico, Mortis) or bouncing attacks (Belle, Jessie)."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 1852, end_s: 1911}
+
+- id: concept008
+  type: concept
+  lang: en
+  question: "How should I ban when my team has first pick?"
+  reference: "Ban the good last picks you cannot first pick yourself: assassins and tanks that would catch your team by surprise."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 100, end_s: 150}
+    - {source: gbab-rank-by-rank-guide, start_s: 544, end_s: 578}
+
+- id: concept009
+  type: concept
+  lang: it
+  question: "Cosa conviene bannare quando l'ultimo pick è nostro?"
+  reference: "Ban the safest and most popular first picks, or the meta brawlers that are hard to counter."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 152, end_s: 166}
+    - {source: gbab-rank-by-rank-guide, start_s: 524, end_s: 544}
+
+- id: concept010
+  type: concept
+  lang: en
+  question: "What makes a good first pick?"
+  reference: "A brawler with as few counters as possible that does not die easily, especially to assassins; never assassins, throwers or squishy brawlers."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 337}
+
+- id: concept011
+  type: concept
+  lang: it
+  question: "Cosa deve fare chi sceglie al quarto e al quinto pick?"
+  reference: "Counter the enemy counters while covering the threat of their last pick, without a shared weakness."
+  gold:
+    - {source: s4lamence-essential-draft-guide, start_s: 355, end_s: 417}
+    - {source: s4lamence-essential-draft-guide, start_s: 476, end_s: 509}
+    - {source: gbab-rank-by-rank-guide, start_s: 1694, end_s: 1726}
+
+- id: concept012
+  type: concept
+  lang: en
+  question: "What is the difference between a partial and a complete outdraft?"
+  reference: "Partial: picks decent into the enemy that also synergise (2-3, 4-5 picks). Complete: the last pick counters the whole enemy comp, often an off-meta brawler."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 1667, end_s: 1765}
+
+- id: concept013
+  type: concept
+  lang: it
+  question: "Chi batte chi tra tank, assassini, anti-tank, control, sniper e thrower?"
+  reference: "Tanks and assassins beat controllers, snipers and throwers; anti-tanks and damage dealers beat tanks and assassins; controllers, snipers and throwers beat anti-tanks and damage dealers."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 842, end_s: 1013}
+
+- id: concept014
+  type: concept
+  lang: en
+  question: "Why does the type of map matter in the draft?"
+  reference: "Closed, bushy, tight and open maps favour different brawlers; aggressive modes want damage, mobility or HP, passive modes range and control."
+  gold:
+    - {source: gbab-rank-by-rank-guide, start_s: 1032, end_s: 1094}
+
+- id: abstain003
+  type: abstain
+  lang: it
+  question: "Quando esce il prossimo brawler e di che classe sarà?"
+  reference: "No project data covers future releases."
+
+# --- Batch 3: SpenLC "Why Your Drafts Fail" and YukiBS "The Drafting Mistakes Keeping You Out of Masters" ---
+
+- id: pick014
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hot-potato
+    position: 6
+    bans: []
+    ours: [lumi, kaze]
+    theirs: [colt, rico, amber]
+  accepted_classes: [space_maker]
+  reference: "Three enemy damage dealers with no answer to aggression: go aggressive (Lily, Carl, Bull, Mico) and let Kaze reach the safe."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 33, end_s: 144}
+
+- id: check009
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hot-potato
+    position: 6
+    bans: []
+    ours: [lumi, kaze]
+    theirs: [colt, rico, amber]
+  candidate: pierce
+  verdict: bad
+  reference: "Pierce expects Colt to open the map, but Colt uses speed loader and Rico does not break walls: free damage rains in and Kaze never reaches the safe."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 104, end_s: 144}
+
+- id: check010
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 6
+    bans: []
+    ours: [leon, lumi]
+    theirs: [colette, mina, ruffs]
+  candidate: emz
+  verdict: bad
+  reference: "Emz last pick into this is wrong: Colette's gadget counters her, Ruffs breaks the map open and she plays into aggressive brawlers; a strong mid or an aggressive pick was better."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 412, end_s: 459}
+
+- id: check011
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 6
+    bans: []
+    ours: [meeple, chester]
+    theirs: [colette, najia, griff]
+  candidate: ruffs
+  verdict: bad
+  reference: "Ruffs plus Meeple and Chester get outranged by Najia and Griff; a range answer (Pierce) or a space maker (Mina, Leon) was needed."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 542, end_s: 671}
+
+- id: check012
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: double-swoosh
+    position: 6
+    bans: []
+    ours: [ruffs, emz]
+    theirs: [chester, edgar, otis]
+  candidate: damian
+  verdict: bad
+  reference: "Rule (SpenLC Fail 14:49): Chester (HP), Otis (mute) and Edgar are Damian's three biggest counters. Here the enemy has all three."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 889, end_s: 916}
+
+- id: check013
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: kaboom-canyon
+    position: 3
+    bans: []
+    ours: [otis]
+    theirs: [chester]
+  candidate: squeak
+  verdict: bad
+  reference: "Rule (SpenLC Fail 4:39): do not pick Squeak early in the draft, aggressive brawlers counter him. Here Squeak would be pick 3."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 279, end_s: 295}
+
+- id: check014
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 3
+    bans: []
+    ours: [rico]
+    theirs: [meeple]
+  candidate: pierce
+  verdict: bad
+  reference: "Rule (SpenLC Fail 19:29): cover your teammate's weakness; Rico and Pierce both hate an opened map, so a wall breaker punishes both. Here the teammate has Rico."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 1155, end_s: 1213}
+    - {source: spenlc-drafts-fail, start_s: 1251, end_s: 1283}
+
+- id: plan004
+  type: plan
+  lang: it
+  question: "Il mio compagno ha preso Rico come primo pick: come copro i suoi punti deboli?"
+  reference: "Rico fears assassins and wall breakers: pick something that answers those, like Chester."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 1251, end_s: 1283}
+
+- id: habit008
+  type: habit
+  lang: it
+  question: "In Knockout gioco spesso due sniper nella stessa squadra: va bene?"
+  reference: "Two snipers in the same comp never ends well: they get pressured by the same aggressive brawlers."
+  gold:
+    - {source: spenlc-drafts-fail, start_s: 1127, end_s: 1148}
+
+- id: habit009
+  type: habit
+  lang: it
+  question: "Prendo sempre il brawler più forte disponibile, uno alla volta, eppure perdo lo stesso: perché?"
+  reference: "Strong picks that share the same weakness let the enemy punish all of them with one brawler; think about the team as a whole."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 75, end_s: 144}
+
+- id: concept015
+  type: concept
+  lang: en
+  question: "Why can two strong picks still make a weak team?"
+  reference: "The two-rocks problem: if both picks lose to the same thing, the enemy needs only one answer; ask what your team already has and what it lacks."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 236, end_s: 323}
+
+- id: check015
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: kaboom-canyon
+    position: 3
+    bans: []
+    ours: [brock]
+    theirs: [amber]
+  candidate: belle
+  verdict: bad
+  reference: "A second long-range brawler next to Brock shares his weakness up close: one aggressive enemy pick beats both."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 144, end_s: 323}
+
+- id: check016
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: kaboom-canyon
+    position: 3
+    bans: []
+    ours: [brock]
+    theirs: [amber]
+  candidate: pearl
+  verdict: good
+  reference: "Brock already gives range and damage; Pearl adds an answer when the enemy closes the gap, so one aggressive pick cannot beat both."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 277, end_s: 323}
+
+- id: plan005
+  type: plan
+  lang: en
+  question: "We already have Brock and another long-range brawler, it is my third pick and the enemy picks after me. What do I take?"
+  reference: "Change the shape of the team: something that holds up against aggression, punishes a dive or is solid at mid-range, so their last pick is not free."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 325, end_s: 382}
+
+- id: concept016
+  type: concept
+  lang: it
+  question: "Come scelgo quando ho due pick di fila?"
+  reference: "Use them together: one answers the enemy pick, the other covers its weakness and makes the team harder to counter."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 476, end_s: 510}
+
+- id: pick015
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: pinball-dreams
+    position: 5
+    bans: [stu, wendy, nori, amber, shade, gus]
+    ours: [rico, buzz]
+    theirs: [ash, surge]
+  accepted_classes: [anti_tank]
+  reference: "Answer Surge and prepare for a last-pick thrower: Griff, who can break the wall if they go thrower (Moe, Emz, Spike as alternatives)."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 510, end_s: 598}
+
+- id: concept017
+  type: concept
+  lang: en
+  question: "What should I ask myself after every pick in the draft?"
+  reference: "What type of brawler is this, does my team already have it, and which single enemy pick would punish my whole team."
+  gold:
+    - {source: yukibs-drafting-mistakes, start_s: 601, end_s: 646}
+
+- id: abstain004
+  type: abstain
+  lang: it
+  question: "Chi ha vinto l'ultimo campionato del mondo di Brawl Stars?"
+  reference: "No project data covers esports results."
+
+# --- Batch 4: SpenLC "Knowing Your Matchups", IDarkJoker "The ONLY Draft Guide", and good checks paired with earlier drafts ---
+
+- id: check017
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hot-potato
+    position: 6
+    bans: []
+    ours: [lumi, kaze]
+    theirs: [colt, rico, amber]
+  candidate: carl
+  verdict: good
+  reference: 'Carl is one of the aggressive answers: the three enemy damage dealers have nothing against aggression.'
+  gold:
+  - {source: spenlc-drafts-fail, start_s: 72, end_s: 144}
+
+- id: check018
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 6
+    bans: []
+    ours: [meeple, chester]
+    theirs: [colette, najia, griff]
+  candidate: pierce
+  verdict: good
+  reference: 'Pierce was the right answer: once the map opens he beats Griff and Colette and lets Meeple and Chester into the game.'
+  gold:
+  - {source: spenlc-drafts-fail, start_s: 604, end_s: 620}
+
+- id: check019
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 6
+    bans: []
+    ours: [leon, lumi]
+    theirs: [colette, mina, ruffs]
+  candidate: alli
+  verdict: good
+  reference: An aggressive Alli jumps over Colette's attacks, easily kills Ruffs and creates pressure so the team collects gems.
+  gold:
+  - {source: spenlc-drafts-fail, start_s: 495, end_s: 519}
+
+- id: check020
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 6
+    bans: []
+    ours: [leon, pierce]
+    theirs: [mortis, meeple, clancy]
+  candidate: griff
+  verdict: good
+  reference: Griff opens the walls for Pierce and counters Mortis; Meeple and Clancy lack the range to use the open map.
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 760, end_s: 773}
+
+- id: check021
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: sneaky-fields
+    position: 6
+    bans: []
+    ours: [otis, clancy]
+    theirs: [larry-and-lawrie, colt, bull]
+  candidate: edgar
+  verdict: good
+  reference: Edgar beats Larry & Lawrie and Colt; the two anti-tanks handle the Bull that beats Edgar.
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 534, end_s: 561}
+
+- id: check022
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 6
+    bans: []
+    ours: [mortis, chester]
+    theirs: [otis, crow, colette]
+  candidate: barley
+  verdict: good
+  reference: 'The enemy has no thrower and no wall break: a last-pick thrower like Barley punishes it.'
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 561, end_s: 576}
+
+- id: check023
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: pinball-dreams
+    position: 5
+    bans: [stu, wendy, nori, amber, shade, gus]
+    ours: [rico, buzz]
+    theirs: [ash, surge]
+  candidate: griff
+  verdict: good
+  reference: Griff helps against Surge and prepares for a last-pick thrower, breaking the wall only if needed.
+  gold:
+  - {source: yukibs-drafting-mistakes, start_s: 510, end_s: 598}
+
+- id: check024
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 5
+    bans: []
+    ours: [chester, nita]
+    theirs: [bibi, meeple]
+  candidate: bull
+  verdict: good
+  reference: With two anti-tanks against a low-damage enemy, a space maker like Bull is the right fifth pick.
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 2801, end_s: 2824}
+
+- id: check025
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: beach-ball
+    bans: []
+    ours: []
+    theirs: []
+  candidate: colette
+  verdict: good
+  reference: 'Rule: Diamond picks are blind, so each is a first pick; a safe anti-tank with few counters (s4lamence: Colette, Otis, Crow) and Diamond is full of tanks and assassins (Gbab). Here Colette,
+    an anti-tank, is a blind pick.'
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 290}
+  - {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+
+- id: check026
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 2
+    bans: [colt]
+    ours: []
+    theirs: [colette]
+  candidate: crow
+  verdict: good
+  reference: 'Colette is hard to counter, so the second pick takes a strong Heist brawler: Crow.'
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 856, end_s: 924}
+
+- id: check027
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: pinball-dreams
+    position: 6
+    bans: [griff, emz, edgar]
+    ours: [otis, stu]
+    theirs: [lumi, poco, kenji]
+  candidate: bibi
+  verdict: good
+  reference: 'Otis and Stu already handle Lumi; the last pick must counter the rest: Bibi beats Kenji and Poco lacks the damage to stop her.'
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 465, end_s: 531}
+
+- id: check028
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 6
+    bans: []
+    ours: [ruffs, max]
+    theirs: [rico, lily, lola]
+  candidate: shade
+  verdict: good
+  reference: Any aggressive brawler works with Ruffs and Max; Shade is good into Rico and Lola and they have no wall break.
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 721, end_s: 793}
+
+- id: check029
+  type: check
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 1
+    bans: [poco, pierce, griff, 8-bit, surge, starr-nova]
+    ours: []
+    theirs: []
+  candidate: lou
+  verdict: good
+  reference: 'With Poco, Pierce and Griff banned, the brawlers that counter Lou are gone: Lou is the best first pick.'
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 872, end_s: 952}
+
+- id: check030
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 3
+    bans: []
+    ours: [frank]
+    theirs: [crow]
+  candidate: hank
+  verdict: bad
+  reference: 'Rule (SpenLC Matchups 32:03): two tanks early is a mistake, one hard anti-tank counters both. Here the team already has Frank and Hank would be the second tank.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1923, end_s: 1936}
+
+- id: pick016
+  type: pick
+  origin: source_example
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 6
+    bans: []
+    ours: [ruffs, max]
+    theirs: [rico, lily, lola]
+  accepted_classes: [space_maker]
+  reference: 'Ruffs and Max need an aggressive last pick: Shade (good into Rico and Lola, no enemy wall break), or Edgar, Alli, Buzz.'
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 721, end_s: 793}
+
+- id: concept018
+  type: concept
+  lang: it
+  question: Cosa deve fare chi sceglie al secondo e al terzo pick?
+  reference: Try to counter the first pick, or take two brawlers good into everything; do not pick assassins this early, leave good last picks for later.
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 94, end_s: 141}
+
+- id: concept019
+  type: concept
+  lang: en
+  question: Which kinds of brawlers make the best last picks?
+  reference: Throwers, tanks and assassins counter whole compositions; controllers can be good last picks too.
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 181, end_s: 214}
+
+- id: plan006
+  type: plan
+  lang: it
+  question: 'Il mio compagno ha preso un assassino molto presto: cosa scelgo?'
+  reference: 'Expect them to go anti-tank: support the assassin (a healer) or predict and counter their anti-tanks with a controller like Penny.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 214, end_s: 246}
+
+- id: concept020
+  type: concept
+  lang: it
+  covered: true
+  question: 'Gioco senza spendere: come mi costruisco un roster per il ranked?'
+  reference: Cover every class with two or three brawlers that are good in many metas, and upgrade those first.
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1013, end_s: 1191}
+
+- id: concept021
+  type: concept
+  lang: en
+  question: How should a team be drafted in Gem Grab?
+  reference: A gem carrier mid, a controller in lane, a brawler that pressures the enemy carrier and a damage defender; keep an anti-tank if they have last pick.
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1191, end_s: 1334}
+  - {source: idarkjoker-draft-guide, start_s: 279, end_s: 370}
+
+- id: concept022
+  type: concept
+  lang: it
+  question: In Gem Grab quando conviene scegliere il centrale?
+  reference: 'Early in the draft: save the late picks for lane brawlers, assassins or throwers that counter the whole enemy comp.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1264, end_s: 1294}
+
+- id: concept023
+  type: concept
+  lang: en
+  question: In Heist, why do you need a brawler just for safe damage?
+  reference: 'Damage wins Heist: a team-wiping push onto the safe erases minutes of control; keep at least one safe-damage brawler and help it reach the safe.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1334, end_s: 1453}
+
+- id: concept024
+  type: concept
+  lang: it
+  question: Come si drafta in Hot Zone?
+  reference: 'Control and sustain: controllers paired with high-HP brawlers and healers that can sit on the zone; squishy snipers cannot hold it.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1769, end_s: 1872}
+
+- id: concept025
+  type: concept
+  lang: en
+  question: How do you counter control brawlers?
+  reference: Tanks and assassins win the 1v1 against their low damage, throwers and wall breakers deny their turrets, and supports with high-HP brawlers outlast them.
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 631, end_s: 721}
+
+- id: habit010
+  type: habit
+  lang: it
+  question: 'Mi piace giocare due control nella stessa squadra: è un problema?'
+  reference: 'Two controls lack damage: the enemy just picks a tank they cannot take down.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1896, end_s: 1923}
+
+- id: concept026
+  type: concept
+  lang: it
+  question: Cosa mi dicono i ban degli avversari?
+  reference: Their bans reveal their plan, e.g. banning anti-throwers means they want a thrower; draft against what they are building.
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 372, end_s: 463}
+
+- id: habit011
+  type: habit
+  lang: it
+  question: 'Scelgo sempre il mio main, anche come primo pick: va bene?'
+  reference: 'From Mythic, ego picking is a mistake: pick what is good on the map. In Diamond Gbab instead advises the brawler you master.'
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 534, end_s: 589}
+  - {source: gbab-rank-by-rank-guide, start_s: 273, end_s: 317}
+
+- id: plan007
+  type: plan
+  lang: en
+  question: We have first pick. What should we ban?
+  reference: Ban the brawlers that counter the first pick you plan, not the strongest brawler, which the enemy will ban anyway.
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 224, end_s: 277}
+
+
+# --- Batch 5: SpenLC cheat sheet s54 and draft positions, counter videos (Bief, Ash and Arthur, SpenLC Hardest), Ash ranked guide, Diamond, need-based ---
+
+- id: pick017
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 4
+    bans: []
+    ours: [kaze]
+    theirs: [colt, 8-bit]
+  accepted_classes: [anti_tank, sniper, control]
+  reference: 'Rule (SpenLC positions 35:23): in Heist you need only one aggro brawler; with Kaze already picked, round out the comp with damage or a defender, not Melodie. Here the team already has Kaze.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2095, end_s: 2135}
+
+- id: pick018
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 5
+    bans: []
+    ours: [lou, griff]
+    theirs: [stu, piper]
+  accepted_classes: [support]
+  reference: 'Rule (SpenLC positions 38:46): when the enemy leaves a weakness like Stu plus a long-range brawler, a support (Poco, Glowy) clumps the team and they cannot deal with it. Here the enemy has
+    Stu and Piper.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2326, end_s: 2352}
+
+- id: pick019
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 6
+    bans: []
+    ours: [colette, emz]
+    theirs: [stu, gus, meeple]
+  accepted_classes: [tank, space_maker]
+  reference: 'Rule (SpenLC positions 45:03): last pick in Brawl Ball, if the enemy has two low-DPS brawlers, a tank like El Primo, or Edgar to exploit two similar brawlers. Here Stu, Gus and Meeple all
+    lack damage.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2703, end_s: 2735}
+
+- id: pick020
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: beach-ball
+    position: 3
+    bans: []
+    ours: [stu]
+    theirs: [colette]
+  accepted_classes: [anti_tank]
+  reference: 'Rule (SpenLC cheat sheet 6:21, positions 14:19): never pair two low-damage brawlers; Stu needs a damage dealer next to him. Here the teammate has Stu.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 381, end_s: 404}
+  - {source: spenlc-draft-positions, start_s: 859, end_s: 889}
+
+- id: pick021
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 5
+    bans: []
+    ours: [penny, lou]
+    theirs: [colette, 8-bit]
+  accepted_classes: [space_maker, tank]
+  reference: 'Rule (SpenLC cheat sheet 14:50): on Hard Rock Mine you must have a pressure brawler, even at fifth pick and even at the risk of their last pick. Here the team has only Penny and Lou.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 890, end_s: 928}
+
+- id: pick022
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: triple-dribble
+    position: 6
+    bans: []
+    ours: [otis, maisie]
+    theirs: [gus, colette, wendy]
+  accepted_classes: [thrower]
+  reference: 'Rule (SpenLC cheat sheet 11:10, Bobby 32:49): on Triple Dribble a thrower is almost always drafted, and a last-pick thrower is free when the enemy has no gap closer. Here Gus, Colette and
+    Wendy are not space makers.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 670, end_s: 692}
+  - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
+
+- id: pick023
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule (SpenLC cheat sheet 22:40): Lou is the safe first pick on Dueling Beetles, a counter to Gray cheese; otherwise Colette or Maisie. Here it is pick 1.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1360, end_s: 1396}
+
+- id: pick024
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 6
+    bans: []
+    ours: [maisie, rico]
+    theirs: [stu, max, gus]
+  accepted_classes: [space_maker, tank]
+  reference: 'Rule (SpenLC cheat sheet 14:38, positions 45:36): on Gem Fort''s grass you almost always go aggro last, to get onto the gem carrier. Here the enemy has no tank or assassin to stop it.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 878, end_s: 890}
+  - {source: spenlc-draft-positions, start_s: 2736, end_s: 2747}
+
+- id: pick025
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: kaboom-canyon
+    position: 6
+    bans: []
+    ours: [kaze, brock]
+    theirs: [melodie, 8-bit, colt]
+  accepted_classes: [anti_tank]
+  reference: 'Rule (SpenLC positions 47:39): with a sniper and an aggro brawler already picked and an enemy Melodie or Kaze, you need a shutdown defender like Otis or Griff. Here the enemy has Melodie.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2859, end_s: 2883}
+
+- id: pick026
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 6
+    bans: []
+    ours: [lou, griff]
+    theirs: [penny, gus, meeple]
+  accepted_classes: [thrower]
+  reference: 'Rule (SpenLC positions 49:37): Barley is the perfect last pick on Open Business when the enemy lacks aggression. Here Penny, Gus and Meeple have no gap closer.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2977, end_s: 2990}
+
+- id: pick027
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: dueling-beetles
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule: Diamond picks are blind, so each pick is a first pick: a safe anti-tank (Bobby, s4lamence), and Diamond is full of tanks and assassins (Gbab). Here it is a blind pick in Hot Zone.'
+  gold:
+  - {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+  - {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 290}
+
+- id: pick028
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: safe-zone
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule: a blind Diamond pick is a first pick; in Heist that is the best anti-tank that also damages the safe (Bobby 34:52), and an anti-tank answers Diamond''s tanks and assassins (Gbab). Here
+    it is a blind pick in Heist.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 2092, end_s: 2111}
+  - {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+
+- id: pick029
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: center-stage
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule: a blind Diamond pick is a first pick; in Brawl Ball that is always the best anti-tank (Bobby 30:47), also against Diamond''s tanks and assassins (Gbab). Here it is a blind pick in Brawl
+    Ball.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 1847, end_s: 1866}
+  - {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+
+- id: pick030
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: sneaky-fields
+    position: 4
+    bans: []
+    ours: [otis]
+    theirs: [bibi, kenji]
+  accepted_classes: [tank]
+  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank (Frank, Trunk, Draco). Here Bibi and Kenji are space makers.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 1928, end_s: 1951}
+
+- id: pick031
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 5
+    bans: []
+    ours: [crow, otis]
+    theirs: [gus, meeple]
+  accepted_classes: [space_maker]
+  reference: 'Rule (Bobby 32:13): with an anti-tank first pick, the 4-5 picks take a space maker (Kenji, Bull, Bibi) unless the enemy has one. Here Gus and Meeple are not space makers.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 1928, end_s: 1951}
+
+- id: pick032
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: hot-potato
+    position: 2
+    bans: []
+    ours: []
+    theirs: [crow]
+  accepted_classes: [anti_tank, space_maker]
+  reference: 'Rule (Bobby 36:31): Heist 2-3 picks take an anti-tank plus strong safe damage (Otis, 8-Bit, Colt; Melodie, Kaze). Here it is pick 2 in Heist.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 2186, end_s: 2204}
+
+- id: pick033
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: bridge-too-far
+    position: 5
+    bans: []
+    ours: [colt, kaze]
+    theirs: [crow, melodie]
+  accepted_classes: [control, sniper]
+  reference: 'Rule (Bobby 36:44): if two teammates already deal good safe damage (Colt, Kaze), the 4-5 pick can be a control or sniper that survives the whole game (Belle, Eve). Here the team has Colt and
+    Kaze.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 2204, end_s: 2228}
+
+- id: pick034
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 3
+    bans: []
+    ours: [crow]
+    theirs: [finx]
+  accepted_classes: [anti_tank, space_maker]
+  reference: 'Rule (Bobby 33:19): Hot Zone 2-3 picks take the next best anti-tank and then an aggressive pick. Here it is pick 3 after an anti-tank.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 1999, end_s: 2016}
+
+- id: pick035
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 6
+    bans: []
+    ours: [carl, colt]
+    theirs: [penny, nori, belle]
+  accepted_classes: [sniper]
+  reference: 'Rule (SpenLC cheat sheet 21:30): on Safe Zone, if you lack Pierce, leave the mid for last and counter their mid with Belle, Piper or Angelo. Here their mid is Belle and it is our last pick.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1290, end_s: 1315}
+
+- id: habit012
+  type: habit
+  lang: it
+  question: 'Gioco Max in Open Business perché è forte ovunque: va bene?'
+  reference: 'Max is overrated there: no sustain and little threat behind walls; prefer brawlers that push behind walls with more health.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1436, end_s: 1460}
+
+- id: habit013
+  type: habit
+  lang: it
+  question: 'Su Center Stage giochiamo spesso tre brawler che fanno solo danno da lontano: è un errore?'
+  reference: 'Yes: you need presence in the bushes and a scouting brawler with the vision gear, or one aggressive enemy sneaks through and overwhelms you.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 417, end_s: 448}
+
+- id: habit014
+  type: habit
+  lang: it
+  question: 'Su ogni mappa con i cespugli prendo Emz anche da sola: sbaglio?'
+  reference: 'Emz is easily outranged without support: pair her with Max, Stu or Gray; on a map like Hard Rock Mine she fails above Masters.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 1004, end_s: 1027}
+
+- id: habit015
+  type: habit
+  lang: it
+  question: 'In Hard Rock Mine al quinto pick non prendo mai un brawler aggressivo per paura dell''ultimo pick avversario: è giusto?'
+  reference: 'No: on Hard Rock Mine you must have a pressure brawler anyway, or the enemy pushes you back and their carrier collects the gems.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 890, end_s: 928}
+
+- id: habit016
+  type: habit
+  lang: it
+  question: 'Come primo pick prendo spesso un tank perché è forte: va bene?'
+  reference: 'No: first picking a tank or an assassin is a mistake, even when they are broken; they get countered by the next picks.'
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 113, end_s: 122}
+  - {source: bobbybs-draft-guide, start_s: 1999, end_s: 2010}
+
+- id: habit017
+  type: habit
+  lang: en
+  question: I often pick Stu next to another low-damage brawler. Is that a problem?
+  reference: 'Yes: two low-damage brawlers are the most common draft mistake; pair Stu with high damage.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 859, end_s: 889}
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 381, end_s: 404}
+
+- id: habit018
+  type: habit
+  lang: it
+  question: 'In Hot Zone prendo sempre Gray al secondo o terzo pick: è una buona idea?'
+  reference: Gray at 2-3 is too early, Lou, Bo or Lumi counter the Gray cheese; it is stronger at 4-5, when only one counter is left.
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2294, end_s: 2313}
+
+- id: habit019
+  type: habit
+  lang: it
+  question: 'Su Center Stage nessuno di noi usa la vision gear: conta anche nel draft?'
+  reference: 'Yes: on Center Stage a scouting brawler with the vision gear is part of the draft, at least one, better two.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 417, end_s: 437}
+
+- id: habit020
+  type: habit
+  lang: it
+  question: 'Quando abbiamo il primo pick bannamo sempre il brawler più forte: è giusto?'
+  reference: 'No: with first pick, leave the strongest first pick open and take it; ban the good last picks instead.'
+  gold:
+  - {source: ash-ranked-guide-s54, start_s: 2749, end_s: 2758}
+  - {source: s4lamence-essential-draft-guide, start_s: 100, end_s: 150}
+
+- id: plan008
+  type: plan
+  lang: it
+  question: Su Safe Zone chi prendo come centrale e quando?
+  reference: Pierce is the best mid; without him, leave the mid for last and counter the enemy mid (Belle, Piper, Angelo).
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1290, end_s: 1315}
+
+- id: plan009
+  type: plan
+  lang: it
+  question: Su Parallel Plays conviene giocare in due all'attacco e uno in difesa, o il contrario?
+  reference: It depends on how much you trust your teammates; a lone defender needs a strong brawler with wall-peek tools (Colette, Charlie, Surge, Cordelius).
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1521, end_s: 1556}
+
+- id: plan010
+  type: plan
+  lang: en
+  question: On Triple Dribble, what do I need to check in our draft?
+  reference: Enough pressure to deal with a thrower, a brawler that can pressure their thrower lane, and a goal-scoring super or hypercharge.
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 706, end_s: 740}
+
+- id: plan011
+  type: plan
+  lang: it
+  question: 'Su Dueling Beetles l''avversario ha l''ultimo pick: cosa banno?'
+  reference: Ban Barley, or the Gray plus Emz combination; pro teams left Barley open and got countered by a last-pick Barley.
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1396, end_s: 1423}
+
+- id: plan012
+  type: plan
+  lang: it
+  question: Su Hot Potato conviene difendere la cassaforte o attaccare di continuo?
+  reference: One brawler defends consistently, one safe-damage brawler and one that keeps creating pressure; someone should always be alive pushing.
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1091, end_s: 1150}
+
+- id: plan013
+  type: plan
+  lang: en
+  question: What composition works on Kaboom Canyon?
+  reference: A range brawler, an aggressive safe-damage brawler (Carl, Melodie, Kaze) and one brawler that holds control, with a follow-up for the safe damage.
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1181, end_s: 1256}
+
+- id: plan014
+  type: plan
+  lang: it
+  question: Su Ring of Fire quanti brawler devono stare sulla zona?
+  reference: Two brawlers in the middle to guarantee zone time; do not worry too much about flankers, group up if needed.
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 1601, end_s: 1625}
+
+- id: plan015
+  type: plan
+  lang: en
+  question: The enemy first picked Gray. What do we pick?
+  reference: Something that does not feed the Gray teleport or has a lot of HP, or Otis and Meeple to punish the teleport (Finx, Max are options too).
+  gold:
+  - {source: idarkjoker-draft-guide, start_s: 795, end_s: 870}
+
+- id: concept027
+  type: concept
+  lang: it
+  covered: true
+  question: Come countero Mico in Heist?
+  reference: High HP or burst damage kills him (Bull, Doug); in Heist against Mico, Melodie or Kaze you need a brawler that stays at the safe and still deals damage (8-Bit, Nita, Colette).
+  gold:
+  - {source: bief-counters-every-brawler, start_s: 626, end_s: 633}
+  - {source: ash-arthur-counter-meta, start_s: 366, end_s: 386}
+  - {source: spenlc-hardest-counters, start_s: 2420, end_s: 2452}
+
+- id: concept028
+  type: concept
+  lang: it
+  covered: true
+  question: Chi posso scegliere come counter di Gus o Wendy?
+  reference: Against Wendy be aggressive, Ash is the best counter; against Gus, Edgar when his shield is down, Damian, or Byron and Mandy at range.
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 458, end_s: 466}
+  - {source: bief-counters-every-brawler, start_s: 217, end_s: 226}
+  - {source: spenlc-hardest-counters, start_s: 1613, end_s: 1670}
+
+- id: concept029
+  type: concept
+  lang: en
+  question: How do I counter Shade?
+  reference: Open the map with a wall breaker in Knockout and Bounty; Lumi's slow and Meeple are the easiest counters; Lou, Hank or Jacky can work too.
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 510, end_s: 625}
+  - {source: bief-counters-every-brawler, start_s: 420, end_s: 427}
+  - {source: spenlc-hardest-counters, start_s: 3161, end_s: 3190}
+
+- id: concept030
+  type: concept
+  lang: it
+  question: Come si countera Amber?
+  reference: 'Her barrels tank shots: pick piercing attacks (Janet) or Lumi; Starr Nova and Bonnie can also punish her.'
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 486, end_s: 510}
+  - {source: bief-counters-every-brawler, start_s: 795, end_s: 800}
+  - {source: spenlc-hardest-counters, start_s: 60, end_s: 98}
+
+- id: concept031
+  type: concept
+  lang: it
+  question: Come si countera Rico?
+  reference: 'Break his walls: Colt, Griff, Brock or other wall breakers; on maps with unbreakable walls, a last-pick thrower or Kit.'
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 174, end_s: 231}
+  - {source: bief-counters-every-brawler, start_s: 175, end_s: 184}
+  - {source: spenlc-hardest-counters, start_s: 2994, end_s: 3049}
+
+- id: concept032
+  type: concept
+  lang: en
+  question: Who counters Edgar?
+  reference: 'High-DPS brawlers he cannot out-heal: Otis, Griff, Bull, Gale.'
+  gold:
+  - {source: bief-counters-every-brawler, start_s: 299, end_s: 305}
+  - {source: spenlc-hardest-counters, start_s: 1160, end_s: 1197}
+
+- id: concept033
+  type: concept
+  lang: it
+  question: Come countero Ash?
+  reference: 'There is no single hard counter: use several counters (Emz, Lumi), Rico on maps with walls, or tanks like Frank, Damian and Trunk.'
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 153, end_s: 167}
+  - {source: bief-counters-every-brawler, start_s: 346, end_s: 353}
+  - {source: spenlc-hardest-counters, start_s: 135, end_s: 170}
+
+- id: concept034
+  type: concept
+  lang: en
+  question: How do you counter Max compositions?
+  reference: 'Lumi and Meeple: slows, stuns and Meeple''s box shut down the speed.'
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 301, end_s: 327}
+  - {source: spenlc-hardest-counters, start_s: 2267, end_s: 2320}
+
+- id: concept035
+  type: concept
+  lang: it
+  question: Come si countera Nori?
+  reference: Anti-tanks like Maisie and Colette; Meg is underrated with her HP; the counters to Kenji also counter Nori.
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 64, end_s: 92}
+
+- id: concept036
+  type: concept
+  lang: en
+  question: How do I counter Cosmo?
+  reference: 'His close-range DPS is low and his super is high risk: almost any aggro brawler counters him; mid-range brawlers like Emz, Lumi or Meg also do well.'
+  gold:
+  - {source: ash-arthur-counter-meta, start_s: 662, end_s: 683}
+
+- id: concept037
+  type: concept
+  lang: it
+  question: Come countero Bolt?
+  reference: Chester, maybe Doug, and Lou above all; Bolt loses momentum to slows, stuns and knockbacks.
+  gold:
+  - {source: bief-counters-every-brawler, start_s: 443, end_s: 449}
+  - {source: bren-tier-list-s55, start_s: 300, end_s: 313}
+
+- id: concept038
+  type: concept
+  lang: en
+  question: Who counters Damian?
+  reference: Otis above all, Edgar can out-heal him, and Colette because he is a tank.
+  gold:
+  - {source: bief-counters-every-brawler, start_s: 752, end_s: 761}
+
+- id: concept039
+  type: concept
+  lang: it
+  covered: true
+  question: Come countero Vince?
+  reference: No source names a direct counter; by class, Vince is a control, and controls lose to tanks and assassins and to throwers that break their setup.
+  gold:
+  - {source: spenlc-tier-list-s55, start_s: 403, end_s: 448}
+  - {source: bren-tier-list-s55, start_s: 1189, end_s: 1197}
+  - {source: gbab-rank-by-rank-guide, start_s: 963, end_s: 976}
+
+- id: concept040
+  type: concept
+  lang: it
+  question: In questo meta quali brawler si bannano di solito per primi?
+  reference: 'Amber, Shade and Gus or Wendy, the brawlers too strong to leave to the enemy first pick (dated: seasons 54-55).'
+  gold:
+  - {source: ash-ranked-guide-s54, start_s: 5557, end_s: 5572}
+  - {source: spenlc-draft-positions, start_s: 73, end_s: 109}
+- {id: abstain005, type: abstain, lang: it, covered: false, question: 'Che build devo usare su Kenji per il ranked?', reference: No source in corpus v2 covers builds (Ferre was removed).}
+- {id: abstain006, type: abstain, lang: it, question: 'Quanto costa in monete portare un brawler a livello 11?', reference: No project data covers upgrade costs.}
+- {id: abstain007, type: abstain, lang: en, question: 'What is Vince''s win rate in Hot Zone this season?', reference: No project data has win rates.}
+- {id: abstain008, type: abstain, lang: it, question: 'Quali sono le skin migliori di Shade?', reference: No project data covers skins.}
+- {id: abstain009, type: abstain, lang: it, question: 'Quanti giocatori italiani ci sono in Masters?', reference: No project data covers player counts.}
+- {id: abstain010, type: abstain, lang: en, question: 'Who is the best Brawl Stars player in Italy?', reference: No project data covers players' rankings.}

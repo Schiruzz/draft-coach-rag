@@ -1,2 +1,455 @@
 # Held-out questions (step 4): same schema as v1.yaml, new scenarios only. Run only at step 10.
-[]
+# Written together with v1.yaml from the same rules, on different maps and brawlers.
+
+- id: pick101
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule (Bobby 13:54): in aggressive modes the first pick is the best available anti-tank. Here it is pick 1 in Gem Grab.'
+  gold: &id005
+  - {source: bobbybs-draft-guide, start_s: 834, end_s: 846}
+  - {source: bobbybs-draft-guide, start_s: 1847, end_s: 1866}
+
+- id: pick102
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: undermine
+    position: 2
+    bans: []
+    ours: []
+    theirs: [lumi]
+  accepted_classes: [anti_tank]
+  reference: 'Rule (Bobby 31:26): when the first pick is an anti-tank, the second pick takes the next best anti-tank. Here Lumi is an anti-tank.'
+  gold: &id001
+  - {source: bobbybs-draft-guide, start_s: 1886, end_s: 1928}
+
+- id: pick103
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: spiraling-out
+    position: 2
+    bans: []
+    ours: []
+    theirs: [gray]
+  accepted_classes: [space_maker, anti_tank]
+  reference: 'Rule (Bobby 31:51): if the enemy first pick is not an anti-tank, take the best space maker or the best anti-tank. Here Gray is a support.'
+  gold: *id001
+
+- id: pick104
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: triple-dribble
+    position: 4
+    bans: []
+    ours: [crow]
+    theirs: [mortis, buzz]
+  accepted_classes: [tank]
+  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank. Here Mortis and Buzz are space makers.'
+  gold: &id002
+  - {source: bobbybs-draft-guide, start_s: 1928, end_s: 1951}
+
+- id: pick105
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: parallel-plays
+    position: 5
+    bans: []
+    ours: [lou, chester]
+    theirs: [penny, byron]
+  accepted_classes: [space_maker]
+  reference: 'Rule (Bobby 32:13): with anti-tanks already picked and no enemy space maker, the 4-5 picks take a space maker. Here Penny and Byron are not space makers.'
+  gold: *id002
+
+- id: pick106
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: beach-ball
+    position: 6
+    bans: []
+    ours: [colette, otis]
+    theirs: [piper, griff, maisie]
+  accepted_classes: [thrower]
+  reference: 'Rule (Bobby 32:49): last pick, if the enemy has no space maker, take a thrower. Here Piper, Griff and Maisie cannot close the gap.'
+  gold: &id008
+  - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
+  - {source: bobbybs-draft-guide, start_s: 268, end_s: 298}
+
+- id: pick107
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: hard-rock-mine
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule: a blind Diamond pick is a first pick, so a safe anti-tank (Bobby, s4lamence); Diamond is full of tanks and assassins (Gbab). Here it is a blind pick in Gem Grab.'
+  gold: &id009
+  - &id003 {source: gbab-rank-by-rank-guide, start_s: 310, end_s: 335}
+  - &id004 {source: s4lamence-essential-draft-guide, start_s: 245, end_s: 290}
+
+- id: pick108
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: kaboom-canyon
+    bans: []
+    ours: []
+    theirs: []
+  accepted_classes: [anti_tank]
+  reference: 'Rule: a blind Diamond pick is a first pick; in Heist the best anti-tank that also damages the safe (Bobby 34:52, Gbab 5:17). Here it is a blind pick in Heist.'
+  gold:
+  - *id003
+  - *id004
+  - {source: bobbybs-draft-guide, start_s: 2092, end_s: 2111}
+
+- id: pick109
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: ring-of-fire
+    position: 5
+    bans: []
+    ours: [lou, maisie]
+    theirs: [stu, angelo]
+  accepted_classes: [support]
+  reference: 'Rule (SpenLC positions 38:46): if the enemy leaves Stu plus a long-range brawler, a support like Poco or Glowy is hard to deal with. Here the enemy has Stu and Angelo.'
+  gold: &id010
+  - {source: spenlc-draft-positions, start_s: 2326, end_s: 2352}
+
+- id: pick110
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: bridge-too-far
+    position: 4
+    bans: []
+    ours: [melodie]
+    theirs: [colt, belle]
+  accepted_classes: [anti_tank, sniper, control]
+  reference: 'Rule (SpenLC positions 35:23): in Heist one aggro brawler is enough. Here the team already has Melodie.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2095, end_s: 2135}
+
+- id: pick111
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 6
+    bans: []
+    ours: [lou, griff]
+    theirs: [byron, amber, gus]
+  accepted_classes: [thrower]
+  reference: 'Rule (SpenLC positions 49:37, Bobby 32:49): a last-pick thrower is free when the enemy lacks aggression. Here Byron, Amber and Gus have no gap closer.'
+  gold:
+  - {source: spenlc-draft-positions, start_s: 2977, end_s: 2990}
+  - {source: bobbybs-draft-guide, start_s: 1969, end_s: 1975}
+
+- id: pick112
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: hard-rock-mine
+    position: 5
+    bans: []
+    ours: [janet, lou]
+    theirs: [crow, meg]
+  accepted_classes: [space_maker, tank]
+  reference: 'Rule (SpenLC cheat sheet 14:50): on Hard Rock Mine you need a pressure brawler, even at fifth pick. Here the team has only Janet and Lou.'
+  gold:
+  - {source: spenlc-ranked-cheat-sheet-s54, start_s: 878, end_s: 928}
+
+- id: pick113
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 5
+    bans: []
+    ours: [8-bit, kaze]
+    theirs: [otis, lola]
+  accepted_classes: [control, sniper]
+  reference: 'Rule (Bobby 36:44): with two teammates already dealing safe damage, the 4-5 pick can be a control or sniper that survives (Belle, Eve). Here the team has 8-Bit and Kaze.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 2204, end_s: 2228}
+
+- id: pick114
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: sneaky-fields
+    position: 3
+    bans: []
+    ours: [stu]
+    theirs: [crow]
+  accepted_classes: [anti_tank]
+  reference: 'Rule (SpenLC positions 14:19): never pair Stu with another low-damage brawler; pair him with damage. Here the teammate has Stu.'
+  gold: &id007
+  - {source: spenlc-draft-positions, start_s: 859, end_s: 889}
+
+- id: pick115
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 2
+    bans: []
+    ours: []
+    theirs: [stu]
+  accepted_classes: [space_maker, anti_tank]
+  reference: 'Rule (Bobby 31:51): if the enemy first pick is not an anti-tank, take the best space maker or anti-tank. Here Stu is a control.'
+  gold: *id001
+
+- id: pick116
+  type: pick
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: pinball-dreams
+    position: 4
+    bans: []
+    ours: [colette]
+    theirs: [edgar, kenji]
+  accepted_classes: [tank]
+  reference: 'Rule (Bobby 32:19): if the enemy has space makers, the 4-5 pick takes a tank. Here Edgar and Kenji are space makers.'
+  gold: *id002
+
+- id: check101
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  candidate: barley
+  verdict: bad
+  reference: 'Rule (s4lamence 4:31, Bobby 4:28): never first pick a thrower. Here Barley would be pick 1.'
+  gold:
+  - {source: s4lamence-essential-draft-guide, start_s: 271, end_s: 290}
+  - {source: bobbybs-draft-guide, start_s: 268, end_s: 298}
+
+- id: check102
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: gem-fort
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  candidate: colette
+  verdict: good
+  reference: 'Rule (Bobby 13:54): the first pick in aggressive modes is the best anti-tank. Here Colette, an anti-tank, would be pick 1.'
+  gold: *id005
+
+- id: check103
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: undermine
+    position: 1
+    bans: []
+    ours: []
+    theirs: []
+  candidate: penny
+  verdict: bad
+  reference: 'Rule (Bobby 19:31): never first pick a control brawler. Here Penny, a control, would be pick 1.'
+  gold:
+  - {source: bobbybs-draft-guide, start_s: 1171, end_s: 1202}
+
+- id: check104
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 2
+    bans: []
+    ours: []
+    theirs: [chuck]
+  candidate: r-t
+  verdict: bad
+  reference: 'Rule (Bobby 35:17): against a Chuck, a defender like R-T is the rookie mistake. Here R-T would be picked to defend.'
+  gold: &id006
+  - {source: bobbybs-draft-guide, start_s: 2117, end_s: 2186}
+
+- id: check105
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: safe-zone
+    position: 2
+    bans: []
+    ours: []
+    theirs: [chuck]
+  candidate: 8-bit
+  verdict: good
+  reference: 'Rule (Bobby 35:56): against a Chuck, out-damage him or pick a brawler like 8-Bit whose hypercharge charges off him. Here 8-Bit answers the Chuck.'
+  gold: *id006
+
+- id: check106
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: triple-dribble
+    position: 3
+    bans: []
+    ours: [frank]
+    theirs: [crow]
+  candidate: buster
+  verdict: bad
+  reference: 'Rule (SpenLC Matchups 32:03): two tanks early are a mistake, one anti-tank counters both. Here the team already has Frank.'
+  gold:
+  - {source: spenlc-knowing-matchups, start_s: 1923, end_s: 1936}
+
+- id: check107
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 3
+    bans: []
+    ours: [stu]
+    theirs: [lou]
+  candidate: meeple
+  verdict: bad
+  reference: 'Rule (SpenLC positions 14:19): two low-damage brawlers is the most common mistake. Here Meeple would join Stu.'
+  gold: *id007
+
+- id: check108
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: center-stage
+    position: 3
+    bans: []
+    ours: [stu]
+    theirs: [lou]
+  candidate: surge
+  verdict: good
+  reference: 'Rule (SpenLC positions 14:19): pair Stu with high damage. Here Surge is a damage dealer.'
+  gold: *id007
+
+- id: check109
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: beach-ball
+    position: 6
+    bans: []
+    ours: [colette, otis]
+    theirs: [mortis, edgar, bull]
+  candidate: barley
+  verdict: bad
+  reference: 'Rule (Bobby 32:49): a last-pick thrower only works if the enemy has no space maker. Here Mortis, Edgar and Bull all close the gap.'
+  gold: *id008
+
+- id: check110
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: beach-ball
+    position: 6
+    bans: []
+    ours: [colette, otis]
+    theirs: [piper, griff, maisie]
+  candidate: larry-and-lawrie
+  verdict: good
+  reference: 'Rule (Bobby 32:49): last pick, take a thrower if the enemy has no space maker. Here Piper, Griff and Maisie cannot close the gap.'
+  gold: *id008
+
+- id: check111
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: kaboom-canyon
+    bans: []
+    ours: []
+    theirs: []
+  candidate: otis
+  verdict: good
+  reference: 'Rule: a blind Diamond pick is a first pick, so a safe anti-tank like Otis (s4lamence 4:25, Gbab 5:17). Here Otis is a blind pick.'
+  gold: *id009
+
+- id: check112
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: diamond
+    map: ring-of-fire
+    bans: []
+    ours: []
+    theirs: []
+  candidate: mortis
+  verdict: bad
+  reference: 'Rule: a blind Diamond pick is a first pick, and assassins are never first picks (s4lamence 4:31); Diamond is full of tanks and anti-tanks answer them (Gbab). Here Mortis is a blind pick.'
+  gold: *id009
+
+- id: check113
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: dueling-beetles
+    position: 5
+    bans: []
+    ours: [lou, maisie]
+    theirs: [stu, angelo]
+  candidate: poco
+  verdict: good
+  reference: 'Rule (SpenLC positions 38:46): against Stu plus a long-range brawler, a support like Poco clumps the team and they cannot deal with it. Here the enemy has Stu and Angelo.'
+  gold: *id010
+
+- id: check114
+  type: check
+  origin: new
+  scenario:
+    quiz_mode: mythic_plus
+    map: open-business
+    position: 4
+    bans: []
+    ours: [chester]
+    theirs: [kenji, bibi]
+  candidate: frank
+  verdict: good
+  reference: 'Rule (Bobby 32:19): if the enemy has space makers, take a tank. Here Kenji and Bibi are space makers.'
+  gold: *id002
