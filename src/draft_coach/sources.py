@@ -3,10 +3,11 @@ from pathlib import Path
 
 import yaml
 
-REQUIRED = {"id", "type", "format", "title", "creator", "url", "language", "license"}
+REQUIRED = {"id", "type", "format", "authority", "title", "creator", "url", "language", "license"}
 REQUIRED_BY_TYPE = {"transcript": {"published", "season"}, "wiki": set()}
 FORMATS = {"guide", "draft_review", "gameplay", "counters", "tier_list", "map_cheat_sheet", "quiz", "wiki"}
 CHAPTER_TITLES = {"useful", "ignore"}
+AUTHORITIES = {"pro", "masters", "creator", "wiki"}
 
 def load_sources(path: Path) -> list[dict]:
     """Return the listed sources; raise on unknown types, missing fields or duplicate ids."""
@@ -20,6 +21,8 @@ def load_sources(path: Path) -> list[dict]:
         formats = [source["format"]] + [change.get("format") for change in source.get("format_changes", [])]
         if not set(formats) <= FORMATS:
             raise ValueError(f"{source['id']}: unknown format in {formats}")
+        if source["authority"] not in AUTHORITIES:
+            raise ValueError(f"{source['id']}: unknown authority {source['authority']!r}")
         if ("chapter_titles" in source) != bool(source.get("chapters")) or \
                 source.get("chapter_titles", "useful") not in CHAPTER_TITLES:
             raise ValueError(f"{source['id']}: chapter_titles must be useful or ignore, and only with chapters")

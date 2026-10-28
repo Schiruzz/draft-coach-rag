@@ -6,7 +6,7 @@ import yaml
 
 from draft_coach.sources import load_sources
 
-BASE = {"id": "x", "type": "wiki", "format": "wiki", "title": "t", "creator": "c", "url": "u",
+BASE = {"id": "x", "type": "wiki", "format": "wiki", "authority": "wiki", "title": "t", "creator": "c", "url": "u",
         "language": "en", "license": "l"}
 
 
@@ -16,6 +16,7 @@ def test_sources_file_is_valid():
 
 @pytest.mark.parametrize("broken", [
     {"format": "podcast"},                                       # unknown format
+    {"authority": "famous"},                                     # unknown authority
     {"format_changes": [{"start_s": 10, "format": "podcast"}]},  # unknown format inside the video
     {"chapter_titles": "useful"},                                # chapter_titles without chapters
     {"chapters": [{"start_s": 0, "title": "Intro"}]},            # chapters without chapter_titles

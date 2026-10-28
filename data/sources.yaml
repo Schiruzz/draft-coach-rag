@@ -6,6 +6,8 @@
 # the season was inferred from the publication date, not stated by the source.
 # "format" says what kind of source it is (guide, draft_review, gameplay, counters, tier_list, map_cheat_sheet,
 # quiz, wiki); "format_changes" lists the points where the format changes inside a video.
+# "authority": pro (competitive player or Pro rank), masters (stable Masters, fewer videos), creator (large creator,
+# Masters every season, content is their job), wiki.
 # "chapter_titles" (only with chapters): useful = the title goes at the start of each chunk; ignore = boundaries only.
  
 # --- Guides: draft concepts explained, no live games ---
@@ -13,6 +15,7 @@
 - id: bobbybs-draft-guide
   type: transcript
   format: guide
+  authority: pro
   title: "Best Draft Guide Ever"
   creator: BobbyBS
   url: https://www.youtube.com/watch?v=Vn13u4Uggqc
@@ -27,6 +30,7 @@
 - id: bobbybs-draft-guide-part2
   type: transcript
   format: guide
+  authority: pro
   title: "The Best Draft Guide EVER Part 2"
   creator: BobbyBS
   url: https://www.youtube.com/watch?v=XHp3r_D9rAA
@@ -38,6 +42,7 @@
 - id: spenlc-draft-positions
   type: transcript
   format: guide
+  authority: creator
   chapter_titles: useful
   title: "The BEST Picks for Every Draft Position"
   creator: SpenLC
@@ -56,6 +61,7 @@
 - id: spenlc-knowing-matchups
   type: transcript
   format: guide
+  authority: creator
   title: "How To Draft In Ranked - Knowing Your Matchups"
   creator: SpenLC
   url: https://www.youtube.com/watch?v=cZ2BYVcCR5M
@@ -67,6 +73,7 @@
 - id: gbab-rank-by-rank-guide
   type: transcript
   format: guide
+  authority: masters
   chapter_titles: useful
   title: "How to Rank Up SO Fast it feels ILLEGAL"
   creator: GbabGaming
@@ -84,6 +91,7 @@
 - id: s4lamence-essential-draft-guide
   type: transcript
   format: guide
+  authority: masters
   format_changes:
     - {start_s: 845, format: gameplay}  # 14:05: games with voice-over
   title: "The MOST ESSENTIAL Drafting Guide to Help YOU get MASTERS"
@@ -97,6 +105,7 @@
 - id: idarkjoker-draft-guide
   type: transcript
   format: guide
+  authority: pro
   title: "The ONLY Draft Guide You'll Ever Need"
   creator: IDarkJoker
   url: https://www.youtube.com/watch?v=w-u95mdfolw
@@ -108,6 +117,7 @@
 - id: yukibs-drafting-mistakes
   type: transcript
   format: guide
+  authority: masters
   title: "The Drafting Mistakes Keeping You Out of Masters"
   creator: YukiBS
   url: https://www.youtube.com/watch?v=wUdCUvTSmuE
@@ -121,6 +131,7 @@
 - id: spenlc-drafts-fail
   type: transcript
   format: draft_review
+  authority: creator
   chapter_titles: useful
   title: "Why Your Drafts Fail (And How To Fix Them)"
   creator: SpenLC
@@ -145,6 +156,7 @@
 - id: ash-ranked-guide-s54
   type: transcript
   format: gameplay
+  authority: creator
   chapter_titles: ignore
   title: "The Ultimate Ranked Guide To Reach Masters in NEW META!"
   creator: Ash Brawl Stars
@@ -174,6 +186,7 @@
 - id: ash-legendary-to-masters
   type: transcript
   format: gameplay
+  authority: creator
   title: "Stuck in Legendary? How to Reach Masters Solo (Easy Guide)"
   creator: Ash Brawl Stars
   url: https://www.youtube.com/watch?v=AVBd_QZGc0A
@@ -187,6 +200,7 @@
 - id: bief-counters-every-brawler
   type: transcript
   format: counters
+  authority: masters
   title: "The BEST COUNTERS to EVERY Brawler"
   creator: Bief
   url: https://www.youtube.com/watch?v=4sI_nX9TIts
@@ -198,6 +212,7 @@
 - id: gbab-counters-every-brawler
   type: transcript
   format: counters
+  authority: masters
   chapter_titles: ignore
   title: "The 5 Best Counters For Every Brawler!"
   creator: GbabGaming
@@ -217,6 +232,7 @@
 - id: spenlc-hardest-counters
   type: transcript
   format: counters
+  authority: creator
   chapter_titles: useful
   title: "The HARDEST COUNTER to EVERY BRAWLER"
   creator: SpenLC
@@ -319,6 +335,7 @@
 - id: ash-arthur-counter-meta
   type: transcript
   format: counters
+  authority: pro
   chapter_titles: useful
   title: "How to Counter the Meta (Full Guide)"
   creator: "Ash Brawl Stars, Arthur"
@@ -347,6 +364,7 @@
 - id: spenlc-tier-list-s54
   type: transcript
   format: tier_list
+  authority: creator
   chapter_titles: useful
   title: "New Meta Tier List! Ranking All Brawlers From Worst To Best"
   creator: SpenLC
@@ -367,6 +385,7 @@
 - id: spenlc-tier-list-s55
   type: transcript
   format: tier_list
+  authority: creator
   chapter_titles: useful
   title: "(S55) PRO Ranks 108 Brawlers From WORST to BEST"
   creator: SpenLC
@@ -387,6 +406,7 @@
 - id: ash-tier-list-s55
   type: transcript
   format: tier_list
+  authority: creator
   chapter_titles: useful
   title: "RANKING ALL 108 BRAWLERS Meta Tier List"
   creator: Ash Brawl Stars
@@ -407,6 +427,7 @@
 - id: bren-tier-list-s55
   type: transcript
   format: tier_list
+  authority: pro
   title: "PRO RANKING EVERY BRAWLER FROM WORST TO BEST! (SEASON 55)"
   creator: Bren
   url: https://www.youtube.com/watch?v=KZ05DxZNkuc
@@ -420,6 +441,7 @@
 - id: spenlc-ranked-cheat-sheet-s52
   type: transcript
   format: map_cheat_sheet
+  authority: creator
   chapter_titles: useful
   title: "ULTIMATE CHEAT SHEET FOR RANKED - BEST PICKS & BANS"
   creator: SpenLC
@@ -460,6 +482,7 @@
 - id: spenlc-ranked-cheat-sheet-s53
   type: transcript
   format: map_cheat_sheet
+  authority: creator
   chapter_titles: useful
   title: "ULTIMATE CHEAT SHEET FOR RANKED - SEASON 53"
   creator: SpenLC
@@ -501,6 +524,7 @@
 - id: spenlc-ranked-cheat-sheet-s54
   type: transcript
   format: map_cheat_sheet
+  authority: creator
   chapter_titles: useful
   title: "The ULTIMATE Ranked Guide - Cheat Sheet Season 54"
   creator: SpenLC
@@ -543,6 +567,7 @@
 - id: bobbybs-draft-quiz
   type: transcript
   format: quiz
+  authority: pro
   title: "Can You Draft Like a Pro?"
   creator: BobbyBS
   url: https://www.youtube.com/watch?v=7uNiDWgwDIM
@@ -553,9 +578,9 @@
  
 # --- Mode pages (Fandom wiki) ---
  
-- {id: fandom-gem-grab,   type: wiki, format: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
-- {id: fandom-brawl-ball, type: wiki, format: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
-- {id: fandom-hot-zone,   type: wiki, format: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
-- {id: fandom-heist,      type: wiki, format: wiki, title: Heist,      creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Heist,      language: en, license: CC BY-SA}
-- {id: fandom-bounty,     type: wiki, format: wiki, title: Bounty,     creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Bounty,     language: en, license: CC BY-SA}
-- {id: fandom-knockout,   type: wiki, format: wiki, title: Knockout,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Knockout,   language: en, license: CC BY-SA}
+- {id: fandom-gem-grab,   type: wiki, format: wiki, authority: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
+- {id: fandom-brawl-ball, type: wiki, format: wiki, authority: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
+- {id: fandom-hot-zone,   type: wiki, format: wiki, authority: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
+- {id: fandom-heist,      type: wiki, format: wiki, authority: wiki, title: Heist,      creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Heist,      language: en, license: CC BY-SA}
+- {id: fandom-bounty,     type: wiki, format: wiki, authority: wiki, title: Bounty,     creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Bounty,     language: en, license: CC BY-SA}
+- {id: fandom-knockout,   type: wiki, format: wiki, authority: wiki, title: Knockout,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Knockout,   language: en, license: CC BY-SA}

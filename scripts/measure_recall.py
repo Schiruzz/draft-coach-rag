@@ -3,14 +3,17 @@ Run: python scripts/measure_recall.py                        (all sources)
      python scripts/measure_recall.py --formats guide counters  (only sources of these formats)
 The review of disagreements goes to reports/recall_review.md."""
 import argparse
+import random
 from pathlib import Path
 from statistics import median
 
 from google import genai
 from google.genai import types
+from pymongo import MongoClient
 from tqdm import tqdm
 
 from draft_coach.chunks import CHAPTER_METHOD, METHOD
+from draft_coach.config import MONGO_URI
 from draft_coach.eval_set import load_eval
 from draft_coach.maps import load_maps
 from draft_coach.names import load_brawlers
@@ -22,6 +25,8 @@ from draft_coach.sources import FORMATS, load_sources, sources_with_formats
 METHODS = [METHOD, CHAPTER_METHOD]
 TOP_K = 10  # the answer reads 5 chunks; @10 tells whether more chunks or a reranker would help
 REPORT = Path("reports/recall_review.md")
+MISSES = Path("reports/recall_misses.md")
+N_MISSES = 20  # misses at @5 sampled to check whether the gold is incomplete
 
 all_questions = load_eval(Path("data/eval/v1.yaml"))
 questions = [q for q in all_questions if q["type"] != "abstain"]  # abstain has no gold
@@ -57,15 +62,15 @@ def at5(rank: int | None) -> bool:
 
 
 client = genai.Client(http_options=types.HttpOptions(timeout=30_000))
-runs = {}  # method -> {"ranks", "cov5", "top_score", "top_chunk", "reference_ranks", "abstain_scores"}
+runs = {}  # method -> {"ranks", "cov5", "top_score", "top5", "reference_ranks", "abstain_scores"}
 for method in METHODS:
     retriever = Retriever(client, method=method)
-    run = runs[method] = {"ranks": {}, "cov5": {}, "top_score": {}, "top_chunk": {}, "reference_ranks": {}}
+    run = runs[method] = {"ranks": {}, "cov5": {}, "top_score": {}, "top5": {}, "reference_ranks": {}}
     for q in tqdm(questions, desc=f"{method} questions"):
         chunks = retriever.search(question_text(q), top_k=TOP_K, sources=searched)
         run["ranks"][q["id"]] = first_hit(chunks, q["gold"])
         run["cov5"][q["id"]] = coverage(chunks[:5], q["gold"])
-        run["top_score"][q["id"]], run["top_chunk"][q["id"]] = chunks[0]["score"], chunks[0]
+        run["top_score"][q["id"]], run["top5"][q["id"]] = chunks[0]["score"], chunks[:5]
     # Upper bound for scenarios: the concept written by us as the query (index problem or query problem?)
     for q in tqdm(scenarios, desc=f"{method} reference"):
         run["reference_ranks"][q["id"]] = first_hit(retriever.search(q["reference"], top_k=TOP_K, sources=searched),
@@ -117,7 +122,7 @@ for q in questions:
     if (q["id"] in found[a]) == (q["id"] in found[b]):
         continue
     missed = b if q["id"] in found[a] else a
-    top = runs[missed]["top_chunk"][q["id"]]
+    top = runs[missed]["top5"][q["id"]][0]
     lines += [f"## {q['id']} ({q['type']}): found by {a if missed == b else b}, missed by {missed}",
               f"Question: {question_text(q)}", f"Reference: {q['reference']}",
               f"Gold: {', '.join(f'{g['source']} {minute(g['start_s'])}-{minute(g['end_s'])}' for g in q['gold'])}",
@@ -126,3 +131,26 @@ for q in questions:
 REPORT.parent.mkdir(exist_ok=True)
 REPORT.write_text("\n".join(lines), encoding="utf-8")
 print(f"\nReview: {REPORT}")
+
+
+# 6. Sample of misses at @5 (first method): real misses, or valid passages that the gold does not list?
+segments = {n["_id"]: sorted(n["segments"], key=lambda s: s["start_s"])
+            for n in MongoClient(MONGO_URI)["draft_coach"]["normalized"].find()}
+
+
+def gold_text(g: dict) -> str:
+    return " ".join(s["text"] for s in segments[g["source"]] if g["start_s"] <= s["start_s"] < g["end_s"])
+
+
+missed = [q for q in questions if not at5(runs[a]["ranks"][q["id"]])]
+sample = random.Random(0).sample(missed, min(N_MISSES, len(missed)))  # fixed seed: the same sample every run
+lines = [f"# Misses at @5 of {a}: {len(sample)} of {len(missed)}, random sample",
+         "For each chunk: does it answer the reference? (yes / no)", ""]
+for q in sample:
+    lines += [f"## {q['id']} ({q['type']})", f"Question: {question_text(q)}", f"Reference: {q['reference']}"]
+    lines += [f"Gold {g['source']} {minute(g['start_s'])}-{minute(g['end_s'])}: {gold_text(g)}" for g in q["gold"]]
+    for rank, c in enumerate(runs[a]["top5"][q["id"]], 1):
+        lines += ["", f"{rank}. `{c['source_id']}` [{minute(c['start_s'])}]({c['url']})", f"> {c['text']}", "Verdict: "]
+    lines.append("")
+MISSES.write_text("\n".join(lines), encoding="utf-8")
+print(f"Misses: {MISSES}")
