@@ -11,10 +11,10 @@ TOP_K = 5
 
 
 class Retriever:
-    def __init__(self, genai_client: genai.Client, qdrant: QdrantClient | None = None):
+    def __init__(self, genai_client: genai.Client, qdrant: QdrantClient | None = None, method: str = METHOD):
         self.genai = genai_client
         self.qdrant = qdrant or QdrantClient(url=QDRANT_URL)
-        self.collection = collection_name(METHOD, EMBEDDING_MODEL)
+        self.collection = collection_name(method, EMBEDDING_MODEL)  # the chunking method picks the collection
 
     def search(self, question: str, top_k: int = TOP_K) -> list[dict]:
         """Question -> top_k chunk payloads, nearest first, each with its similarity score."""
