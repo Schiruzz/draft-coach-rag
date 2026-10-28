@@ -1,0 +1,18 @@
+# Judge check on new data (28/10, window60-v1, judge-v2): verdicts never seen in the validation, labelled by Federico.
+# label: the true verdict (yes = the chunk supports the reference); judge: what the judge said.
+# Sample: the decisive yes of 10 found questions + the top chunk of 5 questions without yes (measure_recall.py, seed 0).
+- {question: concept042, chunk: gbab-rank-by-rank-guide:window60-v1:348, judge: "yes", label: "yes", by: federico}
+- {question: check024, chunk: bobbybs-draft-guide:window60-v1:2673, judge: "yes", label: "no", by: federico}
+- {question: concept039, chunk: gbab-counters-every-brawler:window60-v1:312, judge: "yes", label: "yes", by: federico}
+- {question: check028, chunk: spenlc-ranked-cheat-sheet-s53:window60-v1:555, judge: "yes", label: "no", by: federico}
+- {question: pick008, chunk: yukibs-drafting-mistakes:window60-v1:465, judge: "yes", label: "no", by: federico}
+- {question: check013, chunk: spenlc-drafts-fail:window60-v1:279, judge: "yes", label: "yes", by: federico}
+- {question: pick026, chunk: s4lamence-essential-draft-guide:window60-v1:509, judge: "yes", label: "no", by: federico}
+- {question: pick017, chunk: spenlc-draft-positions:window60-v1:1096, judge: "yes", label: "yes", by: federico}
+- {question: check026, chunk: s4lamence-essential-draft-guide:window60-v1:880, judge: "yes", label: "yes", by: federico}
+- {question: plan016, chunk: ash-arthur-counter-meta:window60-v1:561, judge: "yes", label: "yes", by: federico}
+- {question: check030, chunk: bobbybs-draft-guide:window60-v1:2673, judge: "no", label: "no", by: federico}
+- {question: pick020, chunk: s4lamence-essential-draft-guide:window60-v1:509, judge: "no", label: "no", by: federico}
+- {question: concept020, chunk: gbab-rank-by-rank-guide:window60-v1:148, judge: "no", label: "no", by: federico}
+- {question: habit014, chunk: ash-arthur-counter-meta:window60-v1:353, judge: "no", label: "no", by: federico}
+- {question: habit007, chunk: yukibs-drafting-mistakes:window60-v1:652, judge: "no", label: "no", by: federico}

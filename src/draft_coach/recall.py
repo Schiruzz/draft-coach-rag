@@ -1,6 +1,8 @@
 """Retrieval metrics on the evaluation set. A chunk finds a gold interval if it is from the same source
 and contains at least half of the interval (touching it for a few seconds is not enough)."""
-from math import comb
+from math import comb, sqrt
+
+Z_95 = 1.96  # 95% confidence
 
 
 def hits_gold(chunk: dict, gold: dict) -> bool:
@@ -29,3 +31,12 @@ def sign_test_p(gains: int, losses: int) -> float:
     if n == 0:
         return 1.0
     return min(1.0, 2 * sum(comb(n, i) for i in range(k + 1)) / 2 ** n)
+
+def wilson_interval(hits: int, n: int) -> tuple[float, float]:
+    """95% confidence interval of a proportion (Wilson): it stays honest near 0% and 100% and with few questions."""
+    if n == 0:
+        return 0.0, 1.0
+    p, z2 = hits / n, Z_95 ** 2
+    centre = (p + z2 / (2 * n)) / (1 + z2 / n)
+    half = Z_95 * sqrt(p * (1 - p) / n + z2 / (4 * n * n)) / (1 + z2 / n)
+    return centre - half, centre + half

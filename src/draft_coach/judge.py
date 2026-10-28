@@ -1,16 +1,22 @@
-"""Retrieval judge: does an excerpt (a chunk) support the reference answer of an evaluation question?
-Builds the prompt with facts from our tables, asks Gemini, and checks that the quote is really in the excerpt."""
 import hashlib
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import UTC, datetime
 from typing import Literal
 
 import httpx
 from google import genai
 from google.genai import errors, types
 from pydantic import BaseModel
+from pymongo.collection import Collection
+from tqdm import tqdm
 
-PROMPT_VERSION = "judge-v2"  # bump when the prompt changes: cached judgments of older versions are not reused
+from draft_coach.names import NameNormalizer
+from draft_coach.scenarios import scenario_question
+
+PROMPT_VERSION = "judge-v2"  # bump when the prompt changes; saved with every cached judgment as a label
+PARALLEL_CALLS = 8  # as in the riddle project; lower it if 429 errors appear
 # model -> (thinking level, timeout in ms); measured 28/10 in "eu": Lite answers a short call in under 1 s,
 # Flash in 2-4 s but 20 s median on the judge prompt, with 504 after 57 s on 2 calls out of 10
 MODELS = {"gemini-3.5-flash-lite": ("high", 12_000),  # Lite needs high reasoning for hard cases (riddle project)
@@ -123,10 +129,37 @@ def final_verdict(judgment: Judgment, excerpt: str) -> str:
     return judgment.verdict
 
 
-def judgment_id(question_id: str, reference: str, excerpt: str) -> str:
-    """Same question, reference, excerpt and prompt version -> same id: a judgment is asked once."""
-    key = "|".join([PROMPT_VERSION, question_id, reference, excerpt])
-    return hashlib.sha256(key.encode()).hexdigest()
+def judgment_id(model: str, prompt: str) -> str:
+    """Same model and same full prompt -> same id: a judgment is asked once.
+    Any change in the input (question text, facts, glossary, prompt version) gives a new id by itself."""
+    return hashlib.sha256(f"{model}|{prompt}".encode()).hexdigest()
+
+
+class PromptBuilder:
+    """The judge prompt of a (question, excerpt) pair, built from our tables; shared by validation and measurement."""
+
+    def __init__(self, brawler_list: list[dict], maps: list[dict], wiki_class: dict):
+        self.brawlers = {b["id"]: b for b in brawler_list}
+        self.names = {b["id"]: b["en"] for b in brawler_list}
+        self.maps = {m["id"]: m for m in maps}
+        self.normalizer = NameNormalizer(brawler_list)
+        self.wiki_class = wiki_class  # brawler id -> official game class (Fandom cards)
+
+    def question_text(self, q: dict) -> str:
+        """Scenarios are rendered from their data; written questions are used as they are."""
+        if "scenario" in q:
+            return scenario_question(q["scenario"], self.names, self.maps, q.get("candidate"))
+        return q["question"]
+
+    def prompt(self, q: dict, excerpt: str, excerpt_mentions: list[str]) -> str:
+        if "scenario" in q:
+            s = q["scenario"]
+            candidate = [q["candidate"]] if q.get("candidate") else []
+            in_question, mode = s.get("bans", []) + s.get("ours", []) + s.get("theirs", []) + candidate, s["quiz_mode"]
+        else:
+            in_question, mode = self.normalizer.mentions(q["question"]), None
+        return build_prompt(self.question_text(q), mode, brawler_facts(in_question, self.brawlers, self.wiki_class),
+                            q["reference"], excerpt, brawler_facts(excerpt_mentions, self.brawlers, self.wiki_class))
 
 
 def ask(client: genai.Client, model: str, prompt: str, label: str = "") -> Judgment | None:
@@ -149,3 +182,33 @@ def ask(client: genai.Client, model: str, prompt: str, label: str = "") -> Judgm
             if attempt < ATTEMPTS:
                 time.sleep(2 ** attempt)  # 2, 4, 8, 16 s
     return None
+
+
+def judge_cached(client: genai.Client, model: str, pairs: list[dict], cache: Collection) -> dict[str, str | None]:
+    """pairs: dicts with key (judgment_id), prompt, excerpt, question_id, chunk_id. Returns key -> final verdict
+    (None = still failing after ATTEMPTS calls: not saved, asked again on the next run).
+    Saved judgments are read from MongoDB; the others are asked in parallel and saved as soon as they arrive,
+    so an interrupted run resumes where it stopped."""
+    todo = {p["key"]: p for p in pairs}  # the same pair can come from both methods: asked once
+    verdicts = {d["_id"]: d["verdict"] for d in cache.find({"_id": {"$in": list(todo)}}, {"verdict": 1})}
+    missing = [p for key, p in todo.items() if key not in verdicts]
+    print(f"judgments: {len(todo)} distinct pairs, {len(verdicts)} cached, {len(missing)} to ask")
+    with ThreadPoolExecutor(PARALLEL_CALLS) as pool, tqdm(total=len(missing), desc="judging") as bar:
+        futures = {pool.submit(ask, client, model, p["prompt"], f"{p['question_id']} {p['chunk_id']}"): p
+                   for p in missing}
+        try:
+            for future in as_completed(futures):
+                p, judgment = futures[future], future.result()
+                bar.update()
+                if judgment is None:
+                    verdicts[p["key"]] = None
+                    continue
+                verdicts[p["key"]] = final_verdict(judgment, p["excerpt"])
+                cache.replace_one({"_id": p["key"]}, {
+                    "model": model, "prompt_version": PROMPT_VERSION, "question_id": p["question_id"],
+                    "chunk_id": p["chunk_id"], "verdict": verdicts[p["key"]], "raw_verdict": judgment.verdict,
+                    "reason": judgment.reason, "quote": judgment.quote, "judged_at": datetime.now(UTC)}, upsert=True)
+        except KeyboardInterrupt:  # Ctrl+C: drop the queued calls instead of waiting for all of them
+            pool.shutdown(cancel_futures=True)
+            raise
+    return verdicts

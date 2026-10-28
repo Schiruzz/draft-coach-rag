@@ -18,12 +18,10 @@ from tqdm import tqdm
 
 from draft_coach.config import MONGO_URI
 from draft_coach.eval_set import load_eval
-from draft_coach.judge import MODELS, PROMPT_VERSION, ask, brawler_facts, build_prompt, final_verdict, quote_found
+from draft_coach.judge import MODELS, PARALLEL_CALLS, PROMPT_VERSION, PromptBuilder, ask, final_verdict, quote_found
 from draft_coach.maps import load_maps
-from draft_coach.names import NameNormalizer, load_brawlers
-from draft_coach.scenarios import scenario_question
+from draft_coach.names import load_brawlers
 
-PARALLEL_CALLS = 8   # as in the riddle project; lower it if 429 errors appear
 THRESHOLD = 0.85     # precision and recall on "yes" (partial counts as no), fixed before measuring
 REPORT = Path("reports/judge_disagreements.md")
 
@@ -37,11 +35,6 @@ args = parser.parse_args()
 pairs = [p for p in yaml.safe_load(Path("data/eval/judge_validation.yaml").read_text(encoding="utf-8"))
          if args.grep in p["question"]][:args.limit]
 questions = {q["id"]: q for q in load_eval(Path("data/eval/v1.yaml"))}
-brawler_list = load_brawlers(Path("data/brawlers.yaml"))
-brawlers = {b["id"]: b for b in brawler_list}
-normalizer = NameNormalizer(brawler_list)
-maps = {m["id"]: m for m in load_maps(Path("data/maps.yaml"))}
-names = {i: b["en"] for i, b in brawlers.items()}
 
 db = MongoClient(MONGO_URI)["draft_coach"]
 wiki_class = {c["_id"]: c.get("wiki_class") for c in db["brawler_cards"].find({}, {"wiki_class": 1})}
@@ -50,20 +43,13 @@ missing = [p["chunk"] for p in pairs if p["chunk"] not in chunks]
 assert not missing, f"chunks not in MongoDB: {missing}"
 
 
-def question_text(q: dict) -> str:
-    return scenario_question(q["scenario"], names, maps, q.get("candidate")) if "scenario" in q else q["question"]
+builder = PromptBuilder(load_brawlers(Path("data/brawlers.yaml")), load_maps(Path("data/maps.yaml")), wiki_class)
+question_text = builder.question_text
 
 
 def prompt_for(pair: dict) -> str:
-    q, chunk = questions[pair["question"]], chunks[pair["chunk"]]
-    if "scenario" in q:
-        s = q["scenario"]
-        in_question = s.get("bans", []) + s.get("ours", []) + s.get("theirs", []) + [q.get("candidate")] * bool(q.get("candidate"))
-        mode = s["quiz_mode"]
-    else:
-        in_question, mode = normalizer.mentions(q["question"]), None
-    return build_prompt(question_text(q), mode, brawler_facts(in_question, brawlers, wiki_class), q["reference"],
-                        chunk["text"], brawler_facts(chunk["mentions"], brawlers, wiki_class))
+    chunk = chunks[pair["chunk"]]
+    return builder.prompt(questions[pair["question"]], chunk["text"], chunk["mentions"])
 
 
 prompts = [prompt_for(p) for p in pairs]

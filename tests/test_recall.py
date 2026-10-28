@@ -3,7 +3,7 @@ from pathlib import Path
 
 from draft_coach.maps import load_maps
 from draft_coach.names import load_brawlers
-from draft_coach.recall import coverage, first_hit, hits_gold, sign_test_p
+from draft_coach.recall import coverage, first_hit, hits_gold, sign_test_p, wilson_interval
 from draft_coach.scenarios import scenario_question
 
 GOLD = {"source": "bobbybs-draft-guide", "start_s": 100, "end_s": 130}
@@ -38,6 +38,11 @@ def test_sign_test():
     assert round(sign_test_p(13, 9), 2) == 0.52  # the A/B split of 28/10: not a real difference
     assert sign_test_p(10, 0) < 0.01
 
+def test_wilson_interval():
+    low, high = wilson_interval(70, 88)  # about 80% on the 88 written questions: about 8 points each side
+    assert round(low, 2) == 0.70 and round(high, 2) == 0.87
+    assert wilson_interval(10, 10)[1] == 1.0 and wilson_interval(10, 10)[0] > 0.7  # never above 100%
+    assert wilson_interval(0, 0) == (0.0, 1.0)
 
 def test_scenario_question_check():
     scenario = {"quiz_mode": "mythic_plus", "map": "center-stage", "position": 6, "bans": [],
