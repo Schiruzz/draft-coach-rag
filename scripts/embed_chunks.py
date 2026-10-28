@@ -1,5 +1,6 @@
-"""Embed every chunk and store it in Qdrant with its payload: chunks (MongoDB) -> vectors (Qdrant).
-Run: python scripts/embed_chunks.py"""
+"""Embed every chunk of one method and store it in Qdrant with its payload: chunks (MongoDB) -> vectors (Qdrant).
+Run: python scripts/embed_chunks.py --method window60-v1   (or chapter60-v1)"""
+import argparse
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -9,7 +10,7 @@ from pymongo import MongoClient
 from qdrant_client import QdrantClient, models
 from tqdm import tqdm
 
-from draft_coach.chunks import METHOD
+from draft_coach.chunks import CHAPTER_METHOD, METHOD
 from draft_coach.config import EMBEDDING_MODEL, MONGO_URI, QDRANT_URL
 from draft_coach.vectors import collection_name, point_id, text_hash
 
@@ -18,9 +19,13 @@ PARALLEL_CALLS = 4   # the model returns ONE vector per call (a list of texts is
 RETRY_CODES = {408, 429, 499, 500, 502, 503, 504}
 UPSERT_BATCH = 64
 
-chunks = list(MongoClient(MONGO_URI)["draft_coach"]["chunks"].find({"method": METHOD}))
+parser = argparse.ArgumentParser()
+parser.add_argument("--method", choices=[METHOD, CHAPTER_METHOD], default=METHOD)
+method = parser.parse_args().method
+
+chunks = list(MongoClient(MONGO_URI)["draft_coach"]["chunks"].find({"method": method}))
 qdrant = QdrantClient(url=QDRANT_URL)
-collection = collection_name(METHOD, EMBEDDING_MODEL)
+collection = collection_name(method, EMBEDDING_MODEL)  # one collection per method
 if not qdrant.collection_exists(collection):
     qdrant.create_collection(collection, vectors_config=models.VectorParams(size=DIMENSION, distance=models.Distance.COSINE))
 
