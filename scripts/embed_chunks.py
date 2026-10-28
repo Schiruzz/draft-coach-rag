@@ -25,6 +25,7 @@ method = parser.parse_args().method
 
 chunks = list(MongoClient(MONGO_URI)["draft_coach"]["chunks"].find({"method": method}))
 qdrant = QdrantClient(url=QDRANT_URL)
+
 collection = collection_name(method, EMBEDDING_MODEL)  # one collection per method
 if not qdrant.collection_exists(collection):
     qdrant.create_collection(collection, vectors_config=models.VectorParams(size=DIMENSION, distance=models.Distance.COSINE))
