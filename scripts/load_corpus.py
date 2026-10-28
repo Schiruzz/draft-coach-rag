@@ -2,7 +2,6 @@
 Run: python scripts/load_corpus.py"""
 from pathlib import Path
 
-import mwparserfromhell
 import yaml
 from pymongo import MongoClient
 
@@ -12,6 +11,7 @@ from draft_coach.names import load_brawlers
 from draft_coach.screens import screen_segments
 from draft_coach.sources import load_sources
 from draft_coach.transcript import parse_transcript
+from draft_coach.wiki_chunks import page_sections
 
 DATA = Path("data")
 RAW_FILES = {"transcript": ("transcripts", ".txt"), "wiki": ("fandom", ".wiki")}  # type -> (folder, extension)
@@ -38,9 +38,10 @@ for source in sources:
             document["segments"] = document["segments"] + extra
         size = f"{len(document['segments'])} segments"
     else:
-        document["text"] = mwparserfromhell.parse(raw).strip_code().strip()
-        size = f"{len(document['text'])} chars"
-    if not document.get("segments") and not document.get("text"):
+        # Raw wikitext by section: the wiki layer (step 5b) picks its sections, nothing is dropped here
+        document["sections"] = page_sections(raw)
+        size = f"{len(document['sections'])} sections"
+    if not document.get("segments") and not document.get("sections"):
         raise ValueError(f"{source['id']}: raw file has no content ({folder}/{source['id']}{extension})")
     collection.replace_one({"_id": source["id"]}, document, upsert=True)  # idempotent: rerun = same database
     print(f"{source['id']:<30} {source['type']:<11} {size}")

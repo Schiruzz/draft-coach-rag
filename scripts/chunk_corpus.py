@@ -46,9 +46,10 @@ for normalized in db["normalized"].find():
 # End-of-step check: every normalized transcript has chunks; statistics of every method side by side
 print(f"\n{'method':<15} {'sources':>8} {'chunks':>7} {'words min / median / max':>26} {'under 50':>9}")
 for name in sorted(db["chunks"].distinct("method")):
-    words = sorted(len(c["text"].split()) for c in db["chunks"].find({"method": name}, {"text": 1}))
-    n_sources = len(db["chunks"].distinct("source_id", {"method": name}))
+    transcripts = {"method": name, "layer": {"$exists": False}}  # wiki chunks (step 5b) are counted by chunk_wiki.py
+    words = sorted(len(c["text"].split()) for c in db["chunks"].find(transcripts, {"text": 1}))
+    n_sources = len(db["chunks"].distinct("source_id", transcripts))
     print(f"{name:<15} {n_sources:>8} {len(words):>7} "
           f"{f'{words[0]} / {words[len(words) // 2]} / {words[-1]}':>26} {sum(w < 50 for w in words):>9}")
-assert db["normalized"].count_documents({}) == len(db["chunks"].distinct("source_id", {"method": method})), \
+assert db["normalized"].count_documents({}) == len(db["chunks"].distinct("source_id", {"method": method, "layer": {"$exists": False}})), \
     "a normalized transcript has no chunks"

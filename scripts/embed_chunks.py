@@ -18,6 +18,7 @@ DIMENSION = 3072     # measured with probe_embedding.py for gemini-embedding-2
 PARALLEL_CALLS = 4   # the model returns ONE vector per call (a list of texts is merged), so we parallelize calls
 RETRY_CODES = {408, 429, 499, 500, 502, 503, 504}
 UPSERT_BATCH = 64
+OPTIONAL_PAYLOAD = ("start_s", "end_s", "layer", "section", "mode", "map_id")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--method", choices=[METHOD, CHAPTER_METHOD], default=METHOD)
@@ -68,10 +69,11 @@ with ThreadPoolExecutor(PARALLEL_CALLS) as pool:
         if vector is None:
             failed += 1
             continue
-        points.append(models.PointStruct(id=point_id(chunk["_id"]), vector=vector, payload={
-            "chunk_id": chunk["_id"], "source_id": chunk["source_id"], "start_s": chunk["start_s"],
-            "end_s": chunk["end_s"], "url": chunk["url"], "mentions": chunk["mentions"],
-            "text": chunk["text"], "text_hash": text_hash(chunk["text"])}))
+        payload = {"chunk_id": chunk["_id"], "source_id": chunk["source_id"], "url": chunk["url"],
+                   "mentions": chunk["mentions"], "text": chunk["text"], "text_hash": text_hash(chunk["text"])}
+        # time for transcripts; layer, section, mode and map for the wiki layer (step 5b)
+        payload |= {key: chunk[key] for key in OPTIONAL_PAYLOAD if key in chunk}
+        points.append(models.PointStruct(id=point_id(chunk["_id"]), vector=vector, payload=payload))
         if len(points) == UPSERT_BATCH:
             qdrant.upsert(collection, points)
             points = []
