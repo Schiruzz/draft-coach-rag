@@ -1294,9 +1294,10 @@
     ours: [otis]
     theirs: [bibi, kenji]
   accepted_classes: [tank]
-  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank (Frank, Trunk, Draco). Here Bibi and Kenji are space makers.'
+  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank (Frank, Trunk, Draco): space makers like Bibi and Kenji lack the damage to kill a tank in a 1v1, the same reason Bobby gives for Frank when the enemy has low damage (46:20).'
   gold:
   - {source: bobbybs-draft-guide, start_s: 1928, end_s: 1951}
+  - {source: bobbybs-draft-guide, start_s: 2774, end_s: 2785}
 
 - id: pick031
   type: pick
@@ -1613,7 +1614,7 @@
   type: concept
   lang: it
   question: Come countero Bolt?
-  reference: Chester, maybe Doug, and Lou above all.
+  reference: 'Chester, maybe Doug, and Lou above all; in general brawlers that slow, stun or knock him back (Bren).'
   gold:
   - {source: bief-counters-every-brawler, start_s: 438, end_s: 450}
   - {source: bren-tier-list-s55, start_s: 300, end_s: 313}
