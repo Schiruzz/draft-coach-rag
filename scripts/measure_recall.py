@@ -1,5 +1,8 @@
 """Retrieval metrics on the evaluation set, chunking methods side by side.
-Run: python scripts/measure_recall.py   (the review of disagreements goes to reports/recall_review.md)"""
+Run: python scripts/measure_recall.py                        (all sources)
+     python scripts/measure_recall.py --formats guide counters  (only sources of these formats)
+The review of disagreements goes to reports/recall_review.md."""
+import argparse
 from pathlib import Path
 from statistics import median
 
@@ -14,7 +17,7 @@ from draft_coach.names import load_brawlers
 from draft_coach.recall import coverage, first_hit, sign_test_p
 from draft_coach.retrieval import Retriever, minute
 from draft_coach.scenarios import scenario_question
-from draft_coach.sources import load_sources
+from draft_coach.sources import FORMATS, load_sources, sources_with_formats
 
 METHODS = [METHOD, CHAPTER_METHOD]
 TOP_K = 10  # the answer reads 5 chunks; @10 tells whether more chunks or a reranker would help
@@ -26,7 +29,13 @@ abstain = [q for q in all_questions if q["type"] == "abstain"]
 scenarios = [q for q in questions if "scenario" in q]
 names = {b["id"]: b["en"] for b in load_brawlers(Path("data/brawlers.yaml"))}
 maps = {m["id"]: m for m in load_maps(Path("data/maps.yaml"))}
-with_chapters = {s["id"] for s in load_sources(Path("data/sources.yaml")) if s.get("chapters")}
+sources = load_sources(Path("data/sources.yaml"))
+with_chapters = {s["id"] for s in sources if s.get("chapters")}
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--formats", nargs="+", choices=sorted(FORMATS), default=sorted(FORMATS))
+searched = sources_with_formats(sources, set(parser.parse_args().formats))  # same filter for both methods
+print(f"searching {len(searched)} sources: {', '.join(sorted(parser.parse_args().formats))}")
 
 
 def question_text(q: dict) -> str:
@@ -53,14 +62,15 @@ for method in METHODS:
     retriever = Retriever(client, method=method)
     run = runs[method] = {"ranks": {}, "cov5": {}, "top_score": {}, "top_chunk": {}, "reference_ranks": {}}
     for q in tqdm(questions, desc=f"{method} questions"):
-        chunks = retriever.search(question_text(q), top_k=TOP_K)
+        chunks = retriever.search(question_text(q), top_k=TOP_K, sources=searched)
         run["ranks"][q["id"]] = first_hit(chunks, q["gold"])
         run["cov5"][q["id"]] = coverage(chunks[:5], q["gold"])
         run["top_score"][q["id"]], run["top_chunk"][q["id"]] = chunks[0]["score"], chunks[0]
     # Upper bound for scenarios: the concept written by us as the query (index problem or query problem?)
     for q in tqdm(scenarios, desc=f"{method} reference"):
-        run["reference_ranks"][q["id"]] = first_hit(retriever.search(q["reference"], top_k=TOP_K), q["gold"])
-    run["abstain_scores"] = [retriever.search(q["question"], top_k=1)[0]["score"]
+        run["reference_ranks"][q["id"]] = first_hit(retriever.search(q["reference"], top_k=TOP_K, sources=searched),
+                                                    q["gold"])
+    run["abstain_scores"] = [retriever.search(q["question"], top_k=1, sources=searched)[0]["score"]
                              for q in tqdm(abstain, desc=f"{method} abstain")]
 
 # 1. Table: recall@5, recall@10, MRR, coverage@5 per group

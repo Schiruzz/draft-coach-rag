@@ -4,11 +4,15 @@
 # Dates are quoted so YAML keeps them as ISO strings.
 # "chapters" are the author's chapters (start in seconds); "season: N  # estimated" means
 # the season was inferred from the publication date, not stated by the source.
+# "format" says what kind of source it is (guide, draft_review, gameplay, counters, tier_list, map_cheat_sheet,
+# quiz, wiki); "format_changes" lists the points where the format changes inside a video.
+# "chapter_titles" (only with chapters): useful = the title goes at the start of each chunk; ignore = boundaries only.
  
-# --- Draft theory ---
+# --- Guides: draft concepts explained, no live games ---
  
 - id: bobbybs-draft-guide
   type: transcript
+  format: guide
   title: "Best Draft Guide Ever"
   creator: BobbyBS
   url: https://www.youtube.com/watch?v=Vn13u4Uggqc
@@ -22,6 +26,7 @@
  
 - id: bobbybs-draft-guide-part2
   type: transcript
+  format: guide
   title: "The Best Draft Guide EVER Part 2"
   creator: BobbyBS
   url: https://www.youtube.com/watch?v=XHp3r_D9rAA
@@ -30,18 +35,10 @@
   language: en
   license: "YouTube video: cite with link and timestamp only"
  
-- id: bobbybs-draft-quiz
-  type: transcript
-  title: "Can You Draft Like a Pro?"
-  creator: BobbyBS
-  url: https://www.youtube.com/watch?v=7uNiDWgwDIM
-  published: "2026-05-10"
-  season: 50  # estimated from the date
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
- 
 - id: spenlc-draft-positions
   type: transcript
+  format: guide
+  chapter_titles: useful
   title: "The BEST Picks for Every Draft Position"
   creator: SpenLC
   url: https://www.youtube.com/watch?v=YBPBefhwAX4
@@ -56,46 +53,99 @@
     - {start_s: 1416, title: "4/5 Picks"}
     - {start_s: 2370, title: "6th Picks"}
  
-# --- Meta and ranked walkthroughs ---
- 
-- id: ash-tier-list-s55
+- id: spenlc-knowing-matchups
   type: transcript
-  title: "RANKING ALL 108 BRAWLERS Meta Tier List"
-  creator: Ash Brawl Stars
-  url: https://www.youtube.com/watch?v=9trexC9BF80
-  published: "2026-10-04"
-  season: 55
+  format: guide
+  title: "How To Draft In Ranked - Knowing Your Matchups"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=cZ2BYVcCR5M
+  published: "2025-02-05"
+  season: 34  # estimated from the date
   language: en
   license: "YouTube video: cite with link and timestamp only"
-  chapters:
-    - {start_s: 0,   title: "Introduction"}
-    - {start_s: 31,  title: "One-star brawlers"}
-    - {start_s: 124, title: "Two-star brawlers"}
-    - {start_s: 247, title: "Three-star brawlers"}
-    - {start_s: 456, title: "Four-star brawlers"}
-    - {start_s: 676, title: "Five-star brawlers"}
-    - {start_s: 837, title: "Six-star brawlers and wrap-up"}
  
-- id: spenlc-tier-list-s54
+- id: gbab-rank-by-rank-guide
   type: transcript
-  title: "New Meta Tier List! Ranking All Brawlers From Worst To Best"
-  creator: SpenLC
-  url: https://www.youtube.com/watch?v=PGAR-j4AyHw
-  published: "2026-09-19"
+  format: guide
+  chapter_titles: useful
+  title: "How to Rank Up SO Fast it feels ILLEGAL"
+  creator: GbabGaming
+  url: https://www.youtube.com/watch?v=vQpFSjpFoR4
+  published: "2026-05-25"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # author's chapters; "Diamond" also covers the intro and Bronze-Gold
+    - {start_s: 0,    title: "Diamond"}
+    - {start_s: 340,  title: "Mythic"}
+    - {start_s: 687,  title: "Legendary"}
+    - {start_s: 1493, title: "Masters"}
+ 
+- id: s4lamence-essential-draft-guide
+  type: transcript
+  format: guide
+  format_changes:
+    - {start_s: 845, format: gameplay}  # 14:05: games with voice-over
+  title: "The MOST ESSENTIAL Drafting Guide to Help YOU get MASTERS"
+  creator: s4lamence
+  url: https://www.youtube.com/watch?v=YnfnVIg7XQc
+  published: "2026-05-27"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
+- id: idarkjoker-draft-guide
+  type: transcript
+  format: guide
+  title: "The ONLY Draft Guide You'll Ever Need"
+  creator: IDarkJoker
+  url: https://www.youtube.com/watch?v=w-u95mdfolw
+  published: "2026-07-19"
+  season: 52  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
+- id: yukibs-drafting-mistakes
+  type: transcript
+  format: guide
+  title: "The Drafting Mistakes Keeping You Out of Masters"
+  creator: YukiBS
+  url: https://www.youtube.com/watch?v=wUdCUvTSmuE
+  published: "2026-09-24"
   season: 54  # estimated from the date
   language: en
   license: "YouTube video: cite with link and timestamp only"
-  chapters:
-    - {start_s: 0,    title: "Introduction"}
-    - {start_s: 37,   title: "F tier analysis"}
-    - {start_s: 120,  title: "D tier breakdown"}
-    - {start_s: 522,  title: "C tier evaluations"}
-    - {start_s: 1366, title: "B tier rankings"}
-    - {start_s: 1958, title: "A tier selection"}
-    - {start_s: 2476, title: "S tier and top brawlers"}
+ 
+# --- Draft reviews: past drafts replayed, with the mistakes explained ---
+ 
+- id: spenlc-drafts-fail
+  type: transcript
+  format: draft_review
+  chapter_titles: useful
+  title: "Why Your Drafts Fail (And How To Fix Them)"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=hSGpA0s3jqY
+  published: "2026-05-28"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # auto-generated by YouTube; starts read from the transcript, check them on YouTube
+    - {start_s: 0,    title: "Hot potato drafting analysis"}
+    - {start_s: 152,  title: "Knockout strategy on phoenix"}
+    - {start_s: 270,  title: "Challenging heist draft"}
+    - {start_s: 378,  title: "Gem grab on hard rock mine"}
+    - {start_s: 534,  title: "Ring of fire composition"}
+    - {start_s: 680,  title: "Hideout map drafting tips"}
+    - {start_s: 825,  title: "Gem grab mastery lessons"}
+    - {start_s: 1008, title: "Knockout drafting errors"}
+    - {start_s: 1148, title: "Final draft review"}
+ 
+# --- Gameplay: live ranked games with the draft commented (raw chunks stay out of the normal search; games become draft cases at step 6) ---
  
 - id: ash-ranked-guide-s54
   type: transcript
+  format: gameplay
+  chapter_titles: ignore
   title: "The Ultimate Ranked Guide To Reach Masters in NEW META!"
   creator: Ash Brawl Stars
   url: https://www.youtube.com/watch?v=6X_AhNr9J5c
@@ -123,6 +173,7 @@
  
 - id: ash-legendary-to-masters
   type: transcript
+  format: gameplay
   title: "Stuck in Legendary? How to Reach Masters Solo (Easy Guide)"
   creator: Ash Brawl Stars
   url: https://www.youtube.com/watch?v=AVBd_QZGc0A
@@ -131,127 +182,11 @@
   language: en
   license: "YouTube video: cite with link and timestamp only"
  
-# --- Map cheat sheets (picks are shown on screen; the transcript holds the reasoning) ---
- 
-- id: spenlc-ranked-cheat-sheet-s52
-  type: transcript
-  title: "ULTIMATE CHEAT SHEET FOR RANKED - BEST PICKS & BANS"
-  creator: SpenLC
-  url: https://www.youtube.com/watch?v=aH9oCZG5XkM
-  published: "2026-07-21"
-  season: 52  # estimated: could be 53
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-  chapters:  # titles are "<mode> - <map>"
-    - {start_s: 0,    title: "Intro"}
-    - {start_s: 42,   title: "Bounty - Dry Season"}
-    - {start_s: 122,  title: "Bounty - Hideout"}
-    - {start_s: 193,  title: "Bounty - Layer Cake"}
-    - {start_s: 265,  title: "Bounty - Shooting Star"}
-    - {start_s: 341,  title: "Brawl ball - Center Stage"}
-    - {start_s: 418,  title: "Brawl ball - Pinball Dreams"}
-    - {start_s: 487,  title: "Brawl ball - Sneaky Fields"}
-    - {start_s: 545,  title: "Brawl ball - Triple Dribble"}
-    - {start_s: 616,  title: "Gem Grab - Crystal Arcade"}
-    - {start_s: 696,  title: "Gem Grab - Double Swoosh"}
-    - {start_s: 767,  title: "Gem Grab - Hard Rock Mine"}
-    - {start_s: 842,  title: "Gem Grab - Deathcap Trap"}
-    - {start_s: 900,  title: "Gem Grab - Gem Fort"}
-    - {start_s: 956,  title: "Gem Grab - Undermine"}
-    - {start_s: 1023, title: "Heist - Bridge Too Far"}
-    - {start_s: 1121, title: "Heist - Hot Potato"}
-    - {start_s: 1217, title: "Heist - Kaboom Canyon"}
-    - {start_s: 1262, title: "Heist - Safe Zone"}
-    - {start_s: 1305, title: "Hot Zone - Dueling Beetles"}
-    - {start_s: 1362, title: "Hot Zone - Open Business"}
-    - {start_s: 1404, title: "Hot Zone - Parallel Plays"}
-    - {start_s: 1463, title: "Hot Zone - Ring Of Fire"}
-    - {start_s: 1509, title: "Knockout - Belles Rock"}
-    - {start_s: 1571, title: "Knockout - Flaring Phoenix"}
-    - {start_s: 1621, title: "Knockout - New Horizons"}
-    - {start_s: 1677, title: "Knockout - Out in the open"}
- 
-- id: spenlc-ranked-cheat-sheet-s53
-  type: transcript
-  title: "ULTIMATE CHEAT SHEET FOR RANKED - SEASON 53"
-  creator: SpenLC
-  url: https://www.youtube.com/watch?v=diaxHse4hOU
-  published: "2026-08-15"
-  season: 53
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-  chapters:  # titles are "<mode> - <map>"
-    - {start_s: 0,    title: "Intro"}
-    - {start_s: 51,   title: "Bounty - Dry Season"}
-    - {start_s: 99,   title: "Bounty - Hideout"}
-    - {start_s: 150,  title: "Bounty - Layer Cake"}
-    - {start_s: 218,  title: "Bounty - Shooting Star"}
-    - {start_s: 281,  title: "Brawl ball - Center Stage"}
-    - {start_s: 362,  title: "Brawl ball - Pinball Dreams"}
-    - {start_s: 444,  title: "Brawl ball - Sneaky Fields"}
-    - {start_s: 505,  title: "Brawl ball - Triple Dribble"}
-    - {start_s: 569,  title: "Gem Grab - Crystal Arcade"}
-    - {start_s: 622,  title: "Gem Grab - Deathcap Trap"}
-    - {start_s: 673,  title: "Gem Grab - Double Swoosh"}
-    - {start_s: 706,  title: "Gem Grab - Gem Fort"}
-    - {start_s: 755,  title: "Gem Grab - Hard Rock Mine"}
-    - {start_s: 802,  title: "Gem Grab - Rustic Arcade"}
-    - {start_s: 878,  title: "Gem Grab - Undermine"}
-    - {start_s: 915,  title: "Heist - Bridge Too Far"}
-    - {start_s: 984,  title: "Heist - Hot Potato"}
-    - {start_s: 1039, title: "Heist - Kaboom Canyon"}
-    - {start_s: 1092, title: "Heist - Safe Zone"}
-    - {start_s: 1140, title: "Hot Zone - Dueling Beetles"}
-    - {start_s: 1194, title: "Hot Zone - Open Business"}
-    - {start_s: 1246, title: "Hot Zone - Parallel Plays"}
-    - {start_s: 1297, title: "Hot Zone - Ring Of Fire"}
-    - {start_s: 1347, title: "Knockout - Belles Rock"}
-    - {start_s: 1393, title: "Knockout - Flaring Phoenix"}
-    - {start_s: 1439, title: "Knockout - New Horizons"}
-    - {start_s: 1475, title: "Knockout - Out in the open"}
- 
-- id: spenlc-ranked-cheat-sheet-s54
-  type: transcript
-  title: "The ULTIMATE Ranked Guide - Cheat Sheet Season 54"
-  creator: SpenLC
-  url: https://www.youtube.com/watch?v=5iHVKzN0c5M
-  published: "2026-09-11"
-  season: 54
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-  chapters:  # titles exactly as the transcript lines
-    - {start_s: 0   , title: "Intro"}
-    - {start_s: 54  , title: "Bounty - Dry Season"}
-    - {start_s: 125 , title: "Bounty - Hideout"}
-    - {start_s: 184 , title: "Bounty - Layer Cake"}
-    - {start_s: 243 , title: "Bounty - Shooting Star"}
-    - {start_s: 322 , title: "Brawl ball - Beach Ball"}
-    - {start_s: 412 , title: "Brawl Ball - Center Stage"}
-    - {start_s: 482 , title: "Brawl ball - Pinball Dreams"}
-    - {start_s: 562 , title: "Brawl ball - Sneaky Fields"}
-    - {start_s: 625 , title: "Brawl Ball - Spiralling Out"}
-    - {start_s: 667 , title: "Brawl ball - Triple Dribble"}
-    - {start_s: 743 , title: "Gem Grab - Double Swoosh"}
-    - {start_s: 824 , title: "Gem Grab - Gem Fort"}
-    - {start_s: 890 , title: "Gem Grab - Hard Rock Mine"}
-    - {start_s: 950 , title: "Gem Grab - Undermine"}
-    - {start_s: 1004, title: "Heist - Bridge Too Far"}
-    - {start_s: 1089, title: "Heist - Hot Potato"}
-    - {start_s: 1182, title: "Heist - Kaboom Canyon"}
-    - {start_s: 1258, title: "Heist - Safe Zone"}
-    - {start_s: 1352, title: "Hot Zone - Dueling Beetles"}
-    - {start_s: 1431, title: "Hot Zone - Open Business"}
-    - {start_s: 1506, title: "Hot Zone - Parallel Plays"}
-    - {start_s: 1602, title: "Hot Zone - Ring Of Fire"}
-    - {start_s: 1675, title: "Knockout - Belles Rock"}
-    - {start_s: 1740, title: "Knockout - Flaring Phoenix"}
-    - {start_s: 1799, title: "Knockout - New Horizons"}
-    - {start_s: 1853, title: "Knockout - Out in the open"}
- 
-# --- Counters ---
+# --- Counters: who beats whom ---
  
 - id: bief-counters-every-brawler
   type: transcript
+  format: counters
   title: "The BEST COUNTERS to EVERY Brawler"
   creator: Bief
   url: https://www.youtube.com/watch?v=4sI_nX9TIts
@@ -260,32 +195,10 @@
   language: en
   license: "YouTube video: cite with link and timestamp only"
  
-- id: ash-arthur-counter-meta
-  type: transcript
-  title: "How to Counter the Meta (Full Guide)"
-  creator: "Ash Brawl Stars, Arthur"
-  url: https://www.youtube.com/watch?v=BeBwmAzwenM
-  published: "2026-09-26"
-  season: 54  # estimated from the date
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-  chapters:
-    - {start_s: 0,   title: "Introduction to ranked meta"}
-    - {start_s: 38,  title: "Countering Bo compositions"}
-    - {start_s: 64,  title: "Dealing with assassins"}
-    - {start_s: 123, title: "Tank and Ash counters"}
-    - {start_s: 174, title: "Strategies against Rico"}
-    - {start_s: 242, title: "Handling sharpshooters"}
-    - {start_s: 301, title: "Countering Max compositions"}
-    - {start_s: 336, title: "Managing tank counters"}
-    - {start_s: 396, title: "Heist and 8-bit counters"}
-    - {start_s: 442, title: "Dominant meta brawlers"}
-    - {start_s: 515, title: "Challenging Shade players"}
-    - {start_s: 638, title: "New brawler Cosmo analysis"}
-    - {start_s: 717, title: "Final tips and wrap up"}
- 
 - id: gbab-counters-every-brawler
   type: transcript
+  format: counters
+  chapter_titles: ignore
   title: "The 5 Best Counters For Every Brawler!"
   creator: GbabGaming
   url: https://www.youtube.com/watch?v=iJx_lyjLbyY
@@ -303,6 +216,8 @@
  
 - id: spenlc-hardest-counters
   type: transcript
+  format: counters
+  chapter_titles: useful
   title: "The HARDEST COUNTER to EVERY BRAWLER"
   creator: SpenLC
   url: https://www.youtube.com/watch?v=_aYrn_D-IQU
@@ -401,46 +316,58 @@
     - {start_s: 3437, title: "Tick"}
     - {start_s: 3481, title: "Willow"}
  
- 
-# --- Corpus v2 (added 2026-10-27): draft guides, matchups, S55 meta ---
-
-- id: gbab-rank-by-rank-guide
+- id: ash-arthur-counter-meta
   type: transcript
-  title: "How to Rank Up SO Fast it feels ILLEGAL"
-  creator: GbabGaming
-  url: https://www.youtube.com/watch?v=vQpFSjpFoR4
-  published: "2026-05-25"
-  season: 50  # estimated from the date
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-  chapters:  # author's chapters; "Diamond" also covers the intro and Bronze-Gold
-    - {start_s: 0,    title: "Diamond"}
-    - {start_s: 340,  title: "Mythic"}
-    - {start_s: 687,  title: "Legendary"}
-    - {start_s: 1493, title: "Masters"}
-
-- id: yukibs-drafting-mistakes
-  type: transcript
-  title: "The Drafting Mistakes Keeping You Out of Masters"
-  creator: YukiBS
-  url: https://www.youtube.com/watch?v=wUdCUvTSmuE
-  published: "2026-09-24"
+  format: counters
+  chapter_titles: useful
+  title: "How to Counter the Meta (Full Guide)"
+  creator: "Ash Brawl Stars, Arthur"
+  url: https://www.youtube.com/watch?v=BeBwmAzwenM
+  published: "2026-09-26"
   season: 54  # estimated from the date
   language: en
   license: "YouTube video: cite with link and timestamp only"
-
-- id: spenlc-knowing-matchups
+  chapters:
+    - {start_s: 0,   title: "Introduction to ranked meta"}
+    - {start_s: 38,  title: "Countering Bo compositions"}
+    - {start_s: 64,  title: "Dealing with assassins"}
+    - {start_s: 123, title: "Tank and Ash counters"}
+    - {start_s: 174, title: "Strategies against Rico"}
+    - {start_s: 242, title: "Handling sharpshooters"}
+    - {start_s: 301, title: "Countering Max compositions"}
+    - {start_s: 336, title: "Managing tank counters"}
+    - {start_s: 396, title: "Heist and 8-bit counters"}
+    - {start_s: 442, title: "Dominant meta brawlers"}
+    - {start_s: 515, title: "Challenging Shade players"}
+    - {start_s: 638, title: "New brawler Cosmo analysis"}
+    - {start_s: 717, title: "Final tips and wrap up"}
+ 
+# --- Tier lists: brawler strength in one season, with the reasons ---
+ 
+- id: spenlc-tier-list-s54
   type: transcript
-  title: "How To Draft In Ranked - Knowing Your Matchups"
+  format: tier_list
+  chapter_titles: useful
+  title: "New Meta Tier List! Ranking All Brawlers From Worst To Best"
   creator: SpenLC
-  url: https://www.youtube.com/watch?v=cZ2BYVcCR5M
-  published: "2025-02-05"
-  season: 34  # estimated from the date
+  url: https://www.youtube.com/watch?v=PGAR-j4AyHw
+  published: "2026-09-19"
+  season: 54  # estimated from the date
   language: en
   license: "YouTube video: cite with link and timestamp only"
-
+  chapters:
+    - {start_s: 0,    title: "Introduction"}
+    - {start_s: 37,   title: "F tier analysis"}
+    - {start_s: 120,  title: "D tier breakdown"}
+    - {start_s: 522,  title: "C tier evaluations"}
+    - {start_s: 1366, title: "B tier rankings"}
+    - {start_s: 1958, title: "A tier selection"}
+    - {start_s: 2476, title: "S tier and top brawlers"}
+ 
 - id: spenlc-tier-list-s55
   type: transcript
+  format: tier_list
+  chapter_titles: useful
   title: "(S55) PRO Ranks 108 Brawlers From WORST to BEST"
   creator: SpenLC
   url: https://www.youtube.com/watch?v=vOShzj5BWDc
@@ -456,49 +383,30 @@
     - {start_s: 808,  title: "B tier rankings"}
     - {start_s: 1280, title: "A tier selection"}
     - {start_s: 1692, title: "S tier and conclusion"}
-
-- id: spenlc-drafts-fail
+ 
+- id: ash-tier-list-s55
   type: transcript
-  title: "Why Your Drafts Fail (And How To Fix Them)"
-  creator: SpenLC
-  url: https://www.youtube.com/watch?v=hSGpA0s3jqY
-  published: "2026-05-28"
-  season: 50  # estimated from the date
+  format: tier_list
+  chapter_titles: useful
+  title: "RANKING ALL 108 BRAWLERS Meta Tier List"
+  creator: Ash Brawl Stars
+  url: https://www.youtube.com/watch?v=9trexC9BF80
+  published: "2026-10-04"
+  season: 55
   language: en
   license: "YouTube video: cite with link and timestamp only"
-  chapters:  # auto-generated by YouTube; starts read from the transcript, check them on YouTube
-    - {start_s: 0,    title: "Hot potato drafting analysis"}
-    - {start_s: 152,  title: "Knockout strategy on phoenix"}
-    - {start_s: 270,  title: "Challenging heist draft"}
-    - {start_s: 378,  title: "Gem grab on hard rock mine"}
-    - {start_s: 534,  title: "Ring of fire composition"}
-    - {start_s: 680,  title: "Hideout map drafting tips"}
-    - {start_s: 825,  title: "Gem grab mastery lessons"}
-    - {start_s: 1008, title: "Knockout drafting errors"}
-    - {start_s: 1148, title: "Final draft review"}
-
-- id: s4lamence-essential-draft-guide
-  type: transcript
-  title: "The MOST ESSENTIAL Drafting Guide to Help YOU get MASTERS"
-  creator: s4lamence
-  url: https://www.youtube.com/watch?v=YnfnVIg7XQc
-  published: "2026-05-27"
-  season: 50  # estimated from the date
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-
-- id: idarkjoker-draft-guide
-  type: transcript
-  title: "The ONLY Draft Guide You'll Ever Need"
-  creator: IDarkJoker
-  url: https://www.youtube.com/watch?v=w-u95mdfolw
-  published: "2026-07-19"
-  season: 52  # estimated from the date
-  language: en
-  license: "YouTube video: cite with link and timestamp only"
-
+  chapters:
+    - {start_s: 0,   title: "Introduction"}
+    - {start_s: 31,  title: "One-star brawlers"}
+    - {start_s: 124, title: "Two-star brawlers"}
+    - {start_s: 247, title: "Three-star brawlers"}
+    - {start_s: 456, title: "Four-star brawlers"}
+    - {start_s: 676, title: "Five-star brawlers"}
+    - {start_s: 837, title: "Six-star brawlers and wrap-up"}
+ 
 - id: bren-tier-list-s55
   type: transcript
+  format: tier_list
   title: "PRO RANKING EVERY BRAWLER FROM WORST TO BEST! (SEASON 55)"
   creator: Bren
   url: https://www.youtube.com/watch?v=KZ05DxZNkuc
@@ -506,12 +414,148 @@
   season: 55
   language: en
   license: "YouTube video: cite with link and timestamp only"
-
+ 
+# --- Map cheat sheets (picks are shown on screen; the transcript holds the reasoning) ---
+ 
+- id: spenlc-ranked-cheat-sheet-s52
+  type: transcript
+  format: map_cheat_sheet
+  chapter_titles: useful
+  title: "ULTIMATE CHEAT SHEET FOR RANKED - BEST PICKS & BANS"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=aH9oCZG5XkM
+  published: "2026-07-21"
+  season: 52  # estimated: could be 53
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # titles are "<mode> - <map>"
+    - {start_s: 0,    title: "Intro"}
+    - {start_s: 42,   title: "Bounty - Dry Season"}
+    - {start_s: 122,  title: "Bounty - Hideout"}
+    - {start_s: 193,  title: "Bounty - Layer Cake"}
+    - {start_s: 265,  title: "Bounty - Shooting Star"}
+    - {start_s: 341,  title: "Brawl ball - Center Stage"}
+    - {start_s: 418,  title: "Brawl ball - Pinball Dreams"}
+    - {start_s: 487,  title: "Brawl ball - Sneaky Fields"}
+    - {start_s: 545,  title: "Brawl ball - Triple Dribble"}
+    - {start_s: 616,  title: "Gem Grab - Crystal Arcade"}
+    - {start_s: 696,  title: "Gem Grab - Double Swoosh"}
+    - {start_s: 767,  title: "Gem Grab - Hard Rock Mine"}
+    - {start_s: 842,  title: "Gem Grab - Deathcap Trap"}
+    - {start_s: 900,  title: "Gem Grab - Gem Fort"}
+    - {start_s: 956,  title: "Gem Grab - Undermine"}
+    - {start_s: 1023, title: "Heist - Bridge Too Far"}
+    - {start_s: 1121, title: "Heist - Hot Potato"}
+    - {start_s: 1217, title: "Heist - Kaboom Canyon"}
+    - {start_s: 1262, title: "Heist - Safe Zone"}
+    - {start_s: 1305, title: "Hot Zone - Dueling Beetles"}
+    - {start_s: 1362, title: "Hot Zone - Open Business"}
+    - {start_s: 1404, title: "Hot Zone - Parallel Plays"}
+    - {start_s: 1463, title: "Hot Zone - Ring Of Fire"}
+    - {start_s: 1509, title: "Knockout - Belles Rock"}
+    - {start_s: 1571, title: "Knockout - Flaring Phoenix"}
+    - {start_s: 1621, title: "Knockout - New Horizons"}
+    - {start_s: 1677, title: "Knockout - Out in the open"}
+ 
+- id: spenlc-ranked-cheat-sheet-s53
+  type: transcript
+  format: map_cheat_sheet
+  chapter_titles: useful
+  title: "ULTIMATE CHEAT SHEET FOR RANKED - SEASON 53"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=diaxHse4hOU
+  published: "2026-08-15"
+  season: 53
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # titles are "<mode> - <map>"
+    - {start_s: 0,    title: "Intro"}
+    - {start_s: 51,   title: "Bounty - Dry Season"}
+    - {start_s: 99,   title: "Bounty - Hideout"}
+    - {start_s: 150,  title: "Bounty - Layer Cake"}
+    - {start_s: 218,  title: "Bounty - Shooting Star"}
+    - {start_s: 281,  title: "Brawl ball - Center Stage"}
+    - {start_s: 362,  title: "Brawl ball - Pinball Dreams"}
+    - {start_s: 444,  title: "Brawl ball - Sneaky Fields"}
+    - {start_s: 505,  title: "Brawl ball - Triple Dribble"}
+    - {start_s: 569,  title: "Gem Grab - Crystal Arcade"}
+    - {start_s: 622,  title: "Gem Grab - Deathcap Trap"}
+    - {start_s: 673,  title: "Gem Grab - Double Swoosh"}
+    - {start_s: 706,  title: "Gem Grab - Gem Fort"}
+    - {start_s: 755,  title: "Gem Grab - Hard Rock Mine"}
+    - {start_s: 802,  title: "Gem Grab - Rustic Arcade"}
+    - {start_s: 878,  title: "Gem Grab - Undermine"}
+    - {start_s: 915,  title: "Heist - Bridge Too Far"}
+    - {start_s: 984,  title: "Heist - Hot Potato"}
+    - {start_s: 1039, title: "Heist - Kaboom Canyon"}
+    - {start_s: 1092, title: "Heist - Safe Zone"}
+    - {start_s: 1140, title: "Hot Zone - Dueling Beetles"}
+    - {start_s: 1194, title: "Hot Zone - Open Business"}
+    - {start_s: 1246, title: "Hot Zone - Parallel Plays"}
+    - {start_s: 1297, title: "Hot Zone - Ring Of Fire"}
+    - {start_s: 1347, title: "Knockout - Belles Rock"}
+    - {start_s: 1393, title: "Knockout - Flaring Phoenix"}
+    - {start_s: 1439, title: "Knockout - New Horizons"}
+    - {start_s: 1475, title: "Knockout - Out in the open"}
+ 
+- id: spenlc-ranked-cheat-sheet-s54
+  type: transcript
+  format: map_cheat_sheet
+  chapter_titles: useful
+  title: "The ULTIMATE Ranked Guide - Cheat Sheet Season 54"
+  creator: SpenLC
+  url: https://www.youtube.com/watch?v=5iHVKzN0c5M
+  published: "2026-09-11"
+  season: 54
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+  chapters:  # titles exactly as the transcript lines
+    - {start_s: 0   , title: "Intro"}
+    - {start_s: 54  , title: "Bounty - Dry Season"}
+    - {start_s: 125 , title: "Bounty - Hideout"}
+    - {start_s: 184 , title: "Bounty - Layer Cake"}
+    - {start_s: 243 , title: "Bounty - Shooting Star"}
+    - {start_s: 322 , title: "Brawl ball - Beach Ball"}
+    - {start_s: 412 , title: "Brawl Ball - Center Stage"}
+    - {start_s: 482 , title: "Brawl ball - Pinball Dreams"}
+    - {start_s: 562 , title: "Brawl ball - Sneaky Fields"}
+    - {start_s: 625 , title: "Brawl Ball - Spiralling Out"}
+    - {start_s: 667 , title: "Brawl ball - Triple Dribble"}
+    - {start_s: 743 , title: "Gem Grab - Double Swoosh"}
+    - {start_s: 824 , title: "Gem Grab - Gem Fort"}
+    - {start_s: 890 , title: "Gem Grab - Hard Rock Mine"}
+    - {start_s: 950 , title: "Gem Grab - Undermine"}
+    - {start_s: 1004, title: "Heist - Bridge Too Far"}
+    - {start_s: 1089, title: "Heist - Hot Potato"}
+    - {start_s: 1182, title: "Heist - Kaboom Canyon"}
+    - {start_s: 1258, title: "Heist - Safe Zone"}
+    - {start_s: 1352, title: "Hot Zone - Dueling Beetles"}
+    - {start_s: 1431, title: "Hot Zone - Open Business"}
+    - {start_s: 1506, title: "Hot Zone - Parallel Plays"}
+    - {start_s: 1602, title: "Hot Zone - Ring Of Fire"}
+    - {start_s: 1675, title: "Knockout - Belles Rock"}
+    - {start_s: 1740, title: "Knockout - Flaring Phoenix"}
+    - {start_s: 1799, title: "Knockout - New Horizons"}
+    - {start_s: 1853, title: "Knockout - Out in the open"}
+ 
+# --- Quiz: specification of our quiz and source for the evaluation set, out of the search ---
+ 
+- id: bobbybs-draft-quiz
+  type: transcript
+  format: quiz
+  title: "Can You Draft Like a Pro?"
+  creator: BobbyBS
+  url: https://www.youtube.com/watch?v=7uNiDWgwDIM
+  published: "2026-05-10"
+  season: 50  # estimated from the date
+  language: en
+  license: "YouTube video: cite with link and timestamp only"
+ 
 # --- Mode pages (Fandom wiki) ---
  
-- {id: fandom-gem-grab,   type: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
-- {id: fandom-brawl-ball, type: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
-- {id: fandom-hot-zone,   type: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
-- {id: fandom-heist,      type: wiki, title: Heist,      creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Heist,      language: en, license: CC BY-SA}
-- {id: fandom-bounty,     type: wiki, title: Bounty,     creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Bounty,     language: en, license: CC BY-SA}
-- {id: fandom-knockout,   type: wiki, title: Knockout,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Knockout,   language: en, license: CC BY-SA}
+- {id: fandom-gem-grab,   type: wiki, format: wiki, title: Gem Grab,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Gem_Grab,   language: en, license: CC BY-SA}
+- {id: fandom-brawl-ball, type: wiki, format: wiki, title: Brawl Ball, creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Brawl_Ball, language: en, license: CC BY-SA}
+- {id: fandom-hot-zone,   type: wiki, format: wiki, title: Hot Zone,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Hot_Zone,   language: en, license: CC BY-SA}
+- {id: fandom-heist,      type: wiki, format: wiki, title: Heist,      creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Heist,      language: en, license: CC BY-SA}
+- {id: fandom-bounty,     type: wiki, format: wiki, title: Bounty,     creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Bounty,     language: en, license: CC BY-SA}
+- {id: fandom-knockout,   type: wiki, format: wiki, title: Knockout,   creator: Fandom wiki contributors, url: https://brawlstars.fandom.com/wiki/Knockout,   language: en, license: CC BY-SA}
