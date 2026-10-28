@@ -123,21 +123,6 @@
   gold:
   - {source: bobbybs-draft-guide, start_s: 2801, end_s: 2824}
 
-- id: pick006
-  type: pick
-  origin: source_example
-  scenario:
-    quiz_mode: mythic_plus
-    map: ring-of-fire
-    position: 4
-    bans: []
-    ours: [lou]
-    theirs: [pierce, amber]
-  accepted_classes: [space_maker]
-  reference: 'They answered the Lou with range (Pierce, Amber): too much range and too little damage, so a space maker jumps on them.'
-  gold:
-  - {source: bobbybs-draft-guide, start_s: 1003, end_s: 1047}
-
 - id: pick007
   type: pick
   origin: new
@@ -437,7 +422,7 @@
     theirs: []
   candidate: tick
   verdict: bad
-  reference: 'Rule (Gbab 5:17, 16:16): Diamond is full of tanks and assassins, and throwers get countered by assassins and tanks. Here Tick, a thrower, is a Diamond pick.'
+  reference: 'Rule (Gbab 5:17, 16:16): Diamond is full of tanks and assassins, and throwers get countered by assassins and tanks. Federico: with two random teammates Tick is a wrong pick; he works only if he stays at range while teammates create space (two anti-tanks or tanks, many walls), or if you master him and he is maxed.'
   gold:
   - *id001
   - {source: gbab-rank-by-rank-guide, start_s: 976, end_s: 1008}
@@ -1095,9 +1080,11 @@
   type: plan
   lang: en
   question: We have first pick. What should we ban?
-  reference: Ban the brawlers that counter the first pick you plan, not the strongest brawler, which the enemy will ban anyway.
+  reference: 'Three valid theories: ban the counters of the first pick you plan, not the strongest brawler, which the enemy bans anyway (IDarkJoker); ban strong 2-3 picks such as the assassins or tanks you cannot first pick (s4lamence, Bobby); or ban a strong uncontested last pick (Bobby).'
   gold:
   - {source: idarkjoker-draft-guide, start_s: 224, end_s: 277}
+  - {source: bobbybs-draft-guide-part2, start_s: 1165, end_s: 1262}
+  - {source: s4lamence-essential-draft-guide, start_s: 98, end_s: 149}
 
 - id: pick017
   type: pick
@@ -1307,9 +1294,10 @@
     ours: [otis]
     theirs: [bibi, kenji]
   accepted_classes: [tank]
-  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank (Frank, Trunk, Draco). Here Bibi and Kenji are space makers.'
+  reference: 'Rule (Bobby 32:19): in the 4-5 picks, if the enemy has space makers, take a tank (Frank, Trunk, Draco): space makers like Bibi and Kenji lack the damage to kill a tank in a 1v1, the same reason Bobby gives for Frank when the enemy has low damage (46:20).'
   gold:
   - {source: bobbybs-draft-guide, start_s: 1928, end_s: 1951}
+  - {source: bobbybs-draft-guide, start_s: 2774, end_s: 2785}
 
 - id: pick031
   type: pick
@@ -1626,7 +1614,7 @@
   type: concept
   lang: it
   question: Come countero Bolt?
-  reference: Chester, maybe Doug, and Lou above all.
+  reference: 'Chester, maybe Doug, and Lou above all; in general brawlers that slow, stun or knock him back (Bren).'
   gold:
   - {source: bief-counters-every-brawler, start_s: 438, end_s: 450}
   - {source: bren-tier-list-s55, start_s: 300, end_s: 313}
