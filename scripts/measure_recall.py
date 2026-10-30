@@ -15,7 +15,7 @@ from google.genai import types
 from pymongo import MongoClient
 from tqdm import tqdm
 
-from draft_coach.chunks import CHAPTER_METHOD, METHOD
+from draft_coach.chunks import METHOD, WINDOW_METHOD
 from draft_coach.config import MONGO_URI
 from draft_coach.eval_set import load_eval
 from draft_coach.judge import MODELS, PROMPT_VERSION, PromptBuilder, judge_cached, judgment_id
@@ -25,7 +25,7 @@ from draft_coach.recall import coverage, first_hit, sign_test_p, wilson_interval
 from draft_coach.retrieval import Retriever, minute
 from draft_coach.sources import FORMATS, load_sources, sources_with_formats
 
-METHODS = [METHOD, CHAPTER_METHOD]
+METHODS = [WINDOW_METHOD, METHOD]  # the method in use against A (30/10: chapter60-plain-v1 won)
 TOP_K = 10  # the answer reads 5 chunks; @10 tells whether more chunks or a reranker would help
 JUDGE_MODEL = "gemini-3.5-flash-lite"  # validated 28/10 (judge-v2): precision 86-93%, recall 90-100%
 WRITTEN = {"concept", "habit", "plan"}  # the stop rule looks only at these; scenarios wait for step 8

@@ -1,7 +1,7 @@
 """Ask the skeleton questions to the vector index and print the 5 nearest chunks of each.
 Run: python scripts/search.py            (all questions in data/skeleton_questions.yaml)
      python scripts/search.py "question"  (one free question)
-     add --method chapter60-v1 to search the chunks of the other method
+     add --method window60-v1 (or chapter60-v1) to search the chunks of another method
      add --layer wiki to search the wiki layer (mode pages and map Layouts) instead of the guides"""
 import argparse
 from pathlib import Path
@@ -10,7 +10,7 @@ import yaml
 from google import genai
 from google.genai import types
 
-from draft_coach.chunks import CHAPTER_METHOD, METHOD
+from draft_coach.chunks import METHOD, METHODS
 from draft_coach.retrieval import Retriever, locator
 from draft_coach.wiki_chunks import LAYER as WIKI_LAYER
 
@@ -18,7 +18,7 @@ REPORT = Path("reports/skeleton_search.md")  # full results, easier to read than
 
 parser = argparse.ArgumentParser()
 parser.add_argument("question", nargs="?")  # no question: all the skeleton questions
-parser.add_argument("--method", choices=[METHOD, CHAPTER_METHOD], default=METHOD)
+parser.add_argument("--method", choices=METHODS, default=METHOD)
 parser.add_argument("--layer", choices=[WIKI_LAYER])  # none: the guides
 args = parser.parse_args()
 

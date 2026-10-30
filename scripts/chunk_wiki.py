@@ -1,4 +1,4 @@
-"""Chunks of the wiki layer (step 5b): mode pages (sources) and map Layouts (maps) -> chunks, in index A.
+"""Chunks of the wiki layer (step 5b): mode pages (sources) and map Layouts (maps) -> chunks, in the index in use.
 Run: python scripts/chunk_wiki.py   then: python scripts/embed_chunks.py"""
 from pathlib import Path
 from statistics import median
@@ -27,7 +27,7 @@ for m in db["maps"].find({"in_pool": True}):  # the quiz uses only the maps in t
 docs = [{"_id": f"{c['source_id']}:{METHOD}:{c['section']}", "method": METHOD, "layer": LAYER,
          **c, "mentions": normalizer.mentions(c["text"])} for c in chunks]
 # Rebuilt on every run (about 40 chunks, instant); ids are stable, so embed_chunks.py embeds only changed texts
-db["chunks"].delete_many({"layer": LAYER})
+db["chunks"].delete_many({"layer": LAYER, "method": METHOD})  # the wiki layer of other methods stays
 db["chunks"].insert_many(docs)
 
 # End-of-step check: every mode page has rules and tips, every pool map has its Layout
@@ -37,7 +37,7 @@ for source_id in sorted({d["source_id"] for d in docs}):
     words = [len(d["text"].split()) for d in mine]
     print(f"{source_id:<32} {len(mine):>6} {f'{min(words)}-{max(words)}':>10} {sum(len(d['mentions']) for d in mine):>9}")
 words = sorted(len(d["text"].split()) for d in docs)
-print(f"\n{'wiki chunks':<32} {db['chunks'].count_documents({'layer': LAYER})}   "
+print(f"\n{'wiki chunks':<32} {db['chunks'].count_documents({'layer': LAYER, 'method': METHOD})}   "
       f"words min / median / max {words[0]} / {median(words):.0f} / {words[-1]}")
 sample = next(d for d in docs if d["section"] == "Tips 1")
 print(f"\nSample {sample['_id']}  mentions {sample['mentions']}\n{sample['text'][:400]}...")

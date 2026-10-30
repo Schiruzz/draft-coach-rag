@@ -1,5 +1,5 @@
-"""Cut every normalized transcript into chunks with one of two methods: normalized -> chunks.
-Run: python scripts/chunk_corpus.py --method window60-v1   (or chapter60-v1)"""
+"""Cut every normalized transcript into chunks with one of the methods: normalized -> chunks.
+Run: python scripts/chunk_corpus.py   (the method in use; --method window60-v1 or chapter60-v1 for the others)"""
 import argparse
 import hashlib
 import json
@@ -7,11 +7,11 @@ from statistics import mean
 
 from pymongo import MongoClient
 
-from draft_coach.chunks import CHAPTER_METHOD, METHOD, make_chapter_windows, make_windows
+from draft_coach.chunks import CHAPTER_METHOD, METHOD, METHODS, PLAIN_CHAPTER_METHOD, make_chapter_windows, make_windows
 from draft_coach.config import MONGO_URI
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--method", choices=[METHOD, CHAPTER_METHOD], default=METHOD)
+parser.add_argument("--method", choices=METHODS, default=METHOD)
 method = parser.parse_args().method
 
 db = MongoClient(MONGO_URI)["draft_coach"]
@@ -19,7 +19,7 @@ db = MongoClient(MONGO_URI)["draft_coach"]
 for normalized in db["normalized"].find():
     source_id = normalized["_id"]
     source = db["sources"].find_one({"_id": source_id}, {"url": 1, "chapters": 1})
-    chapters = source.get("chapters", []) if method == CHAPTER_METHOD else []
+    chapters = source.get("chapters", []) if method in (CHAPTER_METHOD, PLAIN_CHAPTER_METHOD) else []
     # Fingerprint of the input: segments, plus chapters for the chapter method (a fixed title rebuilds the chunks)
     hashed = [normalized["segments"], chapters] if chapters else normalized["segments"]
     input_hash = hashlib.sha256(json.dumps(hashed, sort_keys=True).encode()).hexdigest()
@@ -30,7 +30,8 @@ for normalized in db["normalized"].find():
     db["chunks"].delete_many({"source_id": source_id, "method": method})  # changed or new: rebuild this source
     segments = sorted(normalized["segments"], key=lambda s: s["start_s"])  # screen lists are appended
     # sources without chapters get the plain windows with both methods
-    windows = make_chapter_windows(segments, chapters) if chapters else make_windows(segments)
+    windows = (make_chapter_windows(segments, chapters, title_in_text=method == CHAPTER_METHOD)
+               if chapters else make_windows(segments))
     chunks = [{
         "_id": f"{source_id}:{method}:{window['start_s']}",  # method in the id: two versions can coexist
         "source_id": source_id,

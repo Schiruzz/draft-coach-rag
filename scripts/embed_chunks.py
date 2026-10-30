@@ -1,5 +1,5 @@
 """Embed every chunk of one method and store it in Qdrant with its payload: chunks (MongoDB) -> vectors (Qdrant).
-Run: python scripts/embed_chunks.py --method window60-v1   (or chapter60-v1)"""
+Run: python scripts/embed_chunks.py   (the method in use; --method window60-v1 or chapter60-v1 for the others)"""
 import argparse
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -10,7 +10,7 @@ from pymongo import MongoClient
 from qdrant_client import QdrantClient, models
 from tqdm import tqdm
 
-from draft_coach.chunks import CHAPTER_METHOD, METHOD
+from draft_coach.chunks import METHOD, METHODS
 from draft_coach.config import EMBEDDING_MODEL, MONGO_URI, QDRANT_URL
 from draft_coach.vectors import collection_name, point_id, text_hash
 
@@ -21,7 +21,7 @@ UPSERT_BATCH = 64
 OPTIONAL_PAYLOAD = ("start_s", "end_s", "layer", "section", "mode", "map_id")
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--method", choices=[METHOD, CHAPTER_METHOD], default=METHOD)
+parser.add_argument("--method", choices=METHODS, default=METHOD)
 method = parser.parse_args().method
 
 chunks = list(MongoClient(MONGO_URI)["draft_coach"]["chunks"].find({"method": method}))
