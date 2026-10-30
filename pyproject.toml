@@ -15,6 +15,7 @@ dependencies = [
     "mwparserfromhell>=0.6", # wikitext -> plain text
     "google-genai>=2.31",    # Gemini API (structured output)
     "tqdm>=4.66",            # progress bars
+    "google-cloud-discoveryengine>=0.20",  # Vertex AI ranking API (step 7b reranker)
 ]
 
 [project.optional-dependencies]

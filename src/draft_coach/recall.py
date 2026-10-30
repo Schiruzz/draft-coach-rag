@@ -3,6 +3,7 @@ and contains at least half of the interval (touching it for a few seconds is not
 from math import comb, sqrt
 
 Z_95 = 1.96  # 95% confidence
+USEFUL = ("yes", "partial")  # judge verdicts that bring something to the answer
 
 
 def hits_gold(chunk: dict, gold: dict) -> bool:
@@ -31,6 +32,25 @@ def sign_test_p(gains: int, losses: int) -> float:
     if n == 0:
         return 1.0
     return min(1.0, 2 * sum(comb(n, i) for i in range(k + 1)) / 2 ** n)
+
+
+def useful_count(verdicts: list[str | None]) -> int:
+    """Chunks judged yes or partial (None, a missing verdict, counts as not useful)."""
+    return sum(v in USEFUL for v in verdicts)
+
+
+def normalized_ctx(useful_read: int, useful_available: int, read: int) -> float | None:
+    """Useful chunks read over the most that could be read: min(chunks read, useful chunks available deeper in the
+    list). A question with 2 useful passages in the corpus scores 1.0 with both in its 5 chunks, not 0.4.
+    None when nothing useful is available: that question says nothing about the context."""
+    best = min(read, useful_available)
+    return useful_read / best if best else None
+
+
+def overlapping(chunks: list[dict]) -> int:
+    """Chunks that share time with an earlier chunk of the same source: places spent on almost the same text."""
+    return sum(any(e["source_id"] == c["source_id"] and min(e["end_s"], c["end_s"]) > max(e["start_s"], c["start_s"])
+                   for e in chunks[:i]) for i, c in enumerate(chunks))
 
 def wilson_interval(hits: int, n: int) -> tuple[float, float]:
     """95% confidence interval of a proportion (Wilson): it stays honest near 0% and 100% and with few questions."""
