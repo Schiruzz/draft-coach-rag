@@ -1,0 +1,756 @@
+# Claim review: answer yes or no.
+# faithful: the source says this rule (not more, not the opposite)
+# standalone: the concept makes sense without the video
+# labels_ok: sides, direction and the other labels are right
+- id: 57a177a89bb07d8c1d0409231439bad65f8dc8308629536860676dbc2c236af3:7
+  source: ash-arthur-counter-meta
+  link: https://www.youtube.com/watch?v=BeBwmAzwenM&t=602s
+  quote: Here's an underrated brawler that I picked that worked out really well into a shade recently. Jacky. Oh yeah, he
+    can work for sure cuz he just run down
+  concept: Jacky works well into Shade by running him down.
+  reason: Jacky can run Shade down.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - jacky
+  against_brawlers:
+  - shade
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 6c40b3da50c2d6b4cf5bc0b53dd2d77909007ea76850d21b4424b74bfc37120e:1
+  source: ash-arthur-counter-meta
+  link: https://www.youtube.com/watch?v=BeBwmAzwenM&t=666s
+  quote: the best matchup for Cosmo from experience are like mid-range brawlers like a Meo. No, I don't think Meeple. more
+    like brawlers like Emz, you know, um maybe even Lumi, like those mid-rangers, even like Meg where like they can feed him
+    super from like eight tiles away in open area maps, too, cuz maps with walls, his attack is so hard to hit.
+  concept: Cosmo performs best against mid-range brawlers on open maps where he can charge his super from distance.
+  reason: Mid-range brawlers feed his super from eight tiles away, and his attack is much harder to land on maps with walls.
+  example: Emz, Lumi, Meg
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - cosmo
+  against_brawlers:
+  - emz
+  - lumi
+  - meg
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 13b0060d3b528fabf7ccb8582ca16b3be376eeea851a0fe88aa422bc50bdc011:2
+  source: ash-tier-list-s55
+  link: https://www.youtube.com/watch?v=9trexC9BF80&t=73s
+  quote: Shelly is just not it in this meta. There's so many other options for countering assassins and tanks, especially
+    because of her damage output from long distance, just so little.
+  concept: Shelly struggles in the meta as an anti-tank or assassin counter due to low long-range damage.
+  reason: She lacks long-distance damage output compared to alternative tank and assassin counters.
+  example: Otis
+  topic: meta
+  relation: none
+  brawlers:
+  - shelly
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 438bca6d56529b2873343d3dc5655251b7ee05739a36ee7474e14506276ecb96:5
+  source: ash-tier-list-s55
+  link: https://www.youtube.com/watch?v=9trexC9BF80&t=796s
+  quote: Najia very dangerous late pick.
+  concept: Najia is an effective late pick in draft.
+  reason: She punishes long-range setups and brawlers weak to spawners.
+  topic: class_concept
+  relation: none
+  brawlers:
+  - najia
+  draft_phase:
+  - pick_4_5
+  - pick_6
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: ca944d576a896d146070e8f194854470aed59841cd7d9f13e9e1d93ebcc0e0b2:23
+  source: bief-counters-every-brawler
+  link: https://www.youtube.com/watch?v=4sI_nX9TIts&t=447s
+  quote: Mortis is pretty difficult to counter nowadays, but Otis has a good job. Bull, Shelly, Surge, they should help you
+    out just fine.
+  concept: Otis, Bull, Shelly, and Surge are reliable counters against Mortis.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - otis
+  - bull
+  - shelly
+  - surge
+  against_brawlers:
+  - mortis
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: ca944d576a896d146070e8f194854470aed59841cd7d9f13e9e1d93ebcc0e0b2:26
+  source: bief-counters-every-brawler
+  link: https://www.youtube.com/watch?v=4sI_nX9TIts&t=467s
+  quote: Against [music] Max, Crow is pretty solid with a slow. Finx is nice to slow down her projectiles or like Lola who
+    just has a massive barrage being pretty good against Max.
+  concept: Crow and Lola counter Max well, with Crow providing a slow.
+  reason: Crow shuts down speed with slows, and Lola's high-damage barrage overwhelms Max.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - crow
+  - lola
+  effects:
+  - slow
+  against_brawlers:
+  - max
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: bddeab9df597dcf34fff4d7b44d6f25423423ee1497f99d5c0ec6f5e98cd4245:0
+  source: bobbybs-draft-guide
+  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=1880s
+  quote: all these brawlers are good into other anti-tanks and are good into tanks and Spacemaker.
+  concept: Top anti-tanks are effective against other anti-tanks, tanks, and space makers.
+  example: Crow, Otis, Chester, and Clancy
+  topic: matchup
+  relation: strong_against
+  classes:
+  - anti_tank
+  against_classes:
+  - anti_tank
+  - tank
+  - space_maker
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: a303ee35a139dd717f1b28d113eee8ecf03b2a0220ba3bd273c920de2743bb66:7
+  source: bobbybs-draft-guide
+  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=2257s
+  quote: Bounty first. You want the most solid first pick, something good into aggro, but doesn't necessarily counter as it's
+    not necessarily the main threat here. You just don't want to be too weak like a Piper would be for example.
+  concept: For Bounty first pick, choose a solid, versatile brawler that is resilient against aggro rather than vulnerable
+    long-range snipers.
+  reason: Picking fragile snipers first pick leaves you vulnerable to aggressive counter-picks.
+  example: Gene or Leon instead of Piper
+  topic: map_mode
+  relation: strong_against
+  against_classes:
+  - space_maker
+  draft_phase:
+  - pick_1
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 97930fd86b3007b650da4f6ec8fa95f1dd9b376a9408cc838856f7cd683cd889:6
+  source: bobbybs-draft-guide-part2
+  link: https://www.youtube.com/watch?v=XHp3r_D9rAA&t=613s
+  quote: The best brawlers right now in this class are Mortis, Edgar, Alli, Kaze, and Shade.
+  concept: Mortis, Edgar, Alli, Kaze, and Shade are the best space makers.
+  topic: meta
+  relation: none
+  brawlers:
+  - mortis
+  - edgar
+  - alli
+  - kaze
+  - shade
+  classes:
+  - space_maker
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 5ca3913c353decbdfcf488d66c78a0099da0f537d8bcb7a65fb9c8e665428190:7
+  source: bobbybs-draft-guide-part2
+  link: https://www.youtube.com/watch?v=XHp3r_D9rAA&t=1177s
+  quote: And then Stu is obviously really strong into those mid-range anti-tanks.
+  concept: Stu is very strong against mid-range anti-tanks.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - stu
+  against_classes:
+  - anti_tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 35645dd5843ba5d59fd151525e30f6a45dd1ef5375983d2923dd5fd16113dda7:10
+  source: bren-tier-list-s55
+  link: https://www.youtube.com/watch?v=KZ05DxZNkuc&t=202s
+  quote: Shelly is a subpar brawler because her shotgun attack only does huge damage up close, so long-range brawlers can
+    keep their distance and chip her down pretty easily.
+  concept: Shelly struggles against long-range brawlers who keep distance and chip her down.
+  reason: Her shotgun only deals heavy damage up close, leaving her vulnerable at distance.
+  topic: matchup
+  relation: weak_against
+  brawlers:
+  - shelly
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: c5b95617c9089fe976ff004cf02ffc132e0579ab5c5615f49c37dd757d6a114b:2
+  source: bren-tier-list-s55
+  link: https://www.youtube.com/watch?v=KZ05DxZNkuc&t=756s
+  quote: However, he does less damage from far away, so long-range brawlers can be difficult for him to beat.
+  concept: Gale struggles against long-range brawlers.
+  reason: He deals less damage at long range.
+  topic: matchup
+  relation: weak_against
+  brawlers:
+  - gale
+  classes:
+  - control
+  against_classes:
+  - sniper
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: bea9df993bbde93fc2c5f82f820b40df01a0bdf39ade0ad6e90e87a8c99375e5:10
+  source: gbab-counters-every-brawler
+  link: https://www.youtube.com/watch?v=iJx_lyjLbyY&t=137s
+  quote: Now, Buster's best counters are Mina and R-T, but also other high DPS tanks like Ash, Darryl, and Bull.
+  concept: Buster is countered by Mina, R-T, and high-DPS tanks.
+  reason: High-damage tanks and brawlers overwhelm Buster's shield and defense.
+  topic: matchup
+  relation: weak_against
+  brawlers:
+  - buster
+  against_brawlers:
+  - mina
+  - r-t
+  - ash
+  - darryl
+  - bull
+  against_classes:
+  - tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 071a051eb6a20eaeccd3909d5ba72580353ab1b13b6b47a20045c6e5636e5663:1
+  source: gbab-counters-every-brawler
+  link: https://www.youtube.com/watch?v=iJx_lyjLbyY&t=274s
+  quote: Counter Gene by playing spawner brawlers like Mr. P, Eve, Charlie, and Tara
+  concept: Spawner brawlers counter Gene.
+  reason: Spawnables block Gene's pulls and absorb his attacks.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - mr-p
+  - eve
+  - charlie
+  - tara
+  effects:
+  - spawnable
+  against_brawlers:
+  - gene
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 53b6630807ec708f2d9232a5be1271b276f208aa58644c24ccc1aaf388613962:6
+  source: gbab-rank-by-rank-guide
+  link: https://www.youtube.com/watch?v=vQpFSjpFoR4&t=956s
+  quote: Now, controllers, as mentioned before, counter both damage dealers and anti-tanks, but they get countered by tanks
+    and assassins because of their lack of damage.
+  concept: Controllers counter damage dealers and anti-tanks, but are countered by tanks and assassins due to their lack of
+    damage.
+  reason: Controllers control space and outrange damage dealers, but lack the burst damage needed to stop incoming tanks and
+    assassins.
+  topic: class_concept
+  relation: weak_against
+  classes:
+  - control
+  against_classes:
+  - tank
+  - space_maker
+  rank_band:
+  - mythic_plus
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: 'two rules in one sentence: the strong_against half is lost'
+- id: 60d133e6dcb1128be26059f82392a18eadb0e0bbfb8956ac668f9ffd5318c99b:6
+  source: gbab-rank-by-rank-guide
+  link: https://www.youtube.com/watch?v=vQpFSjpFoR4&t=1334s
+  quote: if you see the opponent Mortis spawning left, but you spawn right as a Shelly, you need to go to left immediately.
+  concept: Shelly counters Mortis and should switch lanes immediately at the start of the match to face him.
+  reason: Position switching at the start ensures you secure favorable lane matchups.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - shelly
+  against_brawlers:
+  - mortis
+  rank_band:
+  - mythic_plus
+  lane_role:
+  - lane
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 03a1286dfb5a32beb865133fd6b1f448e7f9c943ed4620c6ee39a1b1bd922bf5:3
+  source: idarkjoker-draft-guide
+  link: https://www.youtube.com/watch?v=w-u95mdfolw&t=657s
+  quote: Another mistake you guys make is not knowing the meta. I mean, it's not a big mistake, but like it's really important
+    to like understand the meta and also like follow the balance changes because it might be that one brother is really strong
+    in one meta, but then in the next one he isn't as strong.
+  concept: Follow balance changes and understand the shifting meta rather than relying on outdated brawler strengths.
+  reason: Balance changes alter brawler viability between metas.
+  topic: meta
+  relation: none
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 722c33473c4773d66bdd3835973941472433cb5a57b09fb0bc3c261b3548fcf0:0
+  source: idarkjoker-draft-guide
+  link: https://www.youtube.com/watch?v=w-u95mdfolw&t=728s
+  quote: Lola is good to max
+  concept: Lola is a good pick into Max.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - lola
+  against_brawlers:
+  - max
+  draft_phase:
+  - pick_4_5
+  map_ids:
+  - hard-rock-mine
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 8ca3134c0f237506185e4aaf8abb64e895c30d3d7eacc3a455d1ad6fc4f61a47:6
+  source: s4lamence-essential-draft-guide
+  link: https://www.youtube.com/watch?v=YnfnVIg7XQc&t=279s
+  quote: However, there are some less obvious ones, squishy brawlers. If you look at the list of good first picks, they all
+    consistently don't die and especially not to assassins.
+  concept: Avoid first picking squishy brawlers that die easily to assassins.
+  reason: Good first picks must consistently survive, especially against assassin counterpicks.
+  topic: class_concept
+  relation: weak_against
+  against_classes:
+  - space_maker
+  draft_phase:
+  - pick_1
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 6703acbcb0290f124c2feda748b315717d64bb9a8d22c8591b656b16f583aea2:8
+  source: s4lamence-essential-draft-guide
+  link: https://www.youtube.com/watch?v=YnfnVIg7XQc&t=474s
+  quote: If you can't think of what their last pick is going to be, focus on what they have already picked and try and counter
+    that. But try and not make it too weak to something
+  concept: In fourth and fifth picks, counter the enemy brawlers without opening up severe weaknesses to obvious last-pick
+    threats.
+  reason: Drafting overly specific compositions makes the team vulnerable to opposing counter picks.
+  example: Going squishy brawlers into Bull or two throwers into Mortis.
+  topic: class_concept
+  relation: none
+  draft_phase:
+  - pick_4_5
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: d48a4d7ea37b8562c1601c8478cc0c6bb240193abc7590f79fe79a96cd565a7e:5
+  source: spenlc-draft-positions
+  link: https://www.youtube.com/watch?v=YBPBefhwAX4&t=911s
+  quote: Colette is just insane into tanks and just insane at team wiping with a hypercharge.
+  concept: Colette strongly counters tanks and wipes teams with her hypercharge.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - colette
+  against_classes:
+  - tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 9d3efa91f65594598dc7db4d83bc2a3ccdb2ec73317af12023424734cbb031f6:7
+  source: spenlc-draft-positions
+  link: https://www.youtube.com/watch?v=YBPBefhwAX4&t=1405s
+  quote: Max combined with an Emz or an Ash or something to run down the opponents. You can never go wrong with Max.
+  concept: Pair Max with Emz or Ash to speed up and overwhelm opponents in Hot Zone.
+  reason: Max provides speed enabling short-ranged or control brawlers to run down opponents.
+  topic: class_concept
+  relation: none
+  brawlers:
+  - max
+  effects:
+  - speed_boost
+  draft_phase:
+  - pick_2_3
+  - composition
+  modes:
+  - hot_zone
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: hot_zone not verified
+- id: f26d01462e451b22fc7eeb01085da656a67f4fac6e41b918b479878c4e38f001:4
+  source: spenlc-drafts-fail
+  link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=455s
+  quote: Charlie can be decent into Amina. Use the pets to counter the Colette
+  concept: Charlie counters Colette by using her spawnable pets.
+  reason: Charlie's pets block and absorb Colette's attacks.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - charlie
+  effects:
+  - spawnable
+  against_brawlers:
+  - colette
+  lane_role:
+  - mid
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 6edf7b7dee36f5b145214442a1b4fe8abde4292fe33f1cf1fe1267132e973405:1
+  source: spenlc-drafts-fail
+  link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=736s
+  quote: Edgar into Leon and Gene isn't like guaranteed, especially on hideout.
+  concept: Drafting Edgar into Leon and Gene is not reliable, particularly on Hideout.
+  reason: Gene has knockback and Leon can keep distance outside Edgar's range.
+  topic: matchup
+  relation: weak_against
+  brawlers:
+  - edgar
+  against_brawlers:
+  - leon
+  - gene
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: a5eea55b090952e7797ffe01348e46b0da6b8d468ebb9876bae58aedf0d73831:3
+  source: spenlc-hardest-counters
+  link: https://www.youtube.com/watch?v=_aYrn_D-IQU&t=756s
+  quote: Gale should be able to outrange a Chester and just win that interaction
+  concept: Gale counters Chester by outranging him.
+  reason: Gale outranges Chester and consistently wins the interaction.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - gale
+  against_brawlers:
+  - chester
+  lane_role:
+  - lane
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 2d3ded218eb791e5f66afb81f70ef6066a10b55ef9112a465f65d0c4b412b883:3
+  source: spenlc-hardest-counters
+  link: https://www.youtube.com/watch?v=_aYrn_D-IQU&t=2607s
+  quote: Tick's a good counter I know that Nani peep can kill tick pretty easily if the tick doesn't press the gadget at the
+    right time and you also got the tick head to tank that as well and tick can just poke at Nani especially with Tick's long
+    range
+  concept: Tick counters Nani by using his gadget or head to block Peep and poking her from long range.
+  reason: Tick can block Peep with his gadget or head while harassing Nani from afar with his superior range.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - tick
+  effects:
+  - immunity
+  - spawnable
+  against_brawlers:
+  - nani
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 55b2ef2e1fdbcb265d5b9dd05f98d232ecc8e387cd61a0d6e900ff84c1132650:6
+  source: spenlc-knowing-matchups
+  link: https://www.youtube.com/watch?v=cZ2BYVcCR5M&t=315s
+  quote: these are typically going to be played more so on the grassia maps in the game but there's a few brers that have
+    better range for example like Colette Maisie Etc again most of them are limited to Bushy map
+  concept: Anti-tanks are mostly limited to and played on bushy maps, with a few longer-range exceptions.
+  reason: Most anti-tanks lack the range to compete on open maps.
+  example: Colette and Maisie having better range.
+  topic: map_mode
+  relation: none
+  classes:
+  - anti_tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 086983a74c3f2f3425604647403e5283d1e8537a74d55fd01ba24915febc0950:9
+  source: spenlc-knowing-matchups
+  link: https://www.youtube.com/watch?v=cZ2BYVcCR5M&t=1073s
+  quote: surge going to be good on those really bush maps
+  concept: Surge is an effective anti-tank to draft on heavily bushy maps.
+  reason: He performs well countering tanks in bushy environments.
+  topic: map_mode
+  relation: none
+  brawlers:
+  - surge
+  classes:
+  - anti_tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: d0f71b96f7699f7765b0d1f4cf219ba29debd413a02ff3db3beb0d4dcc36064e:0
+  source: spenlc-ranked-cheat-sheet-s52
+  link: https://www.youtube.com/watch?v=aH9oCZG5XkM&t=132s
+  quote: So maybe you could like ban a Brock and then first pick a surge pretty easily because all you got to do is push up
+    to that left hand wall. Keep your super.
+  concept: Ban Brock and first pick Surge on Hideout.
+  reason: Surge can push up to the left wall and use his Super to jump over walls and upgrade.
+  topic: meta
+  relation: weak_against
+  brawlers:
+  - surge
+  effects:
+  - jump_over_walls
+  - stages
+  against_brawlers:
+  - brock
+  draft_phase:
+  - ban
+  - pick_1
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: dc1f003676bed796216e0a69f9c2f72b41433cdb5f4a4b959dbbd694184893b0:3
+  source: spenlc-ranked-cheat-sheet-s52
+  link: https://www.youtube.com/watch?v=aH9oCZG5XkM&t=461s
+  quote: You've got like 8-Bit in the mid, you've got Otis, you've got Lumi, you've got Rico, you need that type of brawler
+    in a mid that is going to be able to like poke.
+  concept: Run a poking mid brawler like Max, 8-Bit, Otis, Lumi, or Rico on Pinball Dreams.
+  reason: They provide consistent poke damage from the mid position.
+  topic: map_mode
+  relation: none
+  brawlers:
+  - max
+  - 8-bit
+  - otis
+  - lumi
+  - rico
+  draft_phase:
+  - composition
+  modes:
+  - brawl_ball
+  map_ids:
+  - pinball-dreams
+  lane_role:
+  - mid
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 5588825ab9efad16faf2a551bd1f49bad32756a62076f3d96175b7579b56efce:0
+  source: spenlc-ranked-cheat-sheet-s53
+  link: https://www.youtube.com/watch?v=diaxHse4hOU&t=678s
+  quote: your gem carrier's got to be good at scouting the bushes. So apply the vision gear, make sure you got some good survivability
+    here
+  concept: On bushy Gem Grab maps like Double Swoosh, gem carriers should equip vision gear and have solid survivability to
+    scout bushes safely.
+  reason: The map is very bushy, requiring reliable bush scouting to survive while holding gems.
+  topic: map_mode
+  relation: none
+  modes:
+  - gem_grab
+  map_ids:
+  - double-swoosh
+  mode_role:
+  - gem_carrier
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 83fa0e694bd71df948473ade3cf6acad89aff598a63b4a39c019b36a48bed63e:1
+  source: spenlc-ranked-cheat-sheet-s53
+  link: https://www.youtube.com/watch?v=diaxHse4hOU&t=1279s
+  quote: And then you need a bit of a both zones sprawler. So either that's a brawler that can poke around walls like a Lumi
+    or a Moe, but that's a Stu that can easily pinch and be aggressive. Rico as well.
+  concept: A Parallel Plays composition requires a flex brawler capable of affecting both zones by poking around walls or
+    pinching aggressively.
+  reason: They can poke around walls or easily pinch and play aggressively across zones.
+  example: Lumi, Moe, Stu, Rico
+  topic: map_mode
+  relation: none
+  draft_phase:
+  - composition
+  modes:
+  - hot_zone
+  map_ids:
+  - parallel-plays
+  mode_role:
+  - zone_holder
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: a99f84d5e2d83cd8617d3a007fb4b7bb2a7615b406f6bd3a88c75aeab731a0ee:0
+  source: spenlc-ranked-cheat-sheet-s54
+  link: https://www.youtube.com/watch?v=5iHVKzN0c5M&t=218s
+  quote: So again, making sure that you don't go like at maximum one range brawler, and I wouldn't really go too many range
+    brawlers in this meta.
+  concept: Do not draft too many long-range brawlers on Layer Cake in this meta; pick at most one.
+  reason: Too many ranged brawlers are vulnerable to aggressive options and pinches on this map.
+  topic: class_concept
+  relation: none
+  classes:
+  - sniper
+  draft_phase:
+  - composition
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 84a68c25d6e5a5df81ae8e74be6c924bf0b4eb4b31781521927f1ba3ef747ae2:1
+  source: spenlc-ranked-cheat-sheet-s54
+  link: https://www.youtube.com/watch?v=5iHVKzN0c5M&t=1290s
+  quote: Pierce is like the best kind of mid brawler because he can defend, he can kind of do everything. He's just going
+    to clean up.
+  concept: Pierce is the best mid brawler on Safe Zone because he can defend and handle multiple situations.
+  reason: He can defend and clean up effectively.
+  topic: meta
+  relation: none
+  brawlers:
+  - pierce
+  modes:
+  - heist
+  map_ids:
+  - safe-zone
+  lane_role:
+  - mid
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 8a14e887dfe32b2b0b6176e16d1c96657db4b3c853902cb77c0d763ddb78cf2f:2
+  source: spenlc-tier-list-s54
+  link: https://www.youtube.com/watch?v=PGAR-j4AyHw&t=1644s
+  quote: Again, you think enough of any sort of like tank counter, you switch over to tougher torpedo, you get that extra
+    stun and you can really shut down people and then your hypercharge is just really easy to get and you can just change
+    the game with it.
+  concept: Buzz shuts down tank counters by running Tougher Torpedo for extra stun.
+  reason: The extra stun from Tougher Torpedo and an easy-to-charge Hypercharge allow him to shut targets down.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - buzz
+  effects:
+  - stun
+  against_classes:
+  - anti_tank
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 8a14e887dfe32b2b0b6176e16d1c96657db4b3c853902cb77c0d763ddb78cf2f:3
+  source: spenlc-tier-list-s54
+  link: https://www.youtube.com/watch?v=PGAR-j4AyHw&t=1662s
+  quote: The reason why I really like Barley is because he's a great like counterfeit option to like your seriouses. You're
+    going to see a lot more Willow and Juju in this meta. So again, can be pretty decent into them.
+  concept: Barley is a good counterpick into Willow and Juju.
+  reason: He plays well into Willow and Juju.
+  topic: matchup
+  relation: strong_against
+  brawlers:
+  - barley
+  against_brawlers:
+  - willow
+  - juju
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 65453ce8910f22bc3d4864730a7db69cdbbf384dad253d6dd14f95f597384886:2
+  source: spenlc-tier-list-s55
+  link: https://www.youtube.com/watch?v=vOShzj5BWDc&t=1089s
+  quote: You literally use him for the wall breaker and that's really about it.
+  concept: Colt functions primarily as an enabler specifically picked to break walls.
+  reason: His utility comes down to breaking walls open for his team.
+  topic: class_concept
+  relation: none
+  brawlers:
+  - colt
+  effects:
+  - wall_break
+  mode_role:
+  - support
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 9b2b1841f27c4913305dcb81736efff667e73b68b30261c1b4a180f80323f14f:0
+  source: spenlc-tier-list-s55
+  link: https://www.youtube.com/watch?v=vOShzj5BWDc&t=1728s
+  quote: Colette is so good in the meta. So good everywhere pretty much. As long as you're not using her on a map with a bunch
+    of walls. That's the only caveat. Don't play her on like triple dribble on a map with a bunch of walls because you need
+    a bit of space to make her super work.
+  concept: Avoid picking Colette on maps with many walls, such as Triple Dribble, because she needs open space to utilize
+    her Super effectively.
+  reason: She requires space to make her Super work properly without getting obstructed by walls.
+  example: Triple Dribble
+  topic: map_mode
+  relation: none
+  brawlers:
+  - colette
+  modes:
+  - brawl_ball
+  map_ids:
+  - triple-dribble
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
+- id: 823f8fc1707e84b4f2dd2ea75bb51ae2e30ca0f881d0c2667ef977b3a7f04c18:1
+  source: yukibs-drafting-mistakes
+  link: https://www.youtube.com/watch?v=wUdCUvTSmuE&t=356s
+  quote: So, your third pick should probably change the shape of your team. Someone who holds up against aggression. Someone
+    mobile who can expate, escape, or punish a dive. Someone solid at mid-range. You don't need one exact role every time.
+    You just need that third pick to make it harder for one enemy brawler to beat your whole team by itself.
+  concept: A team's third pick should diversify its composition by handling aggression or mobility to prevent a single counter.
+  reason: It prevents the opponent's final pick from defeating the entire team alone.
+  topic: class_concept
+  relation: none
+  effects:
+  - dash_or_jump
+  draft_phase:
+  - pick_4_5
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'no'
+  note: third pick = pick 2-3 of the team with last pick, not pick_4_5
+- id: 823f8fc1707e84b4f2dd2ea75bb51ae2e30ca0f881d0c2667ef977b3a7f04c18:6
+  source: yukibs-drafting-mistakes
+  link: https://www.youtube.com/watch?v=wUdCUvTSmuE&t=526s
+  quote: Buzz is good into Ash and assassins like Edgar, but he can have a hard time against Surge.
+  concept: Buzz is weak against Surge.
+  topic: matchup
+  relation: weak_against
+  brawlers:
+  - buzz
+  against_brawlers:
+  - surge
+  faithful: 'yes'
+  standalone: 'yes'
+  labels_ok: 'yes'
+  note: ''
