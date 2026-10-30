@@ -1,5 +1,5 @@
 """Step 6: does searching the claims find better chunks than searching the chunks? Same questions, same judge.
-Every variant hands the judge 5 distinct chunks of window60-v1, so it reads the same unit as the reference:
+Every variant hands the judge 5 distinct chunks of the method in use, so it reads the same unit as the reference:
   chunks          the chunks nearest to the question (the reference, on today's chunk texts)
   claims:<text>   the claims nearest to the question, each replaced by its chunk, until 5 distinct chunks
   union           chunks and claims (concept_reason) ranked together by score, until 5 distinct chunks

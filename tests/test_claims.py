@@ -1,5 +1,6 @@
 """Claim extraction: sections never overlap or cross a chapter; the code checks every claim of the model."""
-from draft_coach.claims import Claim, check_claim, extractable_segments, locate_quote, make_sections, names_in, parent_chunk
+from draft_coach.claims import (Claim, check_claim, extractable_segments, locate_quote, make_sections, names_in,
+                                parent_chunk, stale_links)
 from draft_coach.names import NameNormalizer
 
 # one segment every 10 s, 5 words each; Piper is named at 20 s
@@ -121,3 +122,9 @@ def test_parent_chunk_is_the_one_that_overlaps_the_claim_most():
     chunks = [{"_id": "a", "start_s": 0, "end_s": 60}, {"_id": "b", "start_s": 45, "end_s": 105}]
     assert parent_chunk({"start_s": 50, "end_s": 100}, chunks) == "b"
     assert parent_chunk({"start_s": 500, "end_s": 510}, chunks) is None  # no chunk of the source covers it
+
+
+def test_stale_links_are_the_points_whose_parent_chunk_changed():
+    stored = {"p1": "src:window60-v1:0", "p2": "src:chapter60-plain-v1:45", "p3": None, "gone": "src:window60-v1:90"}
+    parents = {"p1": "src:chapter60-plain-v1:0", "p2": "src:chapter60-plain-v1:45", "p3": "src:chapter60-plain-v1:90"}
+    assert stale_links(stored, parents) == {"p1": "src:chapter60-plain-v1:0", "p3": "src:chapter60-plain-v1:90"}

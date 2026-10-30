@@ -1,7 +1,10 @@
-"""Cut a transcript into fixed time windows (step 3s: the simplest chunking, to be compared at step 5)."""
+"""Cut a transcript into time windows: fixed (step 3s) or inside the chapters (step 5, the method in use since 30/10)."""
 
-METHOD = "window60-v1"          # stored on every chunk; change it when the windowing changes
-CHAPTER_METHOD = "chapter60-v1"  # windows that never cross a chapter, chapter title in the text
+WINDOW_METHOD = "window60-v1"                # A: fixed windows over the whole transcript (main until 30/10)
+CHAPTER_METHOD = "chapter60-v1"              # B: windows that never cross a chapter, title in the text (lost 28/10)
+PLAIN_CHAPTER_METHOD = "chapter60-plain-v1"  # B-plain: same windows, title kept out of the text (won 30/10)
+METHOD = PLAIN_CHAPTER_METHOD                # the method in use: stored on every chunk, default of every script
+METHODS = [WINDOW_METHOD, CHAPTER_METHOD, PLAIN_CHAPTER_METHOD]  # all kept in MongoDB and Qdrant, reproducible
 WINDOW_S = 60           # a window covers segments starting within 60 s of its first segment
 OVERLAP_S = 15          # the next window starts 15 s before the end of the previous one
 
@@ -29,10 +32,9 @@ def make_windows(segments: list[dict], window_s: int = WINDOW_S, overlap_s: int 
     return windows
 
 
-
-def make_chapter_windows(segments: list[dict], chapters: list[dict],
+def make_chapter_windows(segments: list[dict], chapters: list[dict], title_in_text: bool = True,
                          window_s: int = WINDOW_S, overlap_s: int = OVERLAP_S) -> list[dict]:
-    """Time windows that never cross a chapter; each text starts with its chapter title.
+    """Time windows that never cross a chapter; with title_in_text, each text starts with its chapter title.
     segments sorted by start_s; chapters [{start_s, title}] sorted, the first at 0."""
     windows = []
     for k, chapter in enumerate(chapters):
@@ -45,6 +47,7 @@ def make_chapter_windows(segments: list[dict], chapters: list[dict],
             chapter_windows[-1]["end_s"] = end  # the chapter end is known: better than the last segment start
         for window in chapter_windows:
             window["chapter"] = chapter["title"]
-            window["text"] = f"{chapter['title']}: {window['text']}"  # context for the embedding
+            if title_in_text:
+                window["text"] = f"{chapter['title']}: {window['text']}"  # context for the embedding
         windows += chapter_windows
     return windows

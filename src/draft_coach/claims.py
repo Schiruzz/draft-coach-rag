@@ -334,6 +334,11 @@ def parent_chunk(claim: dict, chunks: list[dict]) -> str | None:
     return best["_id"] if best and overlap(best) >= 0 else None
 
 
+def stale_links(stored: dict[str, str | None], parents: dict[str, str | None]) -> dict[str, str | None]:
+    """Point id -> its parent chunk now, for the stored points whose parent chunk changed. The parent depends on the
+    claim and on the chunking method: a new method changes it without changing the claim text."""
+    return {pid: parents[pid] for pid, chunk in stored.items() if pid in parents and parents[pid] != chunk}
+
 def claim_text(claim: dict, variant: str) -> str:
     """Text embedded for a claim: the rule alone, or the rule with its mechanism (the reason)."""
     return claim["concept"] if variant == "concept" else f"{claim['concept']} {claim['reason']}".strip()

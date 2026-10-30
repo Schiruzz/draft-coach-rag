@@ -55,3 +55,10 @@ def test_last_window_of_a_chapter_ends_at_the_next_chapter():
 def test_every_segment_is_in_some_chapter_window():
     covered = {word for w in make_chapter_windows(SEGMENTS, CHAPTERS) for word in w["text"].split()}
     assert {s["text"] for s in SEGMENTS} <= covered
+
+
+def test_plain_chapter_windows_keep_the_title_out_of_the_text():
+    plain = make_chapter_windows(SEGMENTS, CHAPTERS, title_in_text=False)
+    titled = make_chapter_windows(SEGMENTS, CHAPTERS)
+    assert plain[0]["text"] == "t0 t10 t20 t30 t40 t50" and plain[0]["chapter"] == "Intro"
+    assert [w["start_s"] for w in plain] == [w["start_s"] for w in titled]  # same windows, only the text changes
