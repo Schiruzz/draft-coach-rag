@@ -1,14 +1,3 @@
-- id: ash-arthur-counter-meta:112:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=BeBwmAzwenM&t=675s
-  context: So, pretty much any aggro brawler can just full counter a Cosmo. And the best matchup for Cosmo from experience
-    are like mid-range brawlers like a Meo. [No, I don't think Mele. more like brawlers like M's, you know, um maybe even
-    Lumi, like those mid-rangers, even] like Meg where like they can feed him super from like eight tiles away in open area
-    maps, too, cuz maps with walls, his attack is so hard to hit.
-  proposed: none
-  decision: meeple
 - id: ash-arthur-counter-meta:54:me
   alias: me
   options:
@@ -63,17 +52,6 @@
     Okay. And a Bibi. Bibi makes it no sense to go into a
   proposed: moe
   decision: moe
-- id: ash-ranked-guide-s54:468:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=6X_AhNr9J5c&t=3483s
-  context: instead of Piper, you guys are like, "Okay, Ash, what if I'm not like the best piper in the world like you? What
-    would I have? What should I have picked in that situation? [pick Gan. Jean is a very solid uh early pick. Mele is another
-    one that's safe.] Pierce if Pierce is open or uh even Bell is a much safer pick. Angelo would have been great as well.
-    It can go through the water on the left side. All right,
-  proposed: none
-  decision: meeple
 - id: ash-ranked-guide-s54:587:M
   alias: M
   options:
@@ -167,21 +145,10 @@
   link: https://www.youtube.com/watch?v=9trexC9BF80&t=439s
   context: in her uh prime. And then we got to talk about R-T. R-T moved up a little bit at the same time just falling down
     as well. [He's mainly just great as like a counter to shade or aggro brawlers in like heist. If you need a direct counter
-    to like a Mo, Melody, Ali, right? Then] yeah, you got R-T. But the problem is none of those brawlers are meta right now.
+    to like a Mo, Melodie, Ali, right? Then] yeah, you got R-T. But the problem is none of those brawlers are meta right now.
     Now, let's move on to the fourstar brawlers. These brawlers are pretty good. The Btier brawlers in the meta. We
   proposed: ollie
   decision: alli
-- id: ash-tier-list-s55:62:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=9trexC9BF80&t=465s
-  context: got Buzz, Byron, Angelo, Nita, Kenji, Jay, Young, Finx, Star, Nova, Charlie, Juju, Willow, Russ, Poco, Barley,
-    Gigi, [Spike, Mo, Penny, Surge, Mele, Jean, Carl, Otis, Lou, and Cordelius. So, let's start by talking about Cordelius.]
-    Cordelius moved up quite a lot in the meta thanks to when El Primo and Nori were super powerful, but now both of those
-    bras got nerfed a bit. So yeah,
-  proposed: none
-  decision: meeple
 - id: ash-tier-list-s55:62:Mo
   alias: Mo
   options:
@@ -189,45 +156,11 @@
   - moe
   link: https://www.youtube.com/watch?v=9trexC9BF80&t=465s
   context: got Buzz, Byron, Angelo, Nita, Kenji, Jay, Young, Finx, Star, Nova, Charlie, Juju, Willow, Russ, Poco, Barley,
-    Gigi, [Spike, Mo, Penny, Surge, Mele, Jean, Carl, Otis, Lou, and Cordelius. So, let's start by talking about Cordelius.]
+    Gigi, [Spike, Mo, Penny, Surge, Meeple, Jean, Carl, Otis, Lou, and Cordelius. So, let's start by talking about Cordelius.]
     Cordelius moved up quite a lot in the meta thanks to when El Primo and Nori were super powerful, but now both of those
     bras got nerfed a bit. So yeah,
   proposed: moe
   decision: moe
-- id: ash-tier-list-s55:73:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=9trexC9BF80&t=552s
-  context: Next, let's talk about Carl. Carl, great brawler, great aggro, but just so many ways to counter him and especially
-    now in the heist meta. He has so much [competition against other brawlers that pretty much offer more in terms of flexibility.
-    We got Jean, Mele, both of these utility brawlers. Their win rates] falling down as well. Their DPS is the issue. They're
-    very weak to spawners, right? In this meta, you can't be very weak to spawners. You need good range as
-  proposed: meeple
-  decision: meeple
-- id: ash-tier-list-s55:75:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=9trexC9BF80&t=569s
-  context: falling down as well. Their DPS is the issue. They're very weak to spawners, right? In this meta, you can't be
-    very weak to spawners. You need good range as [well. Both of these brawlers, Mele doesn't have the greatest range. But
-    both of these brawlers with their lack of DPS just not moving it in the five star pulling down to four star. And we] also
-    got to talk about Surge. Surge falling down the met as well. Another brawler that's really weak to spawners and also doesn't
-    have the greatest DPS anymore. And ever since his nerfs to his
-  proposed: meeple
-  decision: meeple
-- id: ash-tier-list-s55:79:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=9trexC9BF80&t=603s
-  context: direct counter. Like you can counter a surge with a spike cactus, right? Often you can counter Lou, Otis, Cordelius
-    with your spike. You can even encounter [Jean and Mele with the with with the cactus. Well, because of all that flexibility,
-    Spike is benefiting and he's moved up a bit in the meta as well.] And we got to talk about Gigi. She's moving up a lot
-    in the meta and that's because of her ability to hard counter so many powerful meta brawlers that are
-  proposed: meeple
-  decision: meeple
 - id: ash-tier-list-s55:89:Cole
   alias: Cole
   options:
@@ -235,7 +168,7 @@
   - carl
   link: https://www.youtube.com/watch?v=9trexC9BF80&t=684s
   context: brawlers in the meta. These are still brawlers that are very much dominant. We got 8-Bit, Griff, Kaze, Lumi, Mina,
-    Edgar, [Mortis, El Primo, Nori, Maisie, Najia, Cole, Bell, Sirius, Piper, Pierce, Gray, Stew, and Pearl. We got to talk
+    Edgar, [Mortis, El Primo, Nori, Maisie, Najia, Cole, Bell, Sirius, Piper, Pierce, Gray, Stu, and Pearl. We got to talk
     about a] few of these brawers that moved up to the meta. Belle moved up quite significantly, and that's mainly thanks
     to her 10% damage buff. She really needed that. and she's really super
   proposed: colt
@@ -317,37 +250,6 @@
     now we can't go sprout last pick. It
   proposed: none
   decision: kaze
-- id: bobbybs-draft-guide:110:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=652s
-  context: already have or their Mortis. That example is not clear enough. Okay, let's look at this draft back from my last
-    [video where my teammate wants to go Nita into Mele and Bibi. While sure technically Nita is perfectly fine] into Bibi.
-    Nita is an anti-tank and Mele has low DPS, so she doesn't take out the
-  proposed: none
-  decision: meeple
-- id: bobbybs-draft-guide:111:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=658s
-  context: video where my teammate wants to go Nita into Mele and Bibi. While sure technically Nita is perfectly fine [into
-    Bibi. Nita is an anti-tank and Mele has low DPS, so she doesn't take out the] bear very well, it's not a bad pick into
-    those brawlers, but this guy is clearly not looking at the bigger picture. We a
-  proposed: none
-  decision: meeple
-- id: bobbybs-draft-guide:120:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=711s
-  context: or the other team's brawlers and say, "Okay, how do I counter that?" You're not looking at the bigger picture like
-    what your teammates already counter. My [teammates are already good into Bibi and Mele. We don't need a third brawler
-    that are good into Bibi and Mele. Now, the reason this class of brawler is so] effective and so good and so easy to carry
-    with is because they all have some type of dash or speed or teleport or
-  proposed: none
-  decision: meeple
 - id: bobbybs-draft-guide:131:Ally
   alias: Ally
   options:
@@ -375,20 +277,10 @@
   - alli
   link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=1030s
   context: going to spend your all your supers burning grass. And Pierce, like, yeah, it's good up close, but when there's
-    an [Alley jumping on your head, what are you going to do? And then you just wrap it together with something like Stew
-    or] Leon maybe. And that's that's just game over. Like the game is done. You have Alli which only loses to brawlers that
+    an [Alley jumping on your head, what are you going to do? And then you just wrap it together with something like Stu or]
+    Leon maybe. And that's that's just game over. Like the game is done. You have Alli which only loses to brawlers that
   proposed: alli
   decision: alli
-- id: bobbybs-draft-guide:195:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=1152s
-  context: that they are holding down. They can really punish anti-tanks, especially with their turrets, increased range,
-    or [increased HP. Some of my favorite brawlers in this class for draft are Amber, Stew, Mele, Leon, Bow. These are] actually
-    really good brawlers fully in the meta. And if you imagine a pure 1v one with the brawlers I just named
-  proposed: none
-  decision: meeple
 - id: bobbybs-draft-guide:237:Pice
   alias: Pice
   options:
@@ -457,7 +349,7 @@
   - alli
   link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=2365s
   context: Pretty similar to bounty, but there's no blue star brawler, of course. And then brawlers with good hypers are more
-    [prioritized here. So I'm talking about brawlers like Meeple, Ali, R-T, Mandy, Leon, Bow. These are brawlers with very]
+    [prioritized here. So I'm talking about brawlers like Meeple, Ali, R-T, Mandy, Leon, Bo. These are brawlers with very]
     good hypers that are also good in knockout. So most of the time you want to try and take these brawlers for sure.
   proposed: none
   decision: ollie
@@ -468,7 +360,7 @@
   - alli
   link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=2387s
   context: example, is really good. And the two three, this is where I like to take my good hyper brawler, but also a brawler
-    [that's solid. So Leon, Mandy, Bo, R-T, Ali, Mele, whatever it is, and it has a] good matchup, just take it. Then hopefully
+    [that's solid. So Leon, Mandy, Bo, R-T, Ali, Meeple, whatever it is, and it has a] good matchup, just take it. Then hopefully
     your teammate just takes another solid brawler with it like Gus
   proposed: none
   decision: ollie
@@ -480,7 +372,7 @@
   link: https://www.youtube.com/watch?v=Vn13u4Uggqc&t=567s
   context: game. Meanwhile, others who may not even be as good as you can actually hit those ranks with ease just because
     they [understand this class. Now, there's a lot of brawlers in this class. I'm going to bring up the cheat sheet again.
-    We have Bull, Bibi, Ali, Kenji, Mortis,] Shade, Mina, Buzz, Alli, Carl, Edgar, Kaze, Lily, Mico, Sam, Chuck, Gigg, Melody,
+    We have Bull, Bibi, Ali, Kenji, Mortis,] Shade, Mina, Buzz, Alli, Carl, Edgar, Kaze, Lily, Mico, Sam, Chuck, Gigg, Melodie,
     and Darryl. Now, the most
   proposed: ollie
   decision: ollie
@@ -499,7 +391,7 @@
   link: https://www.youtube.com/watch?v=iJx_lyjLbyY&t=485s
   context: Belle. Mico's best counters are high HP brothers with a lot of damage like Frank, Bull, R-T, Draco, and Doug. Now,
     the moment you've all been waiting for. [To counter Mina, you can outrange her with Beer, Bunny, where you can also pick
-    Tara with her pets, Fin as his super slows Mina's super down, or] Shelly. Mo can't do anything against the stew because
+    Tara with her pets, Fin as his super slows Mina's super down, or] Shelly. Mo can't do anything against the Stu because
     he can effectively dodge Mo's attacks and super. You can also pick high DPS brawlers with decent HP to
   proposed: none
   decision: finx
@@ -511,21 +403,10 @@
   link: https://www.youtube.com/watch?v=iJx_lyjLbyY&t=53s
   context: Okay, let's speedrun this 8-Bit is slow, so he gets countered by longrange brawlers that can also destroy his turret
     easily like Bell, Penny, Mandy, [Piper, and Squeak. Ali is countered by high HP brawlers like Bull, Draco, R-T, Dog, and
-    Ash because she can't take them down. To counter Amber, you need to] outrange her with brawlers like Byron, Bony, Belle,
+    Ash because she can't take them down. To counter Amber, you need to] outrange her with brawlers like Byron, Bonnie, Belle,
     or Piper, but also Grow.
   proposed: none
   decision: alli
-- id: gbab-counters-every-brawler:84:Stew
-  alias: Stew
-  options:
-  - stu
-  link: https://www.youtube.com/watch?v=iJx_lyjLbyY&t=648s
-  context: walls, too. Shell's most common counters were always Tar with her pets and Nita. [But you can also bake Amber and
-    Stew to break open the map or Charlie with her spiders. To counter Spike, you can either go Carl to pierce through his
-    gadget or Piper to completely outrange] him. But his worst matchups were always throwers, so pick Larry & Lawrie, Juju,
-    or Ziggy.
-  proposed: stu
-  decision: stu
 - id: spenlc-draft-positions:293:Ka
   alias: Ka
   options:
@@ -588,8 +469,8 @@
   - kaze
   link: https://www.youtube.com/watch?v=YBPBefhwAX4&t=2866s
   context: because again if you in your composition if I don't know your teammates's gone with a a sniper or if they've gone
-    with [a damage dealer and then a an aggro brawler like Ka or Melody well you kind] of need someone to defend. You know
-    if the opponent's got a K or a Melody as well you probably need a shutdown
+    with [a damage dealer and then a an aggro brawler like Ka or Melodie well you kind] of need someone to defend. You know
+    if the opponent's got a K or a Melodie as well you probably need a shutdown
   proposed: none
   decision: kaze
 - id: spenlc-drafts-fail:128:Ali
@@ -610,7 +491,7 @@
   - alli
   - ollie
   link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=1243s
-  context: recommending here. Like Stew would have been pretty good. I think Mo would have had an exceptional matchup into
+  context: recommending here. Like Stu would have been pretty good. I think Mo would have had an exceptional matchup into
     this. [Ali would have been very, very good. Um, but yeah, I think I really shot myself in the foot going here. I should
     have] probably just gone simply with like a Chester. I couldn't go alum because I got Rico like Ali would just destroy
     us or any assassin. So I probably should
@@ -634,7 +515,12 @@
   - alli
   - ollie
   link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=495s
-  context: I would go Ali, easiest brawler to play, jump over her attacks, free tap Ruffs
+  context: flexible with that. Your early warrior would be the Mina, but then you've still got some good damage with a Lumi
+    anyway to pair with that. You know, Penny would have two good matchups there. Or you [could just be really aggressive,
+    I was thinking. And you could probably go with like an Ali because especially on hard rock up mine, you know. I would
+    personally really I mean you've got] Damian as well that which is pretty broken. You can never go wrong with Damian but
+    you've got shade as well which can be good into this but you still got to be able to play it perfectly. I would in terms
+    of like the
   proposed: none
   decision: ollie
 - id: spenlc-drafts-fail:67:Ali
@@ -643,9 +529,13 @@
   - alli
   - ollie
   link: https://www.youtube.com/watch?v=hSGpA0s3jqY&t=511s
-  context: continuation of the Ali pick at 8:15
+  context: Damian as well that which is pretty broken. You can never go wrong with Damian but you've got shade as well which
+    can be good into this but you still got to be able to play it perfectly. I would in terms of like the [easiest brawler
+    to play. I would go Ali and I would constantly like even Colette you can deal with a collect you can jump over her attacks
+    her super whatever.] Ruffs you can just easily free tap and destroy and just create some pressure so your teammates can
+    collect more gems.
   proposed: none
-  decision: ollie 
+  decision: ollie
 - id: spenlc-hardest-counters:223:Cole
   alias: Cole
   options:
@@ -712,24 +602,6 @@
   context: The likes of Buzz, Edgar, Mortis, and [Ali. Those are the main ones to focus] on. But this meta is kind of swaying
   proposed: ollie
   decision: alli
-- id: spenlc-ranked-cheat-sheet-s52:271:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=aH9oCZG5XkM&t=512s
-  context: That's why Max is going to be very good. [Mele's going to be very good. But you] got to bear in mind if you have
-    like a
-  proposed: none
-  decision: meeple
-- id: spenlc-ranked-cheat-sheet-s52:273:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=aH9oCZG5XkM&t=515s
-  context: got to bear in mind if you have like a [Ruffs or a Mele, you need to be pairing] that with like a damage dealer
-    because
-  proposed: none
-  decision: meeple
 - id: spenlc-ranked-cheat-sheet-s52:537:Ali
   alias: Ali
   options:
@@ -749,14 +621,6 @@
     of
   proposed: meg
   decision: meg
-- id: spenlc-ranked-cheat-sheet-s52:631:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=aH9oCZG5XkM&t=1181s
-  context: you're going to be fine as long as um [you know, Mele can be he can his] teammates can help pinch him. So, that's
-  proposed: none
-  decision: meeple
 - id: spenlc-ranked-cheat-sheet-s52:797:thinks
   alias: thinks
   options:
@@ -773,14 +637,6 @@
   context: that's why you're seeing a lot of pearl. [You're also seeing pale because it] really you just can't go like a mortise
   proposed: pearl
   decision: pearl
-- id: spenlc-ranked-cheat-sheet-s53:100:Mele
-  alias: Mele
-  options:
-  - meeple
-  link: https://www.youtube.com/watch?v=diaxHse4hOU&t=179s
-  context: up and then you should be good to go. [Mele are really enjoying this map] because um that box gadget is just so
-  proposed: none
-  decision: meeple
 - id: spenlc-ranked-cheat-sheet-s53:606:Cole
   alias: Cole
   options:
@@ -903,9 +759,9 @@
   options:
   - meg
   link: https://www.youtube.com/watch?v=PGAR-j4AyHw&t=2096s
-  context: as well for me the pros would rather go like a goose a Wendy or I don't know even like a stew and you can't really
+  context: as well for me the pros would rather go like a goose a Wendy or I don't know even like a Stu and you can't really
     go [like two of those similar low DPS brawers in the same composition. So me's kind of lost his foot in there but he's
     still a great like knockout option and] like out in the open. Still good on triple triple etc. Uh but there definitely
-    are good counters to him as well. Stew is next in the 80s. So, if
+    are good counters to him as well. Stu is next in the 80s. So, if
   proposed: none
   decision: meg
