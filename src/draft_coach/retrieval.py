@@ -1,19 +1,24 @@
-"""Find the chunks nearest to a question in the vector index (shared by search and answer)."""
+"""Find the chunks for a question: nearest in the vector index, then reordered by the ranker (shared by search and answer)."""
 from google import genai
+from google.api_core.exceptions import GoogleAPICallError, RetryError
 from google.genai import types
 from qdrant_client import QdrantClient, models
 
 from draft_coach.chunks import METHOD
-from draft_coach.config import EMBEDDING_MODEL, QDRANT_URL
+from draft_coach.config import EMBEDDING_MODEL, GOOGLE_CLOUD_PROJECT, QDRANT_URL
+from draft_coach.rerank import RANK_MODEL, Reranker
 from draft_coach.vectors import collection_name
 
 TOP_K = 5
+CANDIDATES = 20  # measured 30/10: J@20 97% on written questions; the ranker picks the 5 best of these
 
 
 class Retriever:
-    def __init__(self, genai_client: genai.Client, qdrant: QdrantClient | None = None, method: str = METHOD):
+    def __init__(self, genai_client: genai.Client, qdrant: QdrantClient | None = None, method: str = METHOD,
+                 reranker: Reranker | None = None):
         self.genai = genai_client
         self.qdrant = qdrant or QdrantClient(url=QDRANT_URL)
+        self.reranker = reranker  # created on the first retrieve(): search() alone needs no ranking credentials
         self.collection = collection_name(method, EMBEDDING_MODEL)  # the chunking method picks the collection
 
     def search(self, question: str, top_k: int = TOP_K, sources: list[str] | None = None,
@@ -31,6 +36,19 @@ class Retriever:
         hits = self.qdrant.query_points(self.collection, query=vector, query_filter=models.Filter(must=must),
                                         limit=top_k, with_payload=True).points
         return [{**hit.payload, "score": hit.score} for hit in hits]
+
+
+    def retrieve(self, question: str, sources: list[str] | None = None) -> list[dict]:
+        """The retrieval in use (30/10): the CANDIDATES nearest guide chunks, reordered by the ranker, first TOP_K.
+        If the ranker fails, the TOP_K nearest: an answer from similarity alone beats no answer."""
+        nearest = self.search(question, top_k=CANDIDATES, sources=sources)
+        if self.reranker is None:
+            self.reranker = Reranker(GOOGLE_CLOUD_PROJECT, RANK_MODEL)
+        try:
+            return self.reranker.rerank(question, nearest)
+        except (GoogleAPICallError, RetryError) as error:
+            print(f"rerank failed ({type(error).__name__}): similarity order kept")
+            return nearest[:TOP_K]
 
 
 def minute(seconds: int) -> str:

@@ -1,4 +1,4 @@
-"""Answer questions with Gemini using only the 5 nearest chunks, with citations (RAG skeleton, step 3s.4).
+"""Answer questions with Gemini using only the 5 chunks of the retrieval in use, with citations (RAG skeleton, step 3s.4).
 Run: python scripts/answer.py            (all questions in data/skeleton_questions.yaml)
      python scripts/answer.py "question"  (one free question)"""
 import sys
@@ -38,7 +38,7 @@ config = types.GenerateContentConfig(temperature=0)  # same question -> same ans
 
 lines = [f"Prompt {PROMPT_VERSION}, model {GEMINI_MODEL}", ""]
 for q in questions:
-    chunks = retriever.search(q["question"])
+    chunks = retriever.retrieve(q["question"])  # 20 nearest, reordered by the ranker, first 5
     excerpts = "\n\n".join(f"[{i}] ({c['source_id']}, {minute(c['start_s'])}) {c['text']}" for i, c in enumerate(chunks, 1))
     answer = client.models.generate_content(
         model=GEMINI_MODEL, contents=PROMPT.format(question=q["question"], excerpts=excerpts), config=config).text.strip()

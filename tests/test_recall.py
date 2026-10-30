@@ -3,7 +3,8 @@ from pathlib import Path
 
 from draft_coach.maps import load_maps
 from draft_coach.names import load_brawlers
-from draft_coach.recall import coverage, first_hit, hits_gold, sign_test_p, wilson_interval
+from draft_coach.recall import (coverage, first_hit, hits_gold, normalized_ctx, overlapping, sign_test_p, useful_count,
+                                wilson_interval)
 from draft_coach.scenarios import scenario_question
 
 GOLD = {"source": "bobbybs-draft-guide", "start_s": 100, "end_s": 130}
@@ -56,3 +57,19 @@ def test_scenario_question_diamond_pick():
     scenario = {"quiz_mode": "diamond", "map": "center-stage", "bans": ["shade"], "ours": [], "theirs": []}
     assert scenario_question(scenario, NAMES, MAPS) == (
         "Center Stage (Brawl Ball), Diamond, blind pick. Bans: Shade. My team: no picks yet. What should I pick?")
+
+
+def test_useful_count():
+    assert useful_count(["yes", "partial", "no", None, "yes"]) == 3
+
+
+def test_normalized_ctx_is_measured_against_what_is_available():
+    assert normalized_ctx(2, 2, 5) == 1.0       # both useful passages of the corpus are in the 5 chunks
+    assert normalized_ctx(2, 8, 5) == 0.4       # 8 available, only 2 of the 5 places are useful
+    assert normalized_ctx(0, 0, 5) is None      # nothing useful exists: no verdict on the context
+
+
+def test_overlapping_chunks_of_the_same_source():
+    chunks = [{"source_id": "a", "start_s": 0, "end_s": 64}, {"source_id": "a", "start_s": 49, "end_s": 110},
+              {"source_id": "b", "start_s": 0, "end_s": 64}, {"source_id": "a", "start_s": 110, "end_s": 170}]
+    assert overlapping(chunks) == 1  # only the second shares time with the first; touching at 110 s is not sharing
