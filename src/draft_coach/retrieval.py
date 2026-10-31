@@ -6,6 +6,7 @@ from qdrant_client import QdrantClient, models
 
 from draft_coach.chunks import METHOD
 from draft_coach.config import EMBEDDING_MODEL, GOOGLE_CLOUD_PROJECT, QDRANT_URL
+from draft_coach.glossary import load_terms, to_english
 from draft_coach.rerank import RANK_MODEL, Reranker
 from draft_coach.vectors import collection_name
 
@@ -20,6 +21,7 @@ class Retriever:
         self.qdrant = qdrant or QdrantClient(url=QDRANT_URL)
         self.reranker = reranker  # created on the first retrieve(): search() alone needs no ranking credentials
         self.collection = collection_name(method, EMBEDDING_MODEL)  # the chunking method picks the collection
+        self.terms = load_terms()  # Italian game terms -> English terms of the corpus (step 7d)
 
     def search(self, question: str, top_k: int = TOP_K, sources: list[str] | None = None,
                layer: str | None = None) -> list[dict]:
@@ -40,7 +42,9 @@ class Retriever:
 
     def retrieve(self, question: str, sources: list[str] | None = None) -> list[dict]:
         """The retrieval in use (30/10): the CANDIDATES nearest guide chunks, reordered by the ranker, first TOP_K.
-        If the ranker fails, the TOP_K nearest: an answer from similarity alone beats no answer."""
+        If the ranker fails, the TOP_K nearest: an answer from similarity alone beats no answer.
+        Italian game terms are replaced with the English ones first (measured 31/10, scripts/measure_glossary.py)."""
+        question = to_english(question, self.terms)
         nearest = self.search(question, top_k=CANDIDATES, sources=sources)
         if self.reranker is None:
             self.reranker = Reranker(GOOGLE_CLOUD_PROJECT, RANK_MODEL)

@@ -48,7 +48,7 @@ def test_layers_never_mix():
 class ReverseRanker:
     """Puts the candidates in reverse order and keeps 5, as a ranker that disagrees with the similarity."""
     def rerank(self, question, chunks):
-        self.candidates = len(chunks)
+        self.question, self.candidates = question, len(chunks)
         return chunks[::-1][:5]
 
 
@@ -77,3 +77,9 @@ def test_retrieve_reorders_the_candidates_with_the_ranker():
 def test_retrieve_falls_back_to_similarity_when_the_ranker_fails():
     chunks = guide_retriever(BrokenRanker()).retrieve("q")
     assert [c["source_id"] for c in chunks] == [f"s{i}" for i in range(TOP_K)]
+
+
+def test_retrieve_searches_with_the_english_game_terms():
+    ranker = ReverseRanker()
+    guide_retriever(ranker).retrieve("Perché perdo sempre in Rapina con Stecca?")
+    assert ranker.question == "Perché perdo sempre in Heist con Rico?"
