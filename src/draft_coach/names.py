@@ -8,6 +8,29 @@ import yaml
 def load_brawlers(path: Path) -> list[dict]:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
+CORRECTION_WINDOW_S = 20  # around the time of a correction: our times are quote starts, the word may come later
+
+
+def to_seconds(at: str) -> int:
+    """"36:23" -> 2183; long videos keep counting minutes ("127:16")."""
+    minutes, seconds = at.split(":")
+    return int(minutes) * 60 + int(seconds)
+
+
+def apply_corrections(source_id: str, segments: list[dict], corrections: list[dict]) -> list[dict]:
+    """Point corrections of a raw transcript (data/corrections.yaml), applied before the aliases: the wrong text is
+    copied from the raw transcript. Each correction must match exactly once, as whole words and with its case, in the
+    segments that start within CORRECTION_WINDOW_S of its time; otherwise ValueError: a correction never fails silently."""
+    segments = [dict(s) for s in segments]
+    for c in (c for c in corrections if c["source"] == source_id):
+        pattern = re.compile(rf"(?<!\w){re.escape(c['wrong'])}(?!\w)")
+        hits = [(i, m) for i, s in enumerate(segments) if abs(s["start_s"] - to_seconds(c["at"])) <= CORRECTION_WINDOW_S
+                for m in pattern.finditer(s["text"])]
+        if len(hits) != 1:
+            raise ValueError(f"correction {source_id} {c['at']} {c['wrong']!r}: {len(hits)} matches, exactly 1 needed")
+        i, m = hits[0]
+        segments[i]["text"] = segments[i]["text"][:m.start()] + c["right"] + segments[i]["text"][m.end():]
+    return segments
 
 def word_pattern(names) -> re.Pattern:
     """Match any of the names as a whole word, case-sensitive, longest name first."""

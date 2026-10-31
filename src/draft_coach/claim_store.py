@@ -46,6 +46,7 @@ def print_report(db: Database, normalizer: NameNormalizer, n_sections: int) -> N
     print(f"{'claims by topic':<28} {dict(Counter(c['topic'] for c in claims).most_common())}")
     print(f"{'claims with a direction':<28} {sum(1 for c in claims if c['relation'] != 'none')}")
     print(f"{'concept brawler not in sides':<28} {concept_not_in_sides}")
+    print(f"{'name swaps flagged':<28} {sum(1 for c in claims if c['name_swaps'])}")
     print(f"{'unknown brawler names':<28} {dict(Counter(n for c in claims for n in c['unknown_brawlers']).most_common(10))}")
     print(f"{'unknown map names':<28} {dict(Counter(n for c in claims for n in c['unknown_maps']).most_common(10))}")
     print(f"{'claims by mode_role':<28} {dict(Counter(r for c in claims for r in c['mode_role']).most_common())}")
@@ -58,7 +59,8 @@ def alias_candidates(db: Database, sections_by_key: dict, normalizer: NameNormal
     the quote most similar to the brawler's name is the likely misspelling ("melody" -> Melodie). Counted, for review."""
     map_names = [m["name"] for m in maps] + [a for m in maps for a in m["aliases"]] + PASSIVE_MAPS
     pairs = Counter()
-    for doc in db["claim_sections"].find({"rejected.reason": "brawler_not_in_section"}):
+    # only sections of the current prompt: older ones have no section to read (re-asked by extract_claims.py)
+    for doc in db["claim_sections"].find({"rejected.reason": "brawler_not_in_section", "_id": {"$in": list(sections_by_key)}}):
         section = sections_by_key[doc["_id"]]
         seen = ({m for s in section["segments"] for m in s.get("mentions", [])}
                 | set(names_in(f"{section['chapter'] or ''} {section['text']}", normalizer, map_names)))

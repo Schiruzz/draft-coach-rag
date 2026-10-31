@@ -28,6 +28,7 @@ sources = {s["id"]: s for s in load_sources(Path("data/sources.yaml"))}
 pool_maps = [m for m in load_maps(Path("data/maps.yaml")) if m["in_pool"]]
 brawler_list = load_brawlers(Path("data/brawlers.yaml"))
 normalizer = NameNormalizer(brawler_list)
+brawler_names = [b["en"] for b in brawler_list]  # listed in the prompt
 wiki_class = {c["_id"]: c.get("wiki_class") for c in db["brawler_cards"].find({}, {"wiki_class": 1})}
 brawler_info = {b["id"]: {"class": b["class"], "wiki_class": wiki_class.get(b["id"])} for b in brawler_list}
 
@@ -43,7 +44,7 @@ sample = [rng.choice([s for s in sections if s["source"]["format"] == f]) for f 
 
 def extract(section: dict) -> tuple[float, list[Claim] | None]:
     start = time.monotonic()
-    claims = generate_json(client, MODEL, build_prompt(section["source"], section, pool_maps), list[Claim], THINKING,
+    claims = generate_json(client, MODEL, build_prompt(section["source"], section, pool_maps, brawler_names), list[Claim], THINKING,
                            label=f"{section['source']['id']} {section['start_s']}")
     return time.monotonic() - start, claims
 
