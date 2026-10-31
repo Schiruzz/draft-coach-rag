@@ -12,7 +12,7 @@ from draft_coach.judge import GLOSSARY
 from draft_coach.maps import FEATURES, MODES, TYPES, find_map
 from draft_coach.names import NameNormalizer, word_pattern
 
-EXTRACT_VERSION = "extract-v5"  # v5: example of a sentence with two rules; all six ranked modes
+EXTRACT_VERSION = "extract-v6"  # v6: the list of valid brawler names (Gemini swapped recent brawlers: Bolt -> Bull)
 ALL_MODES = MODES | {"bounty", "knockout"}  # passive modes as data; the phase-1 quiz filters the aggressive ones
 EXCLUDED_FORMATS = {"gameplay", "quiz", "wiki"}  # games are cases (after 7b), the quiz is the spec, the wiki is its own layer
 SECTION_WORDS = 900  # about 6 minutes of speech; measured on the sample: 312 sections, median 277 words
@@ -104,6 +104,12 @@ class Claim(BaseModel):
 
 PROMPT = """You extract draft advice from a section of an automatic transcript of a Brawl Stars video.
 Brawler names may be misspelled by the speech recognizer.
+
+Brawlers (the only valid names; several were released recently, after what you may know):
+{brawlers}
+Write a brawler only if the section says it, possibly misspelled. Never replace a name the transcript writes
+correctly with another one: "bolt" in the transcript is Bolt, not Bull. If you cannot tell which brawler the
+speaker means, leave the name out. When the speaker lists brawlers, keep every brawler of the list.
 
 Source: "{title}" by {creator} ({format}), published {published}, season {season}.{chapter}
 
@@ -216,11 +222,12 @@ def corpus_sections(normalized: list[dict], sources: dict) -> list[dict]:
     return sections
 
 
-def build_prompt(source: dict, section: dict, maps: list[dict]) -> str:
+def build_prompt(source: dict, section: dict, maps: list[dict], brawler_names: list[str]) -> str:
+    """brawler_names: the English names of brawlers.yaml, listed in the prompt as the only valid ones."""
     chapter = f'\nChapter: "{section["chapter"]}".' if section["chapter"] and source.get("chapter_titles") == "useful" else ""
     return PROMPT.format(title=source["title"], creator=source["creator"], format=source["format"],
                          published=source["published"], season=source["season"], chapter=chapter,
-                         glossary=GLOSSARY, effects=", ".join(EFFECTS), stats=", ".join(STATS),
+                         brawlers=", ".join(sorted(brawler_names)), glossary=GLOSSARY, effects=", ".join(EFFECTS), stats=", ".join(STATS),
                          modes=", ".join(sorted(ALL_MODES)), maps=", ".join(m["name"] for m in maps),
                          map_types=", ".join(sorted(TYPES)), map_features=", ".join(sorted(FEATURES)),
                          text=section["text"])
@@ -293,6 +300,10 @@ def check_claim(claim: Claim, section: dict, maps: list[dict], normalizer: NameN
                   | set(names_in(f"{section['chapter'] or ''} {section['text']}", normalizer, map_names)))
     if not set(mentions) <= in_section:
         return None, "brawler_not_in_section"
+    # Swap guard (step 7c): brawlers of the rule = both sides and the concept, not the example
+    concept_ids = normalizer.mentions(re.sub("|".join(re.escape(m) for m in map_names), " ", claim.concept))
+    rule_ids = list(dict.fromkeys(ids["brawlers"] + ids["against_brawlers"] + concept_ids))
+    swaps = name_swaps(rule_ids, set(mentions), claim.quote, normalizer, map_names)
     start_s, end_s = located
     found = [find_map(name, maps) for name in claim.maps]
     return {
@@ -309,6 +320,7 @@ def check_claim(claim: Claim, section: dict, maps: list[dict], normalizer: NameN
         "start_s": start_s,
         "end_s": end_s,
         "mentions": mentions,  # every brawler named, examples included: for search filters
+        "name_swaps": swaps,  # [brawler of the rule, brawler of the quote]: flagged for review, not rejected
         "brawlers": ids["brawlers"],
         "against_brawlers": ids["against_brawlers"],
         # names the code could not match to a brawler of the table: counted in the report
@@ -318,6 +330,31 @@ def check_claim(claim: Claim, section: dict, maps: list[dict], normalizer: NameN
         "against_brawler_classes": _classes(ids["against_brawlers"], brawler_info),
     }, None
 
+def name_swaps(rule_ids: list[str], named_ids: set[str], quote: str, normalizer: NameNormalizer,
+               map_names: list[str]) -> list[list[str]]:
+    """[brawler of the rule, brawler of the quote] pairs: the rule names a brawler the quote does not say, while the
+    quote says a brawler the claim never names. A pair is a mismatch between claim and quote, not a matchup.
+    Two errors raise it: a swap (Bull in the claim, "bolt" in the quote: Gemini swapped a recent name) and an
+    omission (the quote lists Edgar, Kaze, Kenji, Mortis; the claim drops Kaze).
+    Case is ignored in the quote ("pierce"), so a common word ("pierce through walls") may raise a false alarm.
+    A rule whose brawler is only a "he" in the quote is not flagged when the quote names no other brawler."""
+    in_quote = names_in(quote, normalizer, map_names)
+    missing = [b for b in rule_ids if b not in in_quote]
+    unclaimed = [b for b in in_quote if b not in named_ids]
+    return [[m, u] for m in missing for u in unclaimed]
+
+def unsaid_brawlers(claim: dict, segments: list[dict], chapter: str | None, normalizer: NameNormalizer,
+                    map_names: list[str], window_s: int) -> list[str]:
+    """Brawlers of the rule (both sides and the concept) never said near the quote: not in the chapter title nor in
+    the segments that start from window_s before the quote to its end. Case is ignored, map names removed.
+    Flagged for review, not rejected: a "he" whose name was said more than window_s before raises a false alarm,
+    and a wrong name said nearby by chance is missed."""
+    concept_ids = normalizer.mentions(re.sub("|".join(re.escape(m) for m in map_names), " ", claim["concept"]))
+    rule_ids = list(dict.fromkeys(claim["brawlers"] + claim["against_brawlers"] + concept_ids))
+    near = " ".join([chapter or ""] + [s["text"] for s in segments
+                                       if claim["start_s"] - window_s <= s["start_s"] < claim["end_s"]])
+    said = set(names_in(near, normalizer, map_names))
+    return [b for b in rule_ids if b not in said]
 
 def _classes(ids: list[str], brawler_info: dict) -> dict:
     """{"draft": draft classes (brawlers.yaml), "game": official classes (Fandom cards)} of the brawlers."""

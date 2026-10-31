@@ -1,0 +1,40 @@
+# Point corrections of raw transcripts, applied by normalize_corpus.py before the safe aliases (step 7c).
+# Federico's confirmations of a word at one point of one video; words valid everywhere go to brawlers.yaml aliases.
+# wrong: copied from the raw transcript (sources); must match exactly once, as whole words, within 20 s of `at`.
+# right: the corrected text, with official brawler names in the singular (mentions are matched as whole names).
+- {source: spenlc-ranked-cheat-sheet-s54, at: "23:36", wrong: "a cla", right: "a Colette, Lou or Maisie", note: "Federico 30/10, claim #4"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "24:32", wrong: "a cl", right: "a Colette", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "24:44", wrong: "your mega", right: "your Meg", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "21:48", wrong: "your cars", right: "your Carl", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "27:05", wrong: "like a bit on", right: "like 8-Bit on", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "27:16", wrong: "A bit is", right: "8-Bit is", note: "Federico 31/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "8:34", wrong: "Laren Lurorry", right: "Larry & Lawrie", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "14:19", wrong: "grift's", right: "Griff's", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "14:25", wrong: "your mazes", right: "your Maisie", note: "Federico 31/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "24:20", wrong: "your mazes", right: "your Maisie", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "27:42", wrong: "your Primos", right: "your El Primo", note: "Federico 30/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "17:39", wrong: "goes like Ka", right: "goes like Kaze", note: "Federico 31/10"}
+- {source: spenlc-ranked-cheat-sheet-s54, at: "17:44", wrong: "counter to Ka", right: "counter to Kaze", note: "Federico 30/10, claim #10"}
+- {source: spenlc-tier-list-s54, at: "31:23", wrong: "glus", right: "Colette", note: "Federico 30/10, claim #5; 'maisy' is a safe alias"}
+- {source: spenlc-tier-list-s54, at: "31:23", wrong: "counter a bit a bit", right: "counter 8-Bit a bit", note: "Federico 30/10"}
+- {source: spenlc-tier-list-s54, at: "31:49", wrong: "CL and Mia", right: "Colette and Maisie", note: "Federico 31/10"}
+- {source: spenlc-tier-list-s55, at: "11:45", wrong: "against a Ka", right: "against a Kaze", note: "Federico 30/10, claim #11"}
+- {source: spenlc-draft-positions, at: "36:23", wrong: "pierce when you know", right: "Pierce when you know", note: "Federico 30/10, claim #3"}
+- {source: spenlc-draft-positions, at: "36:23", wrong: "when pierce becomes", right: "when Pierce becomes", note: "Federico 30/10, claim #3"}
+- {source: spenlc-draft-positions, at: "2:01", wrong: "ban backs", right: "ban Max", note: "Federico 30/10"}
+- {source: spenlc-draft-positions, at: "19:29", wrong: "a bit a he's", right: "8-Bit, he's", note: "Federico 31/10"}
+- {source: spenlc-draft-positions, at: "19:40", wrong: "stop a bit getting", right: "stop 8-Bit getting", note: "Federico 31/10"}
+- {source: spenlc-draft-positions, at: "19:46", wrong: "like a bit everywhere", right: "like 8-Bit everywhere", note: "Federico 30/10"}
+- {source: spenlc-drafts-fail, at: "12:32", wrong: "and thinks it's", right: "and Finx it's", note: "Federico 30/10, claim #9"}
+- {source: spenlc-ranked-cheat-sheet-s52, at: "22:32", wrong: "like a L", right: "like a Lou", note: "Federico 30/10"}
+- {source: gbab-counters-every-brawler, at: "0:53", wrong: "Grow", right: "Crow", note: "Federico 30/10"}
+- {source: gbab-counters-every-brawler, at: "1:38", wrong: "and Bold", right: "and Bolt", note: "Federico 30/10, claim #8"}
+- {source: gbab-counters-every-brawler, at: "4:17", wrong: "Fix", right: "Finx", note: "Federico 31/10"}
+- {source: gbab-counters-every-brawler, at: "4:25", wrong: "Louis", right: "Lumi", note: "Federico 30/10, claim #2"}
+- {source: gbab-counters-every-brawler, at: "8:50", wrong: "Jud", right: "Juju", note: "Federico 31/10"}
+- {source: gbab-counters-every-brawler, at: "10:44", wrong: "Shell's", right: "Shelly's", note: "Federico 30/10"}
+- {source: gbab-counters-every-brawler, at: "10:44", wrong: "Tar", right: "Tara", note: "Federico 30/10"}
+- {source: bief-counters-every-brawler, at: "6:29", wrong: "Fins", right: "Finx", note: "Federico 30/10"}
+- {source: bief-counters-every-brawler, at: "7:21", wrong: "For Bold", right: "For Bolt", note: "Federico 30/10, claim #7"}
+- {source: bief-counters-every-brawler, at: "8:24", wrong: "Blue", right: "Lou", note: "Federico 30/10"}
+- {source: bobbybs-draft-guide-part2, at: "22:58", wrong: "Fin is", right: "Finx is", note: "Federico 30/10"}

@@ -31,13 +31,14 @@ all_maps = load_maps(Path("data/maps.yaml"))
 pool_maps = [m for m in all_maps if m["in_pool"]]  # listed in the prompt
 brawler_list = load_brawlers(Path("data/brawlers.yaml"))
 normalizer = NameNormalizer(brawler_list)
+brawler_names = [b["en"] for b in brawler_list]  # listed in the prompt
 wiki_class = {c["_id"]: c.get("wiki_class") for c in db["brawler_cards"].find({}, {"wiki_class": 1})}
 brawler_info = {b["id"]: {"class": b["class"], "wiki_class": wiki_class.get(b["id"])} for b in brawler_list}
 
 # Every section with its prompt and key; the key changes with the text, the source data, the prompt or the model
 sections = corpus_sections(list(db["normalized"].find()), sources)
 for section in sections:
-    section["prompt"] = build_prompt(section["source"], section, pool_maps)
+    section["prompt"] = build_prompt(section["source"], section, pool_maps, brawler_names)
     section["key"] = section_hash(section["prompt"], MODEL)
 keys = [s["key"] for s in sections]
 

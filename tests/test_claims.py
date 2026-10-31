@@ -1,6 +1,6 @@
 """Claim extraction: sections never overlap or cross a chapter; the code checks every claim of the model."""
-from draft_coach.claims import (Claim, check_claim, extractable_segments, locate_quote, make_sections, names_in,
-                                parent_chunk, stale_links)
+from draft_coach.claims import (Claim, build_prompt, check_claim, extractable_segments, locate_quote, make_sections, names_in,
+                                parent_chunk, stale_links, unsaid_brawlers)
 from draft_coach.names import NameNormalizer
 
 # one segment every 10 s, 5 words each; Piper is named at 20 s
@@ -128,3 +128,68 @@ def test_stale_links_are_the_points_whose_parent_chunk_changed():
     stored = {"p1": "src:window60-v1:0", "p2": "src:chapter60-plain-v1:45", "p3": None, "gone": "src:window60-v1:90"}
     parents = {"p1": "src:chapter60-plain-v1:0", "p2": "src:chapter60-plain-v1:45", "p3": "src:chapter60-plain-v1:90"}
     assert stale_links(stored, parents) == {"p1": "src:chapter60-plain-v1:0", "p3": "src:chapter60-plain-v1:90"}
+
+
+
+# Swap guard (step 7c): Gemini wrote Bull where the transcript says "bolt"
+SWAP_BRAWLERS = [{"id": i, "en": en, "it": en, "aliases": [], "context_aliases": []}
+                 for i, en in [("bolt", "Bolt"), ("bull", "Bull"), ("chester", "Chester"), ("colt", "Colt")]]
+SWAP_INFO = {i: {"class": "anti_tank", "wiki_class": None} for i in ["bolt", "bull", "chester", "colt"]}
+
+
+def check_swap(c: Claim, text: str):
+    section = make_sections([{"start_s": 0, "text": text, "mentions": []}], [])[0]
+    return check_claim(c, section, MAPS, NameNormalizer(SWAP_BRAWLERS), SWAP_INFO)
+
+
+def test_brawler_missing_from_the_quote_while_another_is_there_is_flagged():
+    record, reason = check_swap(claim(quote="pick bolt into Chester", concept="Bull beats Chester.", brawlers=["Bull"],
+                                      relation="strong_against", against_brawlers=["Chester"]),
+                                "Bull is a tank. Now pick bolt into Chester here")
+    assert reason is None and record["name_swaps"] == [["bull", "bolt"]]
+
+
+def test_brawler_said_in_the_quote_is_not_flagged():
+    record, _ = check_swap(claim(quote="pick bolt into Chester", concept="Bolt beats Chester.", brawlers=["Bolt"],
+                                 relation="strong_against", against_brawlers=["Chester"]), "pick bolt into Chester here")
+    assert record["name_swaps"] == []
+
+
+def test_brawler_named_as_he_in_the_quote_is_not_flagged():
+    record, _ = check_swap(claim(quote="he is great here", concept="Bull is great here.", brawlers=["Bull"]),
+                           "Bull is a tank and he is great here")
+    assert record["name_swaps"] == []
+
+
+def test_brawler_of_the_example_in_the_quote_is_not_a_swap():
+    record, _ = check_swap(claim(quote="he beats tanks like Colt", concept="Bull beats tanks.", brawlers=["Bull"],
+                                 example="Colt"), "Bull is a tank and he beats tanks like Colt")
+    assert record["name_swaps"] == []
+
+
+
+def test_prompt_lists_the_valid_brawler_names():
+    source = {"title": "T", "creator": "C", "format": "guide", "published": "2026-01-01", "season": 54}
+    prompt = build_prompt(source, make_sections(SEGMENTS, [])[0], MAPS, ["Colt", "Bolt", "Piper"])
+    assert "Bolt, Colt, Piper" in prompt and "w20 Piper is great here" in prompt
+
+
+# Guard "brawler never said near the quote" (step 7c): the brawler of a counters video is said once, then "he"
+BULL_CLAIM = {"brawlers": ["bull"], "against_brawlers": [], "concept": "Bull is great here.", "start_s": 60, "end_s": 70}
+
+
+def unsaid(segments: list[dict], chapter: str | None, window_s: int) -> list[str]:
+    return unsaid_brawlers(BULL_CLAIM, segments, chapter, NameNormalizer(SWAP_BRAWLERS), [], window_s)
+
+
+def test_brawler_said_within_the_window_is_not_flagged():
+    assert unsaid([{"start_s": 45, "text": "now bull"}, {"start_s": 60, "text": "he is great here"}], None, 20) == []
+
+
+def test_brawler_said_only_in_the_chapter_title_is_not_flagged():
+    assert unsaid([{"start_s": 60, "text": "he is great here"}], "Bull", 20) == []
+
+
+def test_brawler_said_before_the_window_is_flagged_only_by_a_shorter_window():
+    segments = [{"start_s": 10, "text": "Bull is next"}, {"start_s": 60, "text": "he is great here"}]
+    assert (unsaid(segments, None, 20), unsaid(segments, None, 60)) == (["bull"], [])
