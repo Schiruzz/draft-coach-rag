@@ -1,0 +1,39 @@
+# Italian game terms -> English terms of the corpus (step 7d), replaced in the question before the search.
+# Matched as whole words and with their case, like the aliases in brawlers.yaml: several Italian names are common
+# words (Dominio, Ponte, Santuario), so only the forms written here match; lowercase variants are written one by one.
+# Brawler names are not here: their Italian names are the `it` field of data/brawlers.yaml.
+# Maps: Italian names from topbrawl.com/it/rankeds, paired with the English page by the game's map id (31/10/2026).
+# [] = Italian name not found (map not in the season 55 pool).
+modes:
+  Gem Grab: [Arraffagemme, arraffagemme, Arraffa gemme, arraffa gemme]
+  Heist: [Rapina, rapina]
+  Hot Zone: [Dominio, Zona calda, zona calda]
+  Brawl Ball: [Footbrawl, footbrawl, FootBrawl, Foot Brawl]
+  Bounty: [Ricercati, Taglia]
+  Knockout: [K.O., K.o., KO]
+ranks:
+  Diamond: [Diamante]
+  Mythic: [Mitico, Miti]
+  Legendary: [Leggende]
+  Masters: [Campioni]
+maps:
+  Beach Ball: []
+  Center Stage: [Stamford Brawl]
+  Pinball Dreams: [Brawlacanã]
+  Sneaky Fields: [Campetto incolto]
+  Spiraling Out: [Spirale della vittoria]
+  Triple Dribble: [Brawl Trafford]
+  Double Swoosh: [Arco doppio]
+  Gem Fort: [Fortino delle gemme]
+  Hard Rock Mine: [Miniera Rocciadura]
+  Undermine: [Miniera minacciosa]
+  Bridge Too Far: [Ponte]
+  Hot Potato: [Battigia ustionante]
+  Kaboom Canyon: [Canyon Bum Bum]
+  Safe Zone: [Santuario]
+  Dueling Beetles: [Distesa degli scarafaggi]
+  Open Business: [Campo aperto]
+  Parallel Plays: [Giocate parallele]
+  Ring of Fire: [Ring di fuoco]
+verbs:
+  counter: [countero, countera, counterare, counterarli, counterarlo, counterano, counteri]
